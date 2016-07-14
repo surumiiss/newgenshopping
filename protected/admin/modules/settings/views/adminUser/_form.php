@@ -32,29 +32,39 @@ $form = $this->beginWidget('CActiveForm', array(
 
 <div class="form-group">
     <?php echo $form->labelEx($model, 'username', array('class' => 'col-sm-2 control-label')); ?>
-    <div class="col-sm-10"><?php echo $form->textField($model, 'username', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?></div>
+    <div class="col-sm-10">
+        <?php echo $form->textField($model, 'username', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?>
+    </div>
     <?php echo $form->error($model, 'username'); ?>
 </div>
 
 
 <div class="form-group">
     <?php echo $form->labelEx($model, 'password', array('class' => 'col-sm-2 control-label')); ?>
-    <div class="col-sm-10"><?php echo $form->passwordField($model, 'password', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?></div>
+    <div class="col-sm-10">
+        <?php echo $form->passwordField($model, 'password', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?>
+    </div>
     <?php echo $form->error($model, 'password'); ?>
 </div>
 <div class="form-group">
     <?php echo $form->labelEx($model, 'name', array('class' => 'col-sm-2 control-label')); ?>
-    <div class="col-sm-10"><?php echo $form->textField($model, 'name', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?></div>
+    <div class="col-sm-10">
+        <?php echo $form->textField($model, 'name', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?>
+    </div>
     <?php echo $form->error($model, 'name'); ?>
 </div>
 <div class="form-group">
     <?php echo $form->labelEx($model, 'email', array('class' => 'col-sm-2 control-label')); ?>
-    <div class="col-sm-10"> <?php echo $form->textField($model, 'email', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?></div>
+    <div class="col-sm-10"> 
+        <?php echo $form->textField($model, 'email', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?>
+    </div>
     <?php echo $form->error($model, 'email'); ?>
 </div>
 <div class="form-group">
     <?php echo $form->labelEx($model, 'phone', array('class' => 'col-sm-2 control-label')); ?>
-    <div class="col-sm-10"><?php echo $form->textField($model, 'phone', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?></div>
+    <div class="col-sm-10">
+        <?php echo $form->textField($model, 'phone', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?>
+    </div>
     <?php echo $form->error($model, 'phone'); ?>
 </div>
 

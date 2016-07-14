@@ -31,7 +31,7 @@ return array(
     ),
     'modulePath' => $admin . '/modules/',
     'modules' => array(
-        'settings',
+        'settings','users',
         // uncomment the following to enable the Gii tool
         'gii' => array(
             'class' => 'system.gii.GiiModule',
@@ -71,7 +71,7 @@ return array(
         // database settings are configured in database.php
         'db' => require(dirname(__FILE__) . '/database.php'),
         'db' => array(
-            'connectionString' => 'mysql:host=localhost;dbname=laksyah',
+            'connectionString' => 'mysql:host=localhost;dbname=newgen_shopping',
             'emulatePrepare' => true,
             'username' => 'root',
             'password' => 'mysql',

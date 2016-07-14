@@ -1,16 +1,16 @@
-<section class="content-header">
+<section class="content-header" style="margin-bottom: .5em">
     <h1>
-        Admin User
+        Buyer
         <small>Update</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/admin.php/site/home"><i class="fa fa-dashboard"></i>Dashboard</a></li>
-        <li class="active">Update Admin Users</li>
+        <li class="active">Update Buyer</li>
     </ol>
 </section>
 
 
-<a href="<?php echo Yii::app()->request->baseUrl . '/admin.php/settings/AdminUser/admin'; ?>" class='btn  btn-laksyah manage'>Manage User</a>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo Yii::app()->request->baseUrl . '/admin.php/users/Buyer/admin'; ?>" class='btn  btn-laksyah manage'>Manage Buyer</a>
 <section class="content">
     <div class="box box-info">
 
