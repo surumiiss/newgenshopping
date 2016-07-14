@@ -6,8 +6,9 @@
 /* @var $form CActiveForm */
 ?>
 
-
+hai
 <?php
+
 $form = $this->beginWidget('CActiveForm', array(
     'id' => 'admin-user-form',
     'htmlOptions' => array('class' => "form-horizontal"),
