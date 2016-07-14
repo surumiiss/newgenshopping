@@ -8,25 +8,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <head>
                 <meta charset="utf-8">
                 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                <title><?php echo Yii::app()->name; ?></title>
-                <!--<script src="<?php // echo Yii::app()->baseUrl                                                                                                                                                                                                                                                                                                                    ?>/admin-themes/plugins/jQuery/jQuery-2.1.4.min.js"></script>-->
+                <title><?php echo Yii::app()->name; ?></title>                                                                                                                                                                                                                                                                                                                 ?>/admin-themes/plugins/jQuery/jQuery-2.1.4.min.js"></script>-->
                 <!-- Tell the browser to be responsive to screen width -->
-                <link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/admin.css">
+                <!--<link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/admin.css">-->
                 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
                 <!-- Bootstrap 3.3.5 -->
 
                 <!-- Font Awesome -->
 
-
-
-
                 <link rel="icon" href="<?php echo Yii::app()->baseUrl; ?>/images/fav.ico" type="image/x-icon" />
                 <link rel="shortcut icon" href="<?php echo Yii::app()->baseUrl; ?>/images/fav.ico" type="image/x-icon" />
                 <link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/admin-themes/dist/css/skins/skin-laksyah.min.css">
-                <link rel="stylesheet" href="<?php echo Yii::app()->baseUrl; ?>/css/admin.css">
 
-                <!-- Bootstrap 3.3.5 -->
-        <!--        <link rel="stylesheet" href="<?php //echo Yii::app()->baseUrl;                                                                                                                         ?>/admin-themes/bootstrap/css/bootstrap.min.css">-->
+                <!-- Bootstrap 3.3.5 -->                                                                                                                     ?>/admin-themes/bootstrap/css/bootstrap.min.css">-->
                 <!-- Font Awesome -->
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
                 <!-- Ionicons -->
@@ -168,11 +162,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="content-wrapper">
                                 <!-- Content Header (Page header) -->
 
-
-
                                 <?php echo $content; ?>
-
-
 
                         </div><!-- /.content-wrapper -->
 
@@ -184,12 +174,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <strong>Copyright &copy; <?php echo date('Y'); ?> <a href="#">Intersmart Solutions</a>.</strong> All rights reserved.
                         </footer>
 
-
-
                 </div><!-- ./wrapper -->
-
-
-
 
         </body>
 </html>

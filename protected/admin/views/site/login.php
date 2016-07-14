@@ -11,10 +11,6 @@
     ));
     ?>
 
-
-
-
-
     <div class="login-box">
         <div class="login-logo">
             <a href="<?php //echo Yii::app()->baseUrl;         ?>#"><img src="<?php echo Yii::app()->baseUrl; ?>/images/logo.png" /></a>
@@ -44,12 +40,6 @@
                     <button type="submit" class="btn btn-warning btn-block btn-flat">Sign In</button>
                 </div><!-- /.col -->
             </div>
-
-
-
-
-            <!--            <a href="#">I forgot my password</a><br>
-                        <a href="register.html" class="text-center">Register a new membership</a>-->
 
         </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->

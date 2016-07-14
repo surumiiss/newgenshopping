@@ -32,22 +32,6 @@ return array(
     'modulePath' => $admin . '/modules/',
     'modules' => array(
         'settings',
-        'products',
-        'static',
-        'slider',
-        'contact',
-        'social',
-        'contactenquiry',
-        'cms',
-        'masters',
-        'enquiry',
-        'designs',
-        'coupons',
-        'user',
-        'testimonials',
-        'appointment',
-        'makepayment',
-        'giftcard',
         // uncomment the following to enable the Gii tool
         'gii' => array(
             'class' => 'system.gii.GiiModule',
@@ -58,8 +42,6 @@ return array(
     ),
     // application components
     'components' => array(
-        'Upload' => array('class' => 'UploadFile'),
-        'category' => array('class' => 'selectCategory'),
         'booster' => array(
             'class' => 'booster.components.Booster',
         ),
