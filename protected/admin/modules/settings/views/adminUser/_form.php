@@ -6,7 +6,6 @@
 /* @var $form CActiveForm */
 ?>
 
-hai
 <?php
 
 $form = $this->beginWidget('CActiveForm', array(
