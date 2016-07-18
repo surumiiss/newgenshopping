@@ -27,7 +27,7 @@ $this->menu=array(
 		'phone_number',
 		'password',
 		'verification_code',
-		'activation_link',
+		'email_verification',
 		'product_categories',
 		'merchant_type',
 		'product_count',
@@ -50,5 +50,8 @@ $this->menu=array(
 		'DOC',
 		'DOU',
 		'is_payment_done',
+		'field1',
+		'field2',
+		'field3',
 	),
 )); ?>

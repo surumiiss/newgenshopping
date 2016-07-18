@@ -29,8 +29,8 @@
 	<?php echo CHtml::encode($data->verification_code); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('activation_link')); ?>:</b>
-	<?php echo CHtml::encode($data->activation_link); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('email_verification')); ?>:</b>
+	<?php echo CHtml::encode($data->email_verification); ?>
 	<br />
 
 	<?php /*
@@ -120,6 +120,18 @@
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('is_payment_done')); ?>:</b>
 	<?php echo CHtml::encode($data->is_payment_done); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('field1')); ?>:</b>
+	<?php echo CHtml::encode($data->field1); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('field2')); ?>:</b>
+	<?php echo CHtml::encode($data->field2); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('field3')); ?>:</b>
+	<?php echo CHtml::encode($data->field3); ?>
 	<br />
 
 	*/ ?>

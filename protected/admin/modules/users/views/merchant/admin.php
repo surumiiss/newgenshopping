@@ -30,7 +30,7 @@
 		'password',
 		'verification_code',
 		/*
-		'activation_link',
+		'email_verification',
 		'product_categories',
 		'merchant_type',
 		'product_count',

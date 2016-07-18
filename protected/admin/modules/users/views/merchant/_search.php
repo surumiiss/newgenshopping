@@ -37,8 +37,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'activation_link'); ?>
-		<?php echo $form->textField($model,'activation_link',array('size'=>60,'maxlength'=>100,'class' => 'form-control')); ?>
+		<?php echo $form->label($model,'email_verification'); ?>
+		<?php echo $form->textField($model,'email_verification',array('size'=>60,'maxlength'=>100,'class' => 'form-control')); ?>
 	</div>
 
 	<div class="row">
@@ -149,6 +149,21 @@
 	<div class="row">
 		<?php echo $form->label($model,'is_payment_done'); ?>
 		<?php echo $form->textField($model,'is_payment_done',array('class' => 'form-control')); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'field1'); ?>
+		<?php echo $form->textField($model,'field1',array('class' => 'form-control')); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'field2'); ?>
+		<?php echo $form->textField($model,'field2',array('class' => 'form-control')); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'field3'); ?>
+		<?php echo $form->textField($model,'field3',array('class' => 'form-control')); ?>
 	</div>
 
 	<div class="row buttons">

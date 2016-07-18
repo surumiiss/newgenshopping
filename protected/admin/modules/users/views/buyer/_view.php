@@ -42,6 +42,10 @@
 	<?php echo CHtml::encode($data->password); ?>
 	<br />
 
+	<b><?php echo CHtml::encode($data->getAttributeLabel('confirm')); ?>:</b>
+	<?php echo CHtml::encode($data->confirm); ?>
+	<br />
+
 	<b><?php echo CHtml::encode($data->getAttributeLabel('newsletter')); ?>:</b>
 	<?php echo CHtml::encode($data->newsletter); ?>
 	<br />
@@ -54,8 +58,8 @@
 	<?php echo CHtml::encode($data->verification_code); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('activation_link')); ?>:</b>
-	<?php echo CHtml::encode($data->activation_link); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('email_verification')); ?>:</b>
+	<?php echo CHtml::encode($data->email_verification); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('status')); ?>:</b>

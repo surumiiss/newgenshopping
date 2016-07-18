@@ -52,6 +52,11 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->label($model,'confirm'); ?>
+		<?php echo $form->textField($model,'confirm',array('size'=>60,'maxlength'=>225,'class' => 'form-control')); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model,'newsletter'); ?>
 		<?php echo $form->textField($model,'newsletter',array('class' => 'form-control')); ?>
 	</div>
@@ -67,8 +72,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'activation_link'); ?>
-		<?php echo $form->textField($model,'activation_link',array('size'=>50,'maxlength'=>50,'class' => 'form-control')); ?>
+		<?php echo $form->label($model,'email_verification'); ?>
+		<?php echo $form->textField($model,'email_verification',array('size'=>50,'maxlength'=>50,'class' => 'form-control')); ?>
 	</div>
 
 	<div class="row">

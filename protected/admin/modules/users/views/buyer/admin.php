@@ -37,7 +37,7 @@
                       'newsletter',
                       'wallet_amt',
                       'verification_code',
-                      'activation_link',
+                      'email_verification',
 
                       'bad_attempts',
                       'CB',
