@@ -143,6 +143,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             $action6 = "active";
                             $actionn3 = "active";
                             break;
+                        case "currency":
+                            $action7 = "active";
+                            $actionn4 = "active";
 
                         case "site":
                             if (Yii::app()->controller->action->id == "home") {
@@ -154,6 +157,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             $action18 = "active";
                             break;
                     }
+                    $action23 = '';$action12='';$action13='';$action14='';$action15='';$action16='';
+                    $action17='';$action16='';
                     ?>
                     <ul class="sidebar-menu">
 
@@ -185,6 +190,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <li class="<?php echo $action6 ?>"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/products/Products/admin"><i class="fa fa-circle-o"></i> All Products</a></li>
                             </ul>
                         </li>
+                                  <?php if (isset(Yii::app()->session['post']['masters']) && Yii::app()->session['post']['masters'] == 1) { ?>
+                                                        <li class="<?php echo $actionn4 ?> treeview">
+                                                                <a href="#"><i class="fa fa-database"></i> <span>Masters</span> <i class="fa fa-angle-left pull-right"></i></a>
+                                                                <ul class="treeview-menu">
+                                                                        <li class="<?php echo $action7 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/Currency/admin"><i class="fa fa-circle-o"></i>Currency</a></li>
+                                                                        <li class="<?php echo $action23 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/MasterShippingTypes/admin"><i class="fa fa-circle-o"></i>Shipping Types</a></li>
+                                                                        <li class="<?php echo $action23 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/shippingCharges/admin"><i class="fa fa-circle-o"></i>Shipping Rates</a></li>
+                                                                        <li class="<?php echo $action12 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/DimensionClass/admin"><i class="fa fa-circle-o"></i> Dimension Class</a></li>
+                                                                        <li class="<?php echo $action13 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/WeightClass/admin"><i class="fa fa-circle-o"></i> Weight Class</a></li>
+                                                                        <li class="<?php echo $action14 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/user/UserAddress/admin"><i class="fa fa-circle-o"></i> User Address</a></li>
+                                                                        <li class="<?php echo $action15 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/Countries/admin"><i class="fa fa-circle-o"></i> Countries</a></li>
+                                                                        <li class="<?php echo $action16 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/Districts/admin"><i class="fa fa-circle-o"></i> Districts</a></li>
+                                                                        <li class="<?php echo $action17 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/States/admin"><i class="fa fa-circle-o"></i> States</a></li>
+                                                                </ul>
+                                                        </li>                         
+
+                                                <?php } ?>
+                        
                     </ul><!-- /.sidebar-menu -->
                 </section>
                 <!-- /.sidebar -->

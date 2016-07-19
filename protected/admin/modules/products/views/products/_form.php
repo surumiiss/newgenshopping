@@ -9,7 +9,7 @@
     <?php
     $form = $this->beginWidget('CActiveForm', array(
         'id' => 'products-form',
-        'htmlOptions' => array('class' => "form-horizontal"),
+        'htmlOptions' => array('class' => 'form-horizontal', 'enctype' => 'multipart/form-data'),
         // Please note: When you enable ajax validation, make sure the corresponding
         // controller action is handling ajax validation correctly.
         // There is a call to performAjaxValidation() commented in generated controller code.
@@ -26,7 +26,28 @@
     <div class="form-group">
         <?php echo $form->labelEx($model, 'category_id', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'category_id', array('size' => 60, 'maxlength' => 200, 'class' => 'form-control')); ?>
+            <?php
+            if (!$model->isNewRecord) {
+                if (!empty($model->category_id)) {
+                    $ids = explode(',', $model->category_id);
+                    $selected = array();
+                    foreach ($ids as $id) {
+                        $selected[$id] = array('selected' => true);
+                    }
+                }
+            }
+            ?>
+            <?php echo $form->hiddenField($model, 'category_id'); ?>
+            <div class="col-sm-10">
+                <?php
+                $this->widget('application.admin.components.CatSelect', array(
+                    'type' => 'category',
+                    'field_val' => $model->category_id,
+                    'category_tag_id' => 'Products_category_id', /* id of hidden field */
+                    'form_id' => 'product-category-form',
+                ));
+                ?>
+            </div>
             <?php echo $form->error($model, 'category_id'); ?>
         </div>
     </div>
@@ -47,37 +68,33 @@
         </div>
     </div>
 
-    <div class="form-group">
-        <?php echo $form->labelEx($model, 'brand_id', array('class' => 'col-sm-2 control-label')); ?>
-        <div class="col-sm-10">
-            <?php echo $form->textField($model, 'brand_id', array('class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'brand_id'); ?>
-        </div>
-    </div>
+    <?php /*
+      <div class="form-group">
+      <?php echo $form->labelEx($model, 'brand_id', array('class' => 'col-sm-2 control-label')); ?>
+      <div class="col-sm-10">
+      <?php echo $form->textField($model, 'brand_id', array('class' => 'form-control')); ?>
+      <?php echo $form->error($model, 'brand_id'); ?>
+      </div>
+      </div>
 
-    <div class="form-group">
-        <?php echo $form->labelEx($model, 'merchant_id', array('class' => 'col-sm-2 control-label')); ?>
-        <div class="col-sm-10">
-            <?php echo $form->textField($model, 'merchant_id', array('class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'merchant_id'); ?>
-        </div>
-    </div>
+      <div class="form-group">
+      <?php echo $form->labelEx($model, 'merchant_id', array('class' => 'col-sm-2 control-label')); ?>
+      <div class="col-sm-10">
+      <?php echo $form->textField($model, 'merchant_id', array('class' => 'form-control')); ?>
+      <?php echo $form->error($model, 'merchant_id'); ?>
+      </div>
+      </div>
 
-    <div class="form-group">
-        <?php echo $form->labelEx($model, 'merchant_type', array('class' => 'col-sm-2 control-label')); ?>
-        <div class="col-sm-10">
-            <?php echo $form->textField($model, 'merchant_type', array('class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'merchant_type'); ?>
-        </div>
-    </div>
+      <div class="form-group">
+      <?php echo $form->labelEx($model, 'merchant_type', array('class' => 'col-sm-2 control-label')); ?>
+      <div class="col-sm-10">
+      <?php echo $form->textField($model, 'merchant_type', array('class' => 'form-control')); ?>
+      <?php echo $form->error($model, 'merchant_type'); ?>
+      </div>
+      </div>
 
-    <div class="form-group">
-        <?php echo $form->labelEx($model, 'title', array('class' => 'col-sm-2 control-label')); ?>
-        <div class="col-sm-10">
-            <?php echo $form->textField($model, 'title', array('size' => 60, 'maxlength' => 225, 'class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'title'); ?>
-        </div>
-    </div>
+     */ ?>
+
 
     <div class="form-group">
         <?php echo $form->labelEx($model, 'description', array('class' => 'col-sm-2 control-label')); ?>
@@ -88,28 +105,110 @@
     </div>
 
     <div class="form-group">
-        <?php echo $form->labelEx($model, 'main_image', array('class' => 'col-sm-2 control-label')); ?>
-        <div class="col-sm-10">
-            <?php echo $form->textField($model, 'main_image', array('size' => 60, 'maxlength' => 200, 'class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'main_image'); ?>
+        <?php echo $form->labelEx($model, 'Main Image ( image size : 322 X 500 )', array('class' => 'col-sm-2 control-label')); ?>
+        <div class="col-sm-10"><?php echo $form->fileField($model, 'main_image', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?>
+            <?php
+            if ($model->main_image != '' && $model->id != "") {
+                $folder = Yii::app()->Upload->folderName(0, 1000, $model->id);
+                echo '<img width="125" style="border: 2px solid #d2d2d2;" src="' . Yii::app()->baseUrl . '/uploads/products/' . $folder . '/' . $model->id . '/small' . '.' . $model->main_image . '" />';
+            }
+            ?>
         </div>
+        <?php echo $form->error($model, 'main_image'); ?>
     </div>
 
     <div class="form-group">
-        <?php echo $form->labelEx($model, 'gallery_images', array('class' => 'col-sm-2 control-label')); ?>
-        <div class="col-sm-10">
-            <?php echo $form->textField($model, 'gallery_images', array('size' => 60, 'maxlength' => 200, 'class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'gallery_images'); ?>
+        <?php echo $form->labelEx($model, 'Hover Images ( image size : 322 X 500 )', array('class' => 'col-sm-2 control-label')); ?>
+        <div class="col-sm-10"><?php echo $form->fileField($model, 'hover_image', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?>
+            <?php
+            if ($model->hover_image != '' && $model->id != "") {
+                $folder = Yii::app()->Upload->folderName(0, 1000, $model->id);
+                echo '<img width="125" style="border: 2px solid #d2d2d2;" src="' . Yii::app()->baseUrl . '/uploads/products/' . $folder . '/' . $model->id . '/hover/hover.' . $model->hover_image . '" />';
+            }
+            ?>
         </div>
+        <?php echo $form->error($model, 'hover_image'); ?>
     </div>
 
     <div class="form-group">
-        <?php echo $form->labelEx($model, 'hover_image', array('class' => 'col-sm-2 control-label')); ?>
+        <?php echo $form->labelEx($model, 'Gallery Images ( image size : 3016 X 4030 )', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'hover_image', array('size' => 60, 'maxlength' => 150, 'class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'hover_image'); ?>
+            <?php
+            $this->widget('CMultiFileUpload', array(
+                'name' => 'gallery_images',
+                'accept' => 'jpeg|jpg|gif|png', // useful for verifying files
+                'duplicate' => 'Duplicate file!', // useful, i think
+                'denied' => 'Invalid file type', // useful, i think
+            ));
+            ?>
+
+            <?php
+            if (!$model->isNewRecord) {
+                $folder = Yii::app()->Upload->folderName(0, 1000, $model->id);
+
+                // $path = Yii::getPathOfAlias('webroot') . '/uploads/products/' . $folder . '/' . $model->id . '/gallery/big';
+
+                $path = Yii::getPathOfAlias('webroot') . '/uploads/products/' . $folder . '/' . $model->id . '/gallery/big';
+
+
+                $path2 = Yii::getPathOfAlias('webroot') . '/uploads/products/' . $folder . '/' . $model->id . '/gallery/';
+
+
+                foreach (glob("{$path}/*") as $file) {
+
+                    $info = pathinfo($file);
+                    $file_name = basename($file, '.' . $info['basename']);
+
+                    //  var_dump($file_name);
+
+
+
+                    if ($file != '') {
+                        $arry = explode('/', $file);
+                        echo '<div style="float:left;margin:5px;position:relative;">'
+                        . '<a style="position:absolute;top:43%;left:40%;color:red;" href="' . Yii::app()->baseUrl . '/admin.php/products/products/NewDelete?id=' . $model->id . '&path=' . $file_name . '"><i class="glyphicon glyphicon-trash"></i></a>'
+                        . ' <img style="width:100px;height:100px;" src="' . Yii::app()->baseUrl . '/uploads/products/' . $folder . '/' . $model->id . '/gallery/' . end($arry) . '"> </div>';
+                    }
+                }
+            }
+            ?>
         </div>
+        <?php echo $form->error($model, 'gallery_images'); ?>
     </div>
+
+
+
+    <div class="form-group">
+        <?php echo $form->labelEx($model, 'Upload Video', array('class' => 'col-sm-2 control-label')); ?>
+        <div class="col-sm-10"><?php echo $form->fileField($model, 'video_link', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?>
+            <?php
+            $vid = $model->video_link;
+            if ($vid != "") {
+                ?>
+
+                <a href="<?php echo Yii::app()->request->baseUrl; ?>/uploads/products/1000/<?php echo $model->id; ?>/videos/video.mp4" target="_blank">play video</a>
+            <?php }
+            ?>
+
+
+        </div>
+        <?php echo $form->error($model, 'video_link'); ?>
+    </div>
+
+
+
+    <div class="form-group">
+        <?php echo $form->labelEx($model, 'description', array('class' => 'col-sm-2 control-label')); ?>
+        <div class="col-sm-10"><?php
+            $this->widget('application.admin.extensions.eckeditor.ECKEditor', array(
+                'model' => $model,
+                'attribute' => 'description',
+            ));
+            ?>
+        </div>
+        <?php echo $form->error($model, 'description'); ?>
+    </div>
+
 
     <div class="form-group">
         <?php echo $form->labelEx($model, 'canonical_name', array('class' => 'col-sm-2 control-label')); ?>
@@ -431,7 +530,7 @@
         </div>
     </div>
 
-     <div class="box-footer">
+    <div class="box-footer">
         <label>&nbsp;</label><br/>
         <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class' => 'btn btn-laksyah')); ?>
     </div>
