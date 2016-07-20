@@ -67,6 +67,13 @@
             <?php echo $form->error($model, 'product_code'); ?>
         </div>
     </div>
+    <div class="form-group">
+        <?php echo $form->labelEx($model, 'canonical_name', array('class' => 'col-sm-2 control-label')); ?>
+        <div class="col-sm-10">
+            <?php echo $form->textField($model, 'canonical_name', array('size' => 60, 'maxlength' => 200, 'class' => 'form-control')); ?>
+            <?php echo $form->error($model, 'canonical_name'); ?>
+        </div>
+    </div>
 
     <?php /*
       <div class="form-group">
@@ -94,15 +101,6 @@
       </div>
 
      */ ?>
-
-
-    <div class="form-group">
-        <?php echo $form->labelEx($model, 'description', array('class' => 'col-sm-2 control-label')); ?>
-        <div class="col-sm-10">
-            <?php echo $form->textArea($model, 'description', array('rows' => 6, 'cols' => 50, 'class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'description'); ?>
-        </div>
-    </div>
 
     <div class="form-group">
         <?php echo $form->labelEx($model, 'Main Image ( image size : 322 X 500 )', array('class' => 'col-sm-2 control-label')); ?>
@@ -177,7 +175,7 @@
     </div>
 
 
-
+<?php /*
     <div class="form-group">
         <?php echo $form->labelEx($model, 'Upload Video', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10"><?php echo $form->fileField($model, 'video_link', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?>
@@ -189,12 +187,10 @@
                 <a href="<?php echo Yii::app()->request->baseUrl; ?>/uploads/products/1000/<?php echo $model->id; ?>/videos/video.mp4" target="_blank">play video</a>
             <?php }
             ?>
-
-
+            <?php echo $form->error($model, 'video_link'); ?>
         </div>
-        <?php echo $form->error($model, 'video_link'); ?>
     </div>
-
+  */?>
 
 
     <div class="form-group">
@@ -205,18 +201,13 @@
                 'attribute' => 'description',
             ));
             ?>
+
+            <?php echo $form->error($model, 'description'); ?>
         </div>
-        <?php echo $form->error($model, 'description'); ?>
     </div>
 
 
-    <div class="form-group">
-        <?php echo $form->labelEx($model, 'canonical_name', array('class' => 'col-sm-2 control-label')); ?>
-        <div class="col-sm-10">
-            <?php echo $form->textField($model, 'canonical_name', array('size' => 60, 'maxlength' => 200, 'class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'canonical_name'); ?>
-        </div>
-    </div>
+
 
     <div class="form-group">
         <?php echo $form->labelEx($model, 'meta_title', array('class' => 'col-sm-2 control-label')); ?>
@@ -229,7 +220,7 @@
     <div class="form-group">
         <?php echo $form->labelEx($model, 'meta_description', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textArea($model, 'meta_description', array('rows' => 6, 'cols' => 50, 'class' => 'form-control')); ?>
+            <?php echo $form->textArea($model, 'meta_description', array('size' => 60, 'maxlength' => 225, 'class' => 'form-control')); ?>
             <?php echo $form->error($model, 'meta_description'); ?>
         </div>
     </div>
@@ -241,28 +232,20 @@
             <?php echo $form->error($model, 'meta_keywords'); ?>
         </div>
     </div>
-
+<?php /*
     <div class="form-group">
         <?php echo $form->labelEx($model, 'header_visibility', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'header_visibility', array('class' => 'form-control')); ?>
+            <?php echo $form->dropDownList($model, 'header_visibility', array('1' => "Enabled", '0' => "Disabled"), array('class' => 'form-control')); ?>
             <?php echo $form->error($model, 'header_visibility'); ?>
         </div>
-    </div>
+    </div> */ ?>
 
     <div class="form-group">
         <?php echo $form->labelEx($model, 'sort_order', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
             <?php echo $form->textField($model, 'sort_order', array('class' => 'form-control')); ?>
             <?php echo $form->error($model, 'sort_order'); ?>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <?php echo $form->labelEx($model, 'display_category_name', array('class' => 'col-sm-2 control-label')); ?>
-        <div class="col-sm-10">
-            <?php echo $form->textField($model, 'display_category_name', array('class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'display_category_name'); ?>
         </div>
     </div>
 
@@ -285,7 +268,7 @@
     <div class="form-group">
         <?php echo $form->labelEx($model, 'is_discount_available', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'is_discount_available', array('class' => 'form-control')); ?>
+            <?php echo $form->dropDownList($model, 'is_discount_available', array('1' => "Yes", '0' => "No"), array('class' => 'form-control')); ?>
             <?php echo $form->error($model, 'is_discount_available'); ?>
         </div>
     </div>
@@ -301,7 +284,7 @@
     <div class="form-group">
         <?php echo $form->labelEx($model, 'discount_type', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'discount_type', array('size' => 60, 'maxlength' => 225, 'class' => 'form-control')); ?>
+            <?php echo $form->dropDownList($model, 'discount_type', array('1' => "Fixed", '0' => "Classic"), array('class' => 'form-control')); ?>
             <?php echo $form->error($model, 'discount_type'); ?>
         </div>
     </div>
@@ -325,23 +308,46 @@
     <div class="form-group">
         <?php echo $form->labelEx($model, 'requires_shipping', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'requires_shipping', array('class' => 'form-control')); ?>
+            <?php echo $form->dropDownList($model, 'requires_shipping', array('1' => "Yes", '0' => "No"), array('class' => 'form-control')); ?>
             <?php echo $form->error($model, 'requires_shipping'); ?>
         </div>
     </div>
-
+<?php /*
     <div class="form-group">
         <?php echo $form->labelEx($model, 'enquiry_sale', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'enquiry_sale', array('class' => 'form-control')); ?>
+            <?php echo $form->dropDownList($model, 'enquiry_sale', array('1' => "Sale", '0' => "Enquiry"), array('class' => 'form-control')); ?>
             <?php echo $form->error($model, 'enquiry_sale'); ?>
         </div>
     </div>
+ * 
+ */ ?>
 
     <div class="form-group">
         <?php echo $form->labelEx($model, 'new_from', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'new_from', array('class' => 'form-control')); ?>
+            <?php
+            $from = date('Y') - 2;
+            $to = date('Y') + 20;
+            $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                'model' => $model,
+                'attribute' => 'new_from',
+                'value' => 'new_from',
+                'options' => array(
+                    'dateFormat' => 'dd-mm-yy',
+                    'changeYear' => true, // can change year
+                    'changeMonth' => true, // can change month
+                    'yearRange' => $from . ':' . $to, // range of year
+                    'showButtonPanel' => true, // show button panel
+                ),
+                'htmlOptions' => array(
+                    'size' => '10', // textField size
+                    'maxlength' => '10', // textField maxlength
+                    'class' => 'form-control',
+                    'placeholder' => 'new_from',
+                ),
+            ));
+            ?>
             <?php echo $form->error($model, 'new_from'); ?>
         </div>
     </div>
@@ -349,7 +355,28 @@
     <div class="form-group">
         <?php echo $form->labelEx($model, 'new_to', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'new_to', array('class' => 'form-control')); ?>
+            <?php
+            $from = date('Y') - 2;
+            $to = date('Y') + 20;
+            $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                'model' => $model,
+                'attribute' => 'new_to',
+                'value' => 'new_to',
+                'options' => array(
+                    'dateFormat' => 'dd-mm-yy',
+                    'changeYear' => true, // can change year
+                    'changeMonth' => true, // can change month
+                    'yearRange' => $from . ':' . $to, // range of year
+                    'showButtonPanel' => true, // show button panel
+                ),
+                'htmlOptions' => array(
+                    'size' => '10', // textField size
+                    'maxlength' => '10', // textField maxlength
+                    'class' => 'form-control',
+                    'placeholder' => 'new_to',
+                ),
+            ));
+            ?>
             <?php echo $form->error($model, 'new_to'); ?>
         </div>
     </div>
@@ -357,7 +384,28 @@
     <div class="form-group">
         <?php echo $form->labelEx($model, 'sale_from', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'sale_from', array('class' => 'form-control')); ?>
+            <?php
+            $from = date('Y') - 2;
+            $to = date('Y') + 20;
+            $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                'model' => $model,
+                'attribute' => 'sale_from',
+                'value' => 'sale_from',
+                'options' => array(
+                    'dateFormat' => 'dd-mm-yy',
+                    'changeYear' => true, // can change year
+                    'changeMonth' => true, // can change month
+                    'yearRange' => $from . ':' . $to, // range of year
+                    'showButtonPanel' => true, // show button panel
+                ),
+                'htmlOptions' => array(
+                    'size' => '10', // textField size
+                    'maxlength' => '10', // textField maxlength
+                    'class' => 'form-control',
+                    'placeholder' => 'sale_from',
+                ),
+            ));
+            ?>
             <?php echo $form->error($model, 'sale_from'); ?>
         </div>
     </div>
@@ -365,7 +413,28 @@
     <div class="form-group">
         <?php echo $form->labelEx($model, 'sale_to', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'sale_to', array('class' => 'form-control')); ?>
+            <?php
+            $from = date('Y') - 2;
+            $to = date('Y') + 20;
+            $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                'model' => $model,
+                'attribute' => 'sale_to',
+                'value' => 'sale_to',
+                'options' => array(
+                    'dateFormat' => 'dd-mm-yy',
+                    'changeYear' => true, // can change year
+                    'changeMonth' => true, // can change month
+                    'yearRange' => $from . ':' . $to, // range of year
+                    'showButtonPanel' => true, // show button panel
+                ),
+                'htmlOptions' => array(
+                    'size' => '10', // textField size
+                    'maxlength' => '10', // textField maxlength
+                    'class' => 'form-control',
+                    'placeholder' => 'sale_to',
+                ),
+            ));
+            ?>
             <?php echo $form->error($model, 'sale_to'); ?>
         </div>
     </div>
@@ -373,7 +442,28 @@
     <div class="form-group">
         <?php echo $form->labelEx($model, 'special_price_from', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'special_price_from', array('class' => 'form-control')); ?>
+            <?php
+            $from = date('Y') - 2;
+            $to = date('Y') + 20;
+            $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                'model' => $model,
+                'attribute' => 'special_price_from',
+                'value' => 'special_price_from',
+                'options' => array(
+                    'dateFormat' => 'dd-mm-yy',
+                    'changeYear' => true, // can change year
+                    'changeMonth' => true, // can change month
+                    'yearRange' => $from . ':' . $to, // range of year
+                    'showButtonPanel' => true, // show button panel
+                ),
+                'htmlOptions' => array(
+                    'size' => '10', // textField size
+                    'maxlength' => '10', // textField maxlength
+                    'class' => 'form-control',
+                    'placeholder' => 'special_price_from',
+                ),
+            ));
+            ?>
             <?php echo $form->error($model, 'special_price_from'); ?>
         </div>
     </div>
@@ -381,7 +471,28 @@
     <div class="form-group">
         <?php echo $form->labelEx($model, 'special_price_to', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'special_price_to', array('class' => 'form-control')); ?>
+            <?php
+            $from = date('Y') - 2;
+            $to = date('Y') + 20;
+            $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                'model' => $model,
+                'attribute' => 'special_price_to',
+                'value' => 'special_price_to',
+                'options' => array(
+                    'dateFormat' => 'dd-mm-yy',
+                    'changeYear' => true, // can change year
+                    'changeMonth' => true, // can change month
+                    'yearRange' => $from . ':' . $to, // range of year
+                    'showButtonPanel' => true, // show button panel
+                ),
+                'htmlOptions' => array(
+                    'size' => '10', // textField size
+                    'maxlength' => '10', // textField maxlength
+                    'class' => 'form-control',
+                    'placeholder' => 'special_price_to',
+                ),
+            ));
+            ?>
             <?php echo $form->error($model, 'special_price_to'); ?>
         </div>
     </div>
@@ -397,7 +508,7 @@
     <div class="form-group">
         <?php echo $form->labelEx($model, 'gift_option', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'gift_option', array('class' => 'form-control')); ?>
+            <?php echo $form->dropDownList($model, 'gift_option', array('1' => "Yes", '0' => "No"), array('class' => 'form-control')); ?>
             <?php echo $form->error($model, 'gift_option'); ?>
         </div>
     </div>
@@ -405,7 +516,7 @@
     <div class="form-group">
         <?php echo $form->labelEx($model, 'stock_availability', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'stock_availability', array('class' => 'form-control')); ?>
+            <?php echo $form->dropDownList($model, 'stock_availability', array('1' => "Yes", '0' => "No"), array('class' => 'form-control')); ?>
             <?php echo $form->error($model, 'stock_availability'); ?>
         </div>
     </div>
@@ -429,7 +540,7 @@
     <div class="form-group">
         <?php echo $form->labelEx($model, 'weight_class', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'weight_class', array('class' => 'form-control')); ?>
+            <?php echo CHtml::activeDropDownList($model, 'weight_class', CHtml::listData(WeightClass::model()->findAll(), 'id', 'title'), array('empty' => '--Select--', 'class' => 'form-control')); ?>
             <?php echo $form->error($model, 'weight_class'); ?>
         </div>
     </div>
@@ -437,7 +548,7 @@
     <div class="form-group">
         <?php echo $form->labelEx($model, 'status', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'status', array('size' => 60, 'maxlength' => 225, 'class' => 'form-control')); ?>
+            <?php echo $form->dropDownList($model, 'status', array('1' => "Enabled", '0' => "Disabled"), array('class' => 'form-control')); ?>
             <?php echo $form->error($model, 'status'); ?>
         </div>
     </div>
@@ -445,23 +556,46 @@
     <div class="form-group">
         <?php echo $form->labelEx($model, 'exchange', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'exchange', array('class' => 'form-control')); ?>
+            <?php echo $form->dropDownList($model, 'exchange', array('1' => "Yes", '0' => "No"), array('class' => 'form-control')); ?>
             <?php echo $form->error($model, 'exchange'); ?>
         </div>
     </div>
 
     <div class="form-group">
         <?php echo $form->labelEx($model, 'search_tag', array('class' => 'col-sm-2 control-label')); ?>
+        <?php echo $form->hiddenField($model, 'search_tag'); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'search_tag', array('size' => 60, 'maxlength' => 225, 'class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'search_tag'); ?>
+            <?php
+            $this->widget('application.admin.components.TagSelect', array(
+                'type' => 'product',
+                'field_val' => $model->search_tag,
+                'category_tag_id' => 'Products_search_tag', /* id of hidden field */
+                'form_id' => 'products-form',
+            ));
+            ?>
         </div>
     </div>
 
     <div class="form-group">
         <?php echo $form->labelEx($model, 'related_products', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'related_products', array('size' => 60, 'maxlength' => 225, 'class' => 'form-control')); ?>
+            <?php
+            if (!is_array($model->related_products)) {
+                $myArray = explode(',', $model->related_products);
+            } else {
+                $myArray = $model->related_products;
+            }
+
+
+            $related_products = array();
+
+            foreach ($myArray as $value) {
+                $related_products[$value] = array('selected' => 'selected');
+            }
+            ?>
+
+            <?php echo CHtml::activeDropDownList($model, 'related_products', CHtml::listData(Products::model()->findAll(), 'id', 'product_name'), array('empty' => '-Select-', 'class' => 'form-control', 'multiple' => true, 'options' => $related_products));
+            ?>
             <?php echo $form->error($model, 'related_products'); ?>
         </div>
     </div>
@@ -469,7 +603,7 @@
     <div class="form-group">
         <?php echo $form->labelEx($model, 'is_cod_available', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'is_cod_available', array('class' => 'form-control')); ?>
+            <?php echo $form->dropDownList($model, 'is_cod_available', array('1' => "Yes", '0' => "No"), array('class' => 'form-control')); ?>
             <?php echo $form->error($model, 'is_cod_available'); ?>
         </div>
     </div>
@@ -477,7 +611,7 @@
     <div class="form-group">
         <?php echo $form->labelEx($model, 'is_available', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'is_available', array('class' => 'form-control')); ?>
+            <?php echo $form->dropDownList($model, 'is_available', array('1' => "Yes", '0' => "No"), array('class' => 'form-control')); ?>
             <?php echo $form->error($model, 'is_available'); ?>
         </div>
     </div>
@@ -485,7 +619,7 @@
     <div class="form-group">
         <?php echo $form->labelEx($model, 'is_featured', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'is_featured', array('class' => 'form-control')); ?>
+            <?php echo $form->dropDownList($model, 'is_featured', array('1' => "Yes", '0' => "No"), array('class' => 'form-control')); ?>
             <?php echo $form->error($model, 'is_featured'); ?>
         </div>
     </div>
@@ -493,42 +627,54 @@
     <div class="form-group">
         <?php echo $form->labelEx($model, 'is_admin_approved', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'is_admin_approved', array('class' => 'form-control')); ?>
+            <?php echo $form->dropDownList($model, 'is_admin_approved', array('1' => "Yes", '0' => "No"), array('class' => 'form-control')); ?>
             <?php echo $form->error($model, 'is_admin_approved'); ?>
         </div>
     </div>
+    <?php /*
 
-    <div class="form-group">
-        <?php echo $form->labelEx($model, 'CB', array('class' => 'col-sm-2 control-label')); ?>
-        <div class="col-sm-10">
-            <?php echo $form->textField($model, 'CB', array('class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'CB'); ?>
-        </div>
-    </div>
 
-    <div class="form-group">
-        <?php echo $form->labelEx($model, 'UB', array('class' => 'col-sm-2 control-label')); ?>
-        <div class="col-sm-10">
-            <?php echo $form->textField($model, 'UB', array('class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'UB'); ?>
-        </div>
-    </div>
+      <div class="form-group">
+      <?php echo $form->labelEx($model, 'display_category_name', array('class' => 'col-sm-2 control-label')); ?>
+      <div class="col-sm-10">
+      <?php echo $form->textField($model, 'display_category_name', array('class' => 'form-control')); ?>
+      <?php echo $form->error($model, 'display_category_name'); ?>
+      </div>
+      </div>
 
-    <div class="form-group">
-        <?php echo $form->labelEx($model, 'DOC', array('class' => 'col-sm-2 control-label')); ?>
-        <div class="col-sm-10">
-            <?php echo $form->textField($model, 'DOC', array('class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'DOC'); ?>
-        </div>
-    </div>
+      <div class="form-group">
+      <?php echo $form->labelEx($model, 'CB', array('class' => 'col-sm-2 control-label')); ?>
+      <div class="col-sm-10">
+      <?php echo $form->textField($model, 'CB', array('class' => 'form-control')); ?>
+      <?php echo $form->error($model, 'CB'); ?>
+      </div>
+      </div>
 
-    <div class="form-group">
-        <?php echo $form->labelEx($model, 'DOU', array('class' => 'col-sm-2 control-label')); ?>
-        <div class="col-sm-10">
-            <?php echo $form->textField($model, 'DOU', array('class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'DOU'); ?>
-        </div>
-    </div>
+      <div class="form-group">
+      <?php echo $form->labelEx($model, 'UB', array('class' => 'col-sm-2 control-label')); ?>
+      <div class="col-sm-10">
+      <?php echo $form->textField($model, 'UB', array('class' => 'form-control')); ?>
+      <?php echo $form->error($model, 'UB'); ?>
+      </div>
+      </div>
+
+      <div class="form-group">
+      <?php echo $form->labelEx($model, 'DOC', array('class' => 'col-sm-2 control-label')); ?>
+      <div class="col-sm-10">
+      <?php echo $form->textField($model, 'DOC', array('class' => 'form-control')); ?>
+      <?php echo $form->error($model, 'DOC'); ?>
+      </div>
+      </div>
+
+      <div class="form-group">
+      <?php echo $form->labelEx($model, 'DOU', array('class' => 'col-sm-2 control-label')); ?>
+      <div class="col-sm-10">
+      <?php echo $form->textField($model, 'DOU', array('class' => 'form-control')); ?>
+      <?php echo $form->error($model, 'DOU'); ?>
+      </div>
+      </div>
+     * 
+     */ ?>
 
     <div class="box-footer">
         <label>&nbsp;</label><br/>
@@ -538,3 +684,22 @@
     <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+
+<script>
+    $(document).ready(function () {
+        $('.slug').keyup(function () {
+            $('#Products_canonical_name').val(slug($(this).val()));
+        });
+
+
+    });
+    var slug = function (str) {
+        var $slug = '';
+        var trimmed = $.trim(str);
+        $slug = trimmed.replace(/[^a-z0-9-]/gi, '-').
+                replace(/-+/g, '-').
+                replace(/^-|-$/g, '');
+        return $slug.toLowerCase();
+    };
+
+</script>

@@ -27,6 +27,17 @@
                     'currency_code',
                     'symbol',
                     'rate',
+                     array(
+                            'name' => 'image',
+                            'value' => function($data) {
+                                if ($data->image == "") {
+                                    return;
+                                } else {
+                                    return '<img width="40" style="border: 2px solid #d2d2d2;" src="' . Yii::app()->request->baseUrl . "/uploads/currency/" . $data->id . "." . $data->image . '" />';
+                                }
+                            },
+                            'type' => 'raw'
+                        ),
                     /*
                       'image',
                       'cb',

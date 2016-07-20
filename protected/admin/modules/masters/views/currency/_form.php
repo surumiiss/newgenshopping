@@ -65,7 +65,12 @@
     <div class="form-group">
         <?php echo $form->labelEx($model, 'image', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'image', array('size' => 60, 'maxlength' => 225, 'class' => 'form-control')); ?>
+            <?php echo $form->fileField($model, 'image', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?>
+            <?php
+            if ($model->image != '') {
+                    echo '<img width="50" style="border: 2px solid #d2d2d2;" src="' . Yii::app()->baseUrl . '/uploads/currency/' . $model->id . '.' . $model->image . '" />';
+            }
+            ?>
             <?php echo $form->error($model, 'image'); ?>
         </div>
     </div>

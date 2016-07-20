@@ -34,7 +34,7 @@ class Currency extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('country, currency, currency_code, symbol, rate, image, cb, ub, doc', 'required'),
+//			array('country, currency, currency_code, symbol, rate, image, cb, ub, doc', 'required'),
 			array('cb, ub', 'numerical', 'integerOnly'=>true),
 			array('rate', 'numerical'),
 			array('country, currency, currency_code', 'length', 'max'=>50),

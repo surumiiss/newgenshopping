@@ -10,7 +10,7 @@
 </section>
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo Yii::app()->request->baseUrl . '/admin.php/products/Product/admin'; ?>" class='btn  btn-laksyah manage'>Manage All Products</a>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo Yii::app()->request->baseUrl . '/admin.php/products/Products/admin'; ?>" class='btn  btn-laksyah manage'>Manage All Products</a>
 <section class="content">
     <div class="box box-info">
 
