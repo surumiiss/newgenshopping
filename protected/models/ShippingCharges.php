@@ -34,7 +34,7 @@ class ShippingCharges extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('country, shipping_rate, doc, dou, cb, ub, status, sort_order, zone, weight', 'required'),
+//			array('country, shipping_rate, doc, dou, cb, ub, status, sort_order, zone, weight', 'required'),
 			array('country, cb, ub, status, sort_order, zone', 'numerical', 'integerOnly'=>true),
 			array('shipping_rate, weight', 'numerical'),
 			// The following rule is used by search().

@@ -31,7 +31,7 @@ class MasterShippingTypes extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('shipping_type, shipping_rate, status, cb, ub, doc', 'required'),
+//			array('shipping_type, shipping_rate, status, cb, ub, doc', 'required'),
 			array('status, cb, ub', 'numerical', 'integerOnly'=>true),
 			array('shipping_rate', 'numerical'),
 			array('shipping_type', 'length', 'max'=>100),

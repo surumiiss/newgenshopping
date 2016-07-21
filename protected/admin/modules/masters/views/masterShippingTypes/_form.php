@@ -71,7 +71,7 @@
         </div>-->
 
     <div class="box-footer">
-        <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class' => 'btn btn-success pos')); ?>
+        <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class' => 'btn btn-laksyah')); ?>
     </div>
 
     <?php $this->endWidget(); ?>

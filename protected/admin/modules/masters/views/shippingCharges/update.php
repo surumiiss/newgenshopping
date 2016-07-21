@@ -10,7 +10,7 @@
 </section>
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo Yii::app()->request->baseUrl . '/admin.php/products/ShippingCharges/admin'; ?>" class='btn  btn-laksyah manage'>Manage Shipping Charges</a>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo Yii::app()->request->baseUrl . '/admin.php/masters/ShippingCharges/admin'; ?>" class='btn  btn-laksyah manage'>Manage Shipping Charges</a>
 <section class="content">
     <div class="box box-info">
 
