@@ -1,81 +1,62 @@
-<?php
-/* @var $this ShippingChargesController */
-/* @var $model ShippingCharges */
-?>
-<style>
-    .table th, td{
-        text-align: center;
-    }
-    .table td{
-        text-align: center;
-    }
-</style>
 
+<section class="content-header">
+    <h1>
+        Shipping Charges
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/admin.php/site/home"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+        <li class="active">Shipping Charges</li>
+    </ol>
+</section>
 
-<div class="page-title">
+<!-- Main content -->
+<section class="content">
+    <a href="<?php echo Yii::app()->request->baseUrl . '/admin.php/masters/shippingCharges/create'; ?>" class='btn  btn-laksyah'>Add New Shipping Charge</a>
+    <div class="col-xs-12 form-page" style="margin-top: .5em;">
+        <div class="box">
+            <div class="box-body table-responsive no-padding">
+                <?php
+                $this->widget('booster.widgets.TbGridView', array(
+                    'type' => ' bordered condensed hover',
+                    'id' => 'shipping-charges-grid',
+                    'dataProvider' => $model->search(),
+                    'filter' => $model,
+                    'columns' => array(
+                        'id',
+                        'country',
+                        'shipping_rate',
+                        'doc',
+                        'dou',
+                        'cb',
+                        /*
+                          'ub',
+                          'status',
+                          'sort_order',
+                          'zone',
+                          'weight',
+                         */
+                        array(
+                            'header' => '<font color="#61625D">Edit</font>',
+                            'htmlOptions' => array('nowrap' => 'nowrap'),
+                            'class' => 'booster.widgets.TbButtonColumn',
+                            'template' => '{update}',
+                        ),
+                        array(
+                            'header' => '<font color="#61625D">Delete</font>',
+                            'htmlOptions' => array('nowrap' => 'nowrap'),
+                            'class' => 'booster.widgets.TbButtonColumn',
+                            'template' => '{delete}',
+                        ),
+                    ),
+                ));
+                ?>
+            </div>
 
-    <div class="title-env">
-        <h1 style="float: left;" class="title">ShippingCharges</h1>
-        <p style="float: left;margin-top: 8px;margin-left: 11px;" class="description">Manage ShippingCharges</p>
-    </div>
-
-    <div class="breadcrumb-env">
-
-        <ol class="breadcrumb bc-1" >
-            <li>
-                <a href="<?php echo Yii::app()->request->baseurl.'/site/home'; ?>"><i class="fa-home"></i>Home</a>
-            </li>
-
-            <li class="active">
-
-                <strong>Manage ShippingCharges</strong>
-            </li>
-        </ol>
-
-    </div>
-
-</div>
-<div class="row">
-
-
-    <div class="col-sm-12">
-
-        <a class="btn btn-secondary btn-icon btn-icon-standalone" href="<?php echo Yii::app()->request->baseurl.'/shippingCharges/create'; ?>" id="add-note">
-            <i class="fa-pencil"></i>
-            <span>Add ShippingCharges</span>
-        </a>
-        <div class="panel panel-default">
-            <?php $this->widget('booster.widgets.TbGridView', array(
-            'type' => ' bordered condensed hover',
-            'id'=>'shipping-charges-grid',
-            'dataProvider'=>$model->search(),
-            'filter'=>$model,
-            'columns'=>array(
-            		'id',
-		'country',
-		'shipping_rate',
-		'doc',
-		'dou',
-		'cb',
-		/*
-		'ub',
-		'status',
-		'sort_order',
-		'zone',
-		'weight',
-		*/
-
-            array(
-            'htmlOptions' => array('nowrap' => 'nowrap'),
-            'class' => 'booster.widgets.TbButtonColumn',
-            'template' => '{update}{delete}',
-            ),
-            ),
-            )); ?>
         </div>
 
+
     </div>
 
+</section>
 
-</div>
 
