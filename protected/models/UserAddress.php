@@ -13,15 +13,21 @@
  * @property string $address_1
  * @property string $address_2
  * @property string $city
+ * @property integer $district
  * @property string $postcode
  * @property integer $country
- * @property string $state
+ * @property integer $state
  * @property string $default_billing_address
  * @property string $default_shipping_address
  * @property integer $CB
  * @property integer $UB
  * @property string $DOC
  * @property string $DOU
+ *
+ * The followings are the available model relations:
+ * @property States $state0
+ * @property Districts $district0
+ * @property Countries $country0
  */
 class UserAddress extends CActiveRecord
 {
@@ -41,14 +47,14 @@ class UserAddress extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('userid, first_name, last_name, company, contact_number, address_1, address_2, city, postcode, country, state, default_billing_address, default_shipping_address, CB, UB, DOC', 'required'),
-			array('userid, country, CB, UB', 'numerical', 'integerOnly'=>true),
+//			array('userid, first_name, last_name, company, contact_number, address_1, address_2, city, district, postcode, country, state, default_billing_address, default_shipping_address, CB, UB, DOC', 'required'),
+			array('userid, district, country, state, CB, UB', 'numerical', 'integerOnly'=>true),
 			array('first_name, last_name, company, contact_number, city', 'length', 'max'=>100),
-			array('postcode, state, default_billing_address, default_shipping_address', 'length', 'max'=>111),
+			array('postcode, default_billing_address, default_shipping_address', 'length', 'max'=>111),
 			array('DOU', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, userid, first_name, last_name, company, contact_number, address_1, address_2, city, postcode, country, state, default_billing_address, default_shipping_address, CB, UB, DOC, DOU', 'safe', 'on'=>'search'),
+			array('id, userid, first_name, last_name, company, contact_number, address_1, address_2, city, district, postcode, country, state, default_billing_address, default_shipping_address, CB, UB, DOC, DOU', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,6 +66,9 @@ class UserAddress extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'state0' => array(self::BELONGS_TO, 'States', 'state'),
+			'district0' => array(self::BELONGS_TO, 'Districts', 'district'),
+			'country0' => array(self::BELONGS_TO, 'Countries', 'country'),
 		);
 	}
 
@@ -78,6 +87,7 @@ class UserAddress extends CActiveRecord
 			'address_1' => 'Address 1',
 			'address_2' => 'Address 2',
 			'city' => 'City',
+			'district' => 'District',
 			'postcode' => 'Postcode',
 			'country' => 'Country',
 			'state' => 'State',
@@ -117,9 +127,10 @@ class UserAddress extends CActiveRecord
 		$criteria->compare('address_1',$this->address_1,true);
 		$criteria->compare('address_2',$this->address_2,true);
 		$criteria->compare('city',$this->city,true);
+		$criteria->compare('district',$this->district);
 		$criteria->compare('postcode',$this->postcode,true);
 		$criteria->compare('country',$this->country);
-		$criteria->compare('state',$this->state,true);
+		$criteria->compare('state',$this->state);
 		$criteria->compare('default_billing_address',$this->default_billing_address,true);
 		$criteria->compare('default_shipping_address',$this->default_shipping_address,true);
 		$criteria->compare('CB',$this->CB);

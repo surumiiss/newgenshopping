@@ -7,6 +7,9 @@
  * @property integer $Id
  * @property integer $country_id
  * @property string $state_name
+ *
+ * The followings are the available model relations:
+ * @property Countries $country
  */
 class States extends CActiveRecord
 {
@@ -43,6 +46,7 @@ class States extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'country' => array(self::BELONGS_TO, 'Countries', 'country_id'),
 		);
 	}
 
