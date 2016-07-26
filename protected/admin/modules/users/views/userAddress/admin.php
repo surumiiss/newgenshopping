@@ -1,88 +1,59 @@
-<?php
-/* @var $this UserAddressController */
-/* @var $model UserAddress */
-?>
-<style>
-    .table th, td{
-        text-align: center;
-    }
-    .table td{
-        text-align: center;
-    }
-</style>
-
-
-<div class="page-title">
-
-    <div class="title-env">
-        <h1 style="float: left;" class="title">UserAddress</h1>
-        <p style="float: left;margin-top: 8px;margin-left: 11px;" class="description">Manage UserAddress</p>
-    </div>
-
-    <div class="breadcrumb-env">
-
-        <ol class="breadcrumb bc-1" >
-            <li>
-                <a href="<?php echo Yii::app()->request->baseurl.'/site/home'; ?>"><i class="fa-home"></i>Home</a>
-            </li>
-
-            <li class="active">
-
-                <strong>Manage UserAddress</strong>
-            </li>
-        </ol>
-
-    </div>
-
-</div>
-<div class="row">
-
-
-    <div class="col-sm-12">
-
-        <a class="btn btn-secondary btn-icon btn-icon-standalone" href="<?php echo Yii::app()->request->baseurl.'/userAddress/create'; ?>" id="add-note">
-            <i class="fa-pencil"></i>
-            <span>Add UserAddress</span>
-        </a>
-        <div class="panel panel-default">
-            <?php $this->widget('booster.widgets.TbGridView', array(
-            'type' => ' bordered condensed hover',
-            'id'=>'user-address-grid',
-            'dataProvider'=>$model->search(),
-            'filter'=>$model,
-            'columns'=>array(
-            		'id',
-		'userid',
-		'first_name',
-		'last_name',
-		'company',
-		'contact_number',
-		/*
-		'address_1',
-		'address_2',
-		'city',
-		'postcode',
-		'country',
-		'state',
-		'default_billing_address',
-		'default_shipping_address',
-		'CB',
-		'UB',
-		'DOC',
-		'DOU',
-		*/
-
-            array(
-            'htmlOptions' => array('nowrap' => 'nowrap'),
-            'class' => 'booster.widgets.TbButtonColumn',
-            'template' => '{update}{delete}',
-            ),
-            ),
-            )); ?>
+<section class="content-header">
+    <h1>
+        User Address        <small>Manage</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/admin.php/site/home"><i class="fa fa-dashboard"></i>Dashboard</a></li>
+        <li class="active">Manage Dimension Class   </li>
+    </ol>
+</section>
+<section class="content">
+    <a href="<?php echo Yii::app()->request->baseUrl . '/admin.php/users/userAddress/create'; ?>" class='btn  btn-laksyah manage'>Add User Address</a>
+    <div class="col-xs-12 form-page" style="margin-top: .5em;">
+        <div class="box">
+            <div class="box-body table-responsive no-padding">
+                <?php
+                $this->widget('booster.widgets.TbGridView', array(
+                    'type' => ' bordered condensed hover',
+                    'id' => 'user-address-grid',
+                    'dataProvider' => $model->search(),
+                    'filter' => $model,
+                    'columns' => array(
+                        'first_name',
+                        'last_name',
+                        'company',
+                        'address_1',
+                        'address_2',
+                        'city',
+                        'postcode',
+                        array(
+                            'name' => 'country',
+                            'value' => '$data->country0->country_name',
+                        ),
+                        array(
+                            'name' => 'state',
+                            'value' => '$data->state0->state_name',
+                        ),
+                        array(
+                            'name' => 'district',
+                            'value' => '$data->district0->district_name',
+                        ),
+                        array(
+                            'header' => '<font color="#61625D">Edit</font>',
+                            'htmlOptions' => array('nowrap' => 'nowrap'),
+                            'class' => 'booster.widgets.TbButtonColumn',
+                            'template' => '{update}',
+                        ),
+                        array(
+                            'header' => '<font color="#61625D">Delete</font>',
+                            'htmlOptions' => array('nowrap' => 'nowrap'),
+                            'class' => 'booster.widgets.TbButtonColumn',
+                            'template' => '{delete}',
+                        ),
+                    ),
+                ));
+                ?>
+            </div>
         </div>
-
     </div>
-
-
-</div>
-
+</section>
