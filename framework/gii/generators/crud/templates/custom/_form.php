@@ -27,24 +27,26 @@
     <?php echo "<?php echo \$form->errorSummary(\$model); ?>\n"; ?>
     <br/>
     <!--<div class="form-inline">-->
-        <?php
-        foreach($this->tableSchema->columns as $column) {
-                if($column->autoIncrement)
-                        continue;
-                ?>
-                <div class="form-group">
-                    <?php echo "<?php echo " . $this->generateActiveLabel($this->modelClass, $column, array('class' => 'col-sm-2 control-label')) . "; ?>\n"; ?>
-                    <div class="col-sm-10">
-                    <?php echo "<?php echo " . $this->generateActiveField($this->modelClass, $column) . "; ?>\n"; ?>
-                    <?php echo "<?php echo \$form->error(\$model,'{$column->name}'); ?>\n"; ?>
-                    </div>
-                </div>
-
-                <?php
-        }
+    <?php
+    foreach ($this->tableSchema->columns as $column) {
+        if ($column->autoIncrement)
+            continue;
         ?>
+        <div class="form-group">
+            <div class="col-sm-2 control-label"> 
+                <?php echo "<?php echo " . $this->generateActiveLabel($this->modelClass, $column) . "; ?>\n"; ?>
+            </div>
+            <div class="col-sm-10">
+                <?php echo "<?php echo " . $this->generateActiveField($this->modelClass, $column) . "; ?>\n"; ?>
+                <?php echo "<?php echo \$form->error(\$model,'{$column->name}'); ?>\n"; ?>
+            </div>
+        </div>
+
+        <?php
+    }
+    ?>
     <!--</div>-->
-     <div class="box-footer">
+    <div class="box-footer">
         <label>&nbsp;</label><br/>
         <?php echo "<?php echo CHtml::submitButton(\$model->isNewRecord ? 'Create' : 'Save', array('class' => 'btn btn-laksyah pos', 'style' => 'border-radius:0px;padding: 10px 50px;')); ?>\n"; ?>
     </div>

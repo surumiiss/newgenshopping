@@ -111,6 +111,12 @@
                             'class' => 'booster.widgets.TbButtonColumn',
                             'template' => '{delete}',
                         ),
+                        array(
+                            'header' => '<font color="#61625D">View</font>',
+                            'htmlOptions' => array('nowrap' => 'nowrap'),
+                            'class' => 'booster.widgets.TbButtonColumn',
+                            'template' => '{view}',
+                        ),
                     ),
                 ));
                 ?>

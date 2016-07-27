@@ -43,10 +43,10 @@ class ProductCategory extends CActiveRecord {
             array('parent, category_name, image, meta_title, meta_keywords, search_tag, canonical_name', 'length', 'max' => 225),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('id, parent, category_name, description, image, sort_order, meta_title, meta_description, meta_keywords, header_visibility, search_tag, status, canonical_name, CB, UB, DOC, DOU', 'safe', 'on' => 'search'),
-            array('category_name, description, image', 'required', 'on' => 'create'),
-            array('image', 'file', 'types' => 'jpg, gif, png', 'safe' => false, 'allowEmpty' => true, 'on' => 'update'),
-            array('image', 'file', 'types' => 'jpg, gif, png', 'safe' => false, 'allowEmpty' => false, 'on' => 'create'),
+//            array('id, parent, category_name, description, image, sort_order, meta_title, meta_description, meta_keywords, header_visibility, search_tag, status, canonical_name, CB, UB, DOC, DOU', 'safe', 'on' => 'search'),
+//            array('category_name, description, image', 'required', 'on' => 'create'),
+//            array('image', 'file', 'types' => 'jpg, gif, png', 'safe' => false, 'allowEmpty' => true, 'on' => 'update'),
+//            array('image', 'file', 'types' => 'jpg, gif, png', 'safe' => false, 'allowEmpty' => false, 'on' => 'create'),
         );
     }
 

@@ -41,6 +41,7 @@
  * @property integer $gift_option
  * @property integer $stock_availability
  * @property string $video_link
+ * @property string $video
  * @property double $weight
  * @property integer $weight_class
  * @property string $status
@@ -74,17 +75,15 @@ class Products extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('category_id, product_name, product_code, merchant_id, merchant_type, description, canonical_name, is_discount_available, requires_shipping, price,status,is_available, is_featured, is_admin_approved, CB, UB, DOC, DOU', 'required','on'=>'create'),
-//			array('category_id, product_name, product_code, brand_id, merchant_id, merchant_type, description, main_image, gallery_images, hover_image, canonical_name, meta_title, meta_description, meta_keywords, header_visibility, sort_order, display_category_name, price, wholesale_price, is_discount_available, discount, discount_type, discount_rate, quantity, requires_shipping, enquiry_sale, new_from, new_to, sale_from, sale_to, special_price_from, special_price_to, tax, gift_option, stock_availability, video_link, weight, weight_class, status, exchange, search_tag, related_products, is_cod_available, is_available, is_featured, is_admin_approved, CB, UB, DOC, DOU', 'required'),
+//			array('category_id, product_name, product_code, brand_id, merchant_id, merchant_type, description, main_image, gallery_images, hover_image, canonical_name, meta_title, meta_description, meta_keywords, header_visibility, sort_order, display_category_name, price, wholesale_price, is_discount_available, discount, discount_type, discount_rate, quantity, requires_shipping, enquiry_sale, new_from, new_to, sale_from, sale_to, special_price_from, special_price_to, tax, gift_option, stock_availability, video_link, video, weight, weight_class, status, exchange, search_tag, related_products, is_cod_available, is_available, is_featured, is_admin_approved, CB, UB, DOC, DOU', 'required'),
 			array('brand_id, merchant_id, merchant_type, header_visibility, sort_order, display_category_name, is_discount_available, quantity, requires_shipping, enquiry_sale, gift_option, stock_availability, weight_class, exchange, is_cod_available, is_available, is_featured, is_admin_approved, CB, UB', 'numerical', 'integerOnly'=>true),
 			array('price, wholesale_price, discount, discount_rate, tax, weight', 'numerical'),
 			array('category_id, main_image, gallery_images, canonical_name', 'length', 'max'=>200),
 			array('product_name, product_code, meta_title, meta_keywords, discount_type, video_link, status, search_tag, related_products', 'length', 'max'=>225),
-			array('hover_image', 'length', 'max'=>150),
+			array('hover_image, video', 'length', 'max'=>150),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-//                        array('category_id, product_name, product_code, merchant_id, merchant_type, description, main_image, canonical_name, header_visibility, is_discount_available, requires_shipping, enquiry_sale,status,is_available, is_featured, is_admin_approved, CB, UB, DOC, DOU', 'required','on'=>'create'),
-			array('id, category_id, product_name, product_code, brand_id, merchant_id, merchant_type, description, main_image, gallery_images, hover_image, canonical_name, meta_title, meta_description, meta_keywords, header_visibility, sort_order, display_category_name, price, wholesale_price, is_discount_available, discount, discount_type, discount_rate, quantity, requires_shipping, enquiry_sale, new_from, new_to, sale_from, sale_to, special_price_from, special_price_to, tax, gift_option, stock_availability, video_link, weight, weight_class, status, exchange, search_tag, related_products, is_cod_available, is_available, is_featured, is_admin_approved, CB, UB, DOC, DOU', 'safe', 'on'=>'search'),
+			array('id, category_id, product_name, product_code, brand_id, merchant_id, merchant_type, description, main_image, gallery_images, hover_image, canonical_name, meta_title, meta_description, meta_keywords, header_visibility, sort_order, display_category_name, price, wholesale_price, is_discount_available, discount, discount_type, discount_rate, quantity, requires_shipping, enquiry_sale, new_from, new_to, sale_from, sale_to, special_price_from, special_price_to, tax, gift_option, stock_availability, video_link, video, weight, weight_class, status, exchange, search_tag, related_products, is_cod_available, is_available, is_featured, is_admin_approved, CB, UB, DOC, DOU', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -142,6 +141,7 @@ class Products extends CActiveRecord
 			'gift_option' => 'Gift Option',
 			'stock_availability' => 'Stock Availability',
 			'video_link' => 'Video Link',
+			'video' => 'Video',
 			'weight' => 'Weight',
 			'weight_class' => 'Weight Class',
 			'status' => 'Status',
@@ -214,6 +214,7 @@ class Products extends CActiveRecord
 		$criteria->compare('gift_option',$this->gift_option);
 		$criteria->compare('stock_availability',$this->stock_availability);
 		$criteria->compare('video_link',$this->video_link,true);
+		$criteria->compare('video',$this->video,true);
 		$criteria->compare('weight',$this->weight);
 		$criteria->compare('weight_class',$this->weight_class);
 		$criteria->compare('status',$this->status,true);

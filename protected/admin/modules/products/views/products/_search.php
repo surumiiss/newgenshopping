@@ -47,11 +47,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'title'); ?>
-		<?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>225,'class' => 'form-control')); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'description'); ?>
 		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50 , 'class' => 'form-control')); ?>
 	</div>
@@ -199,6 +194,11 @@
 	<div class="row">
 		<?php echo $form->label($model,'video_link'); ?>
 		<?php echo $form->textField($model,'video_link',array('size'=>60,'maxlength'=>225,'class' => 'form-control')); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'video'); ?>
+		<?php echo $form->textField($model,'video',array('size'=>60,'maxlength'=>150,'class' => 'form-control')); ?>
 	</div>
 
 	<div class="row">

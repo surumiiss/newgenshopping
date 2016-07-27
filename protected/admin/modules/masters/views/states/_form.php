@@ -1,8 +1,4 @@
-<?php
-/* @var $this StatesController */
-/* @var $model States */
-/* @var $form CActiveForm */
-?>
+
 
 <div class="form">
 
@@ -20,29 +16,24 @@
 
     <p class="note">Fields with <span class="required">*</span> are required.</p>
 
-    <?php echo $form->errorSummary($model); ?>
-    <br/>
-    <!--<div class="form-inline">-->
+
+
     <div class="form-group">
-        <?php echo $form->labelEx($model, 'country_id'); ?>
-        <div class="col-sm-10">
-            <?php echo $form->textField($model, 'country_id', array('class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'country_id'); ?>
+        <?php echo $form->labelEx($model, 'country_id', array('class' => 'col-sm-2 control-label')); ?>
+        <div class="col-sm-10"><?php echo CHtml::activeDropDownList($model, 'country_id', CHtml::listData(Countries::model()->findAll(), 'id', 'country_name'), array('empty' => '--Select--', 'class' => 'form-control')); ?>
         </div>
+        <?php echo $form->error($model, 'country_id'); ?>
     </div>
 
     <div class="form-group">
-        <?php echo $form->labelEx($model, 'state_name'); ?>
-        <div class="col-sm-10">
-            <?php echo $form->textField($model, 'state_name', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'state_name'); ?>
+        <?php echo $form->labelEx($model, 'state_name', array('class' => 'col-sm-2 control-label')); ?>
+        <div class="col-sm-10"><?php echo $form->textField($model, 'state_name', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?>
         </div>
+        <?php echo $form->error($model, 'state_name'); ?>
     </div>
 
-    <!--</div>-->
     <div class="box-footer">
-        <label>&nbsp;</label><br/>
-        <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class' => 'btn btn-laksyah pos', 'style' => 'border-radius:0px;padding: 10px 50px;')); ?>
+        <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class' => 'btn btn-laksyah pos')); ?>
     </div>
 
     <?php $this->endWidget(); ?>

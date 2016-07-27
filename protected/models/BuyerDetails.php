@@ -46,12 +46,14 @@ class BuyerDetails extends CActiveRecord {
                 // will receive user inputs.
                 return array(
                     //array('first_name, last_name, dob, gender, email, phone_no_1, phone_no_2, password, confirm, newsletter, wallet_amt, verification_code, email_verification, status, bad_attempts, CB, UB, DOC, DOU, last_login', 'required'),
+                    array('first_name, last_name, dob, gender, email, phone_no_1, password, confirm, status', 'required', 'on' => 'search'),
                     array('newsletter, status, bad_attempts, CB, UB, field1, field2, field3', 'numerical', 'integerOnly' => true),
                     array('first_name, last_name, email, phone_no_1, phone_no_2', 'length', 'max' => 100),
                     array('gender', 'length', 'max' => 50),
                     array('password, confirm', 'length', 'max' => 225),
                     array('email', 'email'),
                     array('email', 'unique'),
+                    array('password', 'compare', 'compareAttribute'=>'confirm','message'=>'Password and Confirm passwod should match', 'on' => 'create'),
                     array('wallet_amt, verification_code', 'length', 'max' => 10),
                     array('email_verification', 'length', 'max' => 11),
                     // The following rule is used by search().

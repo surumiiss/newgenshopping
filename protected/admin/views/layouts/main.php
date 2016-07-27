@@ -130,7 +130,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             $action2 = "active";
                             $actionn1 = "active";
                             break;
-                        case "buyer":
+                        case "buyerDetails":
                             $action3 = "active";
                             $actionn2 = "active";
                             break;
@@ -206,7 +206,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <li class="<?php echo $actionn2 ?> treeview">
                             <a href="#"><i class="fa fa-users"></i> <span>Users</span> <i class="fa fa-angle-left pull-right"></i></a>
                             <ul class="treeview-menu">
-                                <li class="<?php echo $action3 ?>"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/users/Buyer/admin"><i class="fa fa-circle-o"></i> Buyer</a></li>
+                                <li class="<?php echo $action3 ?>"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/users/BuyerDetails/admin"><i class="fa fa-circle-o"></i> Buyer</a></li>
                                 <li class="<?php echo $action4 ?>"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/users/Merchant/admin"><i class="fa fa-circle-o"></i> Merchant</a></li>
                             </ul>
                         </li>

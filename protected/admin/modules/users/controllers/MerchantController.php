@@ -64,9 +64,35 @@ class MerchantController extends Controller {
 // $this->performAjaxValidation($model);
 
         if (isset($_POST['Merchant'])) {
+            $logo = CUploadedFile::getInstance($model, 'shop_logo');
+            $banner = CUploadedFile::getInstance($model, 'shop_banner');
             $model->attributes = $_POST['Merchant'];
-            if ($model->save())
-                $this->redirect(array('admin'));
+            $model->product_categories = $_POST['Merchant']['product_categories'];
+            $model->shop_logo = $logo->extensionName;
+            $model->shop_banner = $banner->extensionName;
+
+            $model->CB = Yii::app()->session['admin']['id'];
+            $model->DOC = date('Y-m-d');
+
+            if ($model->save()) {
+                if ($logo != "") {
+                    $id = $model->id;
+                    $logo->saveAs(Yii::app()->basePath . "/../uploads/users/merchants/shop_logo/" . $model->id . "." . $logo->extensionName);
+//                    $file = Yii::app()->basePath . "/../uploads/users/merchants/shop_logo/" . $model->id . "." . $logo->extensionName;
+//                    $path = Yii::app()->basePath . "/../uploads/users/merchants/shop_logo/";
+//                    $extension = $logo->extensionName;
+//                    $this->Resize($file, 472, 339, $id, $path, $extension);
+                }
+                if ($banner != "") {
+                    $id = $model->id;
+                    $banner->saveAs(Yii::app()->basePath . "/../uploads/users/merchants/shop_banner/" . $model->id . "." . $banner->extensionName);
+//                    $file = Yii::app()->basePath . "/../uploads/users/merchants/shop_logo/" . $model->id . "." . $logo->extensionName;
+//                    $path = Yii::app()->basePath . "/../uploads/users/merchants/shop_logo/";
+//                    $extension = $logo->extensionName;
+//                    $this->Resize($file, 472, 339, $id, $path, $extension);
+                }
+                $this->redirect(array('admin', 'id' => $model->id));
+            }
         }
 
         $this->render('create', array(
@@ -85,10 +111,47 @@ class MerchantController extends Controller {
 // Uncomment the following line if AJAX validation is needed
 // $this->performAjaxValidation($model);
 
+        $logo1 = $model->shop_logo;
+        $banner1 = $model->shop_banner;
+        $doc = $model->DOC;
         if (isset($_POST['Merchant'])) {
+            $logo = CUploadedFile::getInstance($model, 'shop_logo');
+            $banner = CUploadedFile::getInstance($model, 'shop_banner');
             $model->attributes = $_POST['Merchant'];
-            if ($model->save())
-                $this->redirect(array('update', 'id' => $model->id));
+            $model->product_categories = $_POST['Merchant']['product_categories'];
+            $model->shop_logo = $logo->extensionName;
+            $model->shop_banner = $banner->extensionName;
+
+            $model->CB = Yii::app()->session['admin']['id'];
+            $model->DOC = $doc;
+
+            if ($model->save()) {
+                if ($logo != "") {
+                    $id = $model->id;
+                    $logo->saveAs(Yii::app()->basePath . "/../uploads/users/merchants/shop_logo/" . $model->id . "." . $logo->extensionName);
+//                    $file = Yii::app()->basePath . "/../uploads/users/merchants/shop_logo/" . $model->id . "." . $logo->extensionName;
+//                    $path = Yii::app()->basePath . "/../uploads/users/merchants/shop_logo/";
+//                    $extension = $logo->extensionName;
+//                    $this->Resize($file, 472, 339, $id, $path, $extension);
+                }
+                else
+                {
+                    $model->shop_logo = $logo1;
+                }
+                if ($banner != "") {
+                    $id = $model->id;
+                    $banner->saveAs(Yii::app()->basePath . "/../uploads/users/merchants/shop_banner/" . $model->id . "." . $banner->extensionName);
+//                    $file = Yii::app()->basePath . "/../uploads/users/merchants/shop_logo/" . $model->id . "." . $logo->extensionName;
+//                    $path = Yii::app()->basePath . "/../uploads/users/merchants/shop_logo/";
+//                    $extension = $logo->extensionName;
+//                    $this->Resize($file, 472, 339, $id, $path, $extension);
+                }
+                else
+                {
+                    $model->shop_banner = $banner1;
+                }
+                $this->redirect(array('admin', 'id' => $model->id));
+            }
         }
 
         $this->render('update', array(

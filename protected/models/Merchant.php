@@ -21,7 +21,7 @@
  * @property integer $pincode
  * @property string $city
  * @property string $locality
- * @property string $landmark
+ * @property string $district
  * @property integer $state
  * @property integer $country
  * @property string $vat_tin
@@ -53,20 +53,20 @@ class Merchant extends CActiveRecord {
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('fullname, email, phone_number, password, email_verification, product_categories, merchant_type, product_count, shop_name, address, pincode, city, locality, landmark, state, country, status, CB, DOC, is_payment_done', 'required'),
+//            array('fullname, email, phone_number, password, email_verification, product_categories, merchant_type, product_count, shop_name, address, pincode, city, locality, district, state, country, status, CB, DOC, is_payment_done', 'required'),
             array('merchant_type, product_count, pincode, state, country, bad_attempts, CB, UB, is_payment_done, field1, field2, field3', 'numerical', 'integerOnly' => true),
             array('fullname, email, phone_number, password, city, locality, vat_tin, status', 'length', 'max' => 100),
             array('verification_code', 'length', 'max' => 50),
             array('email_verification', 'length', 'max' => 11),
             array('product_categories, shop_name, shop_logo, shop_banner', 'length', 'max' => 250),
-            array('landmark', 'length', 'max' => 200),
+            array('district', 'length', 'max' => 200),
             array('DOU', 'safe'),
             array('email', 'unique'),
-            array('email', 'email', 'on' => 'create'),
+            array('email', 'email'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('id, fullname, email, phone_number, password, verification_code, email_verification, product_categories, merchant_type, product_count, shop_name, shop_logo, shop_banner, address, pincode, city, locality, landmark, state, country, vat_tin, status, last_login, bad_attempts, CB, UB, DOC, DOU, is_payment_done, field1, field2, field3', 'safe', 'on' => 'search'),
-            array('fullname, email, phone_number, password, confirm, product_categories, merchant_type, address, pincode, city, state, country, status', 'required', 'on' => 'create'),
+            array('id, fullname, email, phone_number, password, verification_code, email_verification, product_categories, merchant_type, product_count, shop_name, shop_logo, shop_banner, address, pincode, city, locality, district, state, country, vat_tin, status, last_login, bad_attempts, CB, UB, DOC, DOU, is_payment_done, field1, field2, field3', 'safe', 'on' => 'search'),
+            array('fullname, email, phone_number, password, confirm, product_categories, merchant_type, address, pincode, city,  locality, district, state, country, status', 'required', 'on' => 'create'),
         );
     }
 
@@ -102,7 +102,7 @@ class Merchant extends CActiveRecord {
             'pincode' => 'Pincode',
             'city' => 'City',
             'locality' => 'Locality',
-            'landmark' => 'Landmark',
+            'district' => 'District',
             'state' => 'State',
             'country' => 'Country',
             'vat_tin' => 'Vat Tin',
@@ -154,7 +154,7 @@ class Merchant extends CActiveRecord {
         $criteria->compare('pincode', $this->pincode);
         $criteria->compare('city', $this->city, true);
         $criteria->compare('locality', $this->locality, true);
-        $criteria->compare('landmark', $this->landmark, true);
+        $criteria->compare('district', $this->district, true);
         $criteria->compare('state', $this->state);
         $criteria->compare('country', $this->country);
         $criteria->compare('vat_tin', $this->vat_tin, true);

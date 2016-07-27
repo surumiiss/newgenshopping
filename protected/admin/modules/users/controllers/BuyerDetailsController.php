@@ -1,6 +1,6 @@
 <?php
 
-class BuyerController extends Controller {
+class BuyerDetailsController extends Controller {
 
     /**
      * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -58,21 +58,21 @@ class BuyerController extends Controller {
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
     public function actionCreate() {
-        $model = new Buyer;
+        $model = new BuyerDetails('create');
 
 // Uncomment the following line if AJAX validation is needed
-// $this->performAjaxValidation($model);
+ $this->performAjaxValidation($model);
 
-        if (isset($_POST['Buyer'])) {
+        if (isset($_POST['BuyerDetails'])) {
 
-            $model->attributes = $_POST['Buyer'];
+            $model->attributes = $_POST['BuyerDetails'];
 
-            $date1 = $_POST['Buyer']['dob'];
+            $date1 = $_POST['BuyerDetails']['dob'];
             $newDate = date("Y-m-d", strtotime($date1));
             $model->dob = $newDate;
-            $model->phone_no_1 = $_POST['Buyer']['phone_no_1'];
-            $model->phone_no_2 = $_POST['Buyer']['phone_no_2'];
-            $model->gender = $_POST['Buyer']['gender'];
+            $model->phone_no_1 = $_POST['BuyerDetails']['phone_no_1'];
+            $model->phone_no_2 = $_POST['BuyerDetails']['phone_no_2'];
+            $model->gender = $_POST['BuyerDetails']['gender'];
             $model->CB = Yii::app()->session['admin']['id'];
             $model->DOC = date('Y-m-d');
             if ($model->password == $model->confirm) {
@@ -95,16 +95,16 @@ class BuyerController extends Controller {
         $model = $this->loadModel($id);
 
 // Uncomment the following line if AJAX validation is needed
-// $this->performAjaxValidation($model);
+ $this->performAjaxValidation($model);
 
-        if (isset($_POST['Buyer'])) {
-            $model->attributes = $_POST['Buyer'];
-            $date1 = $_POST['Buyer']['dob'];
+        if (isset($_POST['BuyerDetails'])) {
+            $model->attributes = $_POST['BuyerDetails'];
+            $date1 = $_POST['BuyerDetails']['dob'];
             $newDate = date("Y-m-d", strtotime($date1));
-            $model->phone_no_1 = $_POST['Buyer']['phone_no_1'];
-            $model->phone_no_2 = $_POST['Buyer']['phone_no_2'];
+            $model->phone_no_1 = $_POST['BuyerDetails']['phone_no_1'];
+            $model->phone_no_2 = $_POST['BuyerDetails']['phone_no_2'];
             $model->dob = $newDate;
-            $model->gender = $_POST['Buyer']['gender'];
+            $model->gender = $_POST['BuyerDetails']['gender'];
             $model->DOU = date('Y-m-d');
             if ($model->save())
                 $this->redirect(array('admin', 'id' => $model->id));
@@ -132,7 +132,7 @@ class BuyerController extends Controller {
      * Lists all models.
      */
     public function actionIndex() {
-        $dataProvider = new CActiveDataProvider('Buyer');
+        $dataProvider = new CActiveDataProvider('BuyerDetails');
         $this->render('index', array(
             'dataProvider' => $dataProvider,
         ));
@@ -142,10 +142,10 @@ class BuyerController extends Controller {
      * Manages all models.
      */
     public function actionAdmin() {
-        $model = new Buyer('search');
+        $model = new BuyerDetails('search');
         $model->unsetAttributes();  // clear any default values
-        if (isset($_GET['Buyer']))
-            $model->attributes = $_GET['Buyer'];
+        if (isset($_GET['BuyerDetails']))
+            $model->attributes = $_GET['BuyerDetails'];
 
         $this->render('admin', array(
             'model' => $model,
@@ -156,11 +156,11 @@ class BuyerController extends Controller {
      * Returns the data model based on the primary key given in the GET variable.
      * If the data model is not found, an HTTP exception will be raised.
      * @param integer $id the ID of the model to be loaded
-     * @return Buyer the loaded model
+     * @return BuyerDetails the loaded model
      * @throws CHttpException
      */
     public function loadModel($id) {
-        $model = Buyer::model()->findByPk($id);
+        $model = BuyerDetails::model()->findByPk($id);
         if ($model === null)
             throw new CHttpException(404, 'The requested page does not exist.');
         return $model;
@@ -168,7 +168,7 @@ class BuyerController extends Controller {
 
     /**
      * Performs the AJAX validation.
-     * @param Buyer $model the model to be validated
+     * @param BuyerDetails $model the model to be validated
      */
     protected function performAjaxValidation($model) {
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'buyer-form') {

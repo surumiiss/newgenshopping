@@ -1,6 +1,6 @@
 <?php
-/* @var $this BuyerController */
-/* @var $data Buyer */
+/* @var $this BuyerDetailsController */
+/* @var $data BuyerDetails */
 ?>
 
 <div class="view">

@@ -34,10 +34,6 @@
 	<br />
 
 	<?php /*
-	<b><?php echo CHtml::encode($data->getAttributeLabel('title')); ?>:</b>
-	<?php echo CHtml::encode($data->title); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('description')); ?>:</b>
 	<?php echo CHtml::encode($data->description); ?>
 	<br />
@@ -156,6 +152,10 @@
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('video_link')); ?>:</b>
 	<?php echo CHtml::encode($data->video_link); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('video')); ?>:</b>
+	<?php echo CHtml::encode($data->video); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('weight')); ?>:</b>
