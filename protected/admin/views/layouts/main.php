@@ -138,8 +138,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             $action4 = "active";
                             $actionn2 = "active";
                             break;
-                        case "products":
+                         case "productCategory":
                             $action5 = "active";
+                            $actionn3 = "active";
+                            break;
+                        case "products":
                             $action6 = "active";
                             $actionn3 = "active";
                             break;
