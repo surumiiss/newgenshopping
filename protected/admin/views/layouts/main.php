@@ -10,7 +10,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title><?php echo Yii::app()->name; ?></title>                                                                                                                                                                                                                                                                                                             
         <!-- Tell the browser to be responsive to screen width -->
-        <!--<link rel="stylesheet" href="<?php // echo Yii::app()->baseUrl;     ?>/css/admin.css">-->
+        <!--<link rel="stylesheet" href="<?php // echo Yii::app()->baseUrl;        ?>/css/admin.css">-->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.5 -->
 
@@ -138,7 +138,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             $action4 = "active";
                             $actionn2 = "active";
                             break;
-                         case "productCategory":
+                        case "productCategory":
                             $action5 = "active";
                             $actionn3 = "active";
                             break;
@@ -178,6 +178,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             $action14 = "active";
                             $actionn4 = "active";
                             break;
+                        case "order":
+                            $action15 = "active";
+                            $actionn5 = "active";
+                            break;
+                        case "orderStatus":
+                            $action16 = "active";
+                            $actionn5 = "active";
+                            break;
+                        case "orderProducts":
+                            $action17 = "active";
+                            $actionn5 = "active";
+                            break;
+                        case "orderHistory":
+                            $action18 = "active";
+                            $actionn5 = "active";
+                            break;
 
                         case "site":
                             if (Yii::app()->controller->action->id == "home") {
@@ -213,31 +229,45 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <li class="<?php echo $action4 ?>"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/users/Merchant/admin"><i class="fa fa-circle-o"></i> Merchant</a></li>
                             </ul>
                         </li>
-                        <li class="<?php echo $actionn3 ?> treeview">
-                            <a href="#"><i class="fa fa-bars"></i> <span>Products</span> <i class="fa fa-angle-left pull-right"></i></a>
-                            <ul class="treeview-menu">
-                                <li class="<?php echo $action5 ?>"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/products/ProductCategory/admin"><i class="fa fa-circle-o"></i> Product Category</a></li>
-                                <li class="<?php echo $action6 ?>"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/products/Products/admin"><i class="fa fa-circle-o"></i> All Products</a></li>
-                            </ul>
-                        </li>
-                                  <?php if (isset(Yii::app()->session['post']['masters']) && Yii::app()->session['post']['masters'] == 1) { ?>
-                                                        <li class="<?php echo $actionn4 ?> treeview">
-                                                                <a href="#"><i class="fa fa-database"></i> <span>Masters</span> <i class="fa fa-angle-left pull-right"></i></a>
+                        <?php if (isset(Yii::app()->session['post']['products']) && Yii::app()->session['post']['products'] == 1) { ?>
+                            <li class="<?php echo $actionn3 ?> treeview">
+                                <a href="#"><i class="fa fa-bars"></i> <span>Products</span> <i class="fa fa-angle-left pull-right"></i></a>
+                                <ul class="treeview-menu">
+                                    <li class="<?php echo $action5 ?>"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/products/ProductCategory/admin"><i class="fa fa-circle-o"></i> Product Category</a></li>
+                                    <li class="<?php echo $action6 ?>"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/products/Products/admin"><i class="fa fa-circle-o"></i> All Products</a></li>
+                                </ul>
+                            </li>
+                        <?php } ?>
+                        <?php if (isset(Yii::app()->session['post']['products']) && Yii::app()->session['post']['products'] == 1) { ?>
+                                                        <li class="<?php echo $actionn5 ?> treeview">
+                                                                <a href="#"><i class="fa fa-bars"></i> <span>Orders</span> <i class="fa fa-angle-left pull-right"></i></a>
                                                                 <ul class="treeview-menu">
-                                                                        <li class="<?php echo $action7 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/Currency/admin"><i class="fa fa-circle-o"></i>Currency</a></li>
-                                                                        <li class="<?php echo $action8 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/MasterShippingTypes/admin"><i class="fa fa-circle-o"></i>Shipping Types</a></li>
-                                                                        <li class="<?php echo $action9 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/shippingCharges/admin"><i class="fa fa-circle-o"></i>Shipping Charges</a></li>
-                                                                        <!--<li class="<?php echo $action12 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/DimensionClass/admin"><i class="fa fa-circle-o"></i> Dimension Class</a></li>-->
-                                                                        <li class="<?php echo $action10 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/WeightClass/admin"><i class="fa fa-circle-o"></i> Weight Class</a></li>
-                                                                        <li class="<?php echo $action11 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/users/UserAddress/admin"><i class="fa fa-circle-o"></i> User Address</a></li>
-                                                                        <li class="<?php echo $action12 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/Countries/admin"><i class="fa fa-circle-o"></i> Countries</a></li>
-                                                                        <li class="<?php echo $action13 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/Districts/admin"><i class="fa fa-circle-o"></i> Districts</a></li>
-                                                                        <li class="<?php echo $action14 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/States/admin"><i class="fa fa-circle-o"></i> States</a></li>
-                                                                </ul>
-                                                        </li>                         
+                                                                        <li class="<?php echo $action15 ?>"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/products/Order/admin"><i class="fa fa-circle-o"></i>Order</a></li>
+                                                                        <li class="<?php echo $action16 ?>"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/products/OrderStatus/admin"><i class="fa fa-circle-o"></i> Order status</a></li>
+                                                                        <li class="<?php echo $action17 ?>"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/products/OrderProducts/admin"><i class="fa fa-circle-o"></i> Order Products</a></li>
+                                                                        <li class="<?php echo $action18 ?>"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/products/OrderHistory/admin"><i class="fa fa-circle-o"></i> Order History</a></li>
 
+
+                                                                </ul>
+                                                        </li>
                                                 <?php } ?>
-                        
+                        <?php if (isset(Yii::app()->session['post']['masters']) && Yii::app()->session['post']['masters'] == 1) { ?>
+                            <li class="<?php echo $actionn4 ?> treeview">
+                                <a href="#"><i class="fa fa-database"></i> <span>Masters</span> <i class="fa fa-angle-left pull-right"></i></a>
+                                <ul class="treeview-menu">
+                                    <li class="<?php echo $action7 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/Currency/admin"><i class="fa fa-circle-o"></i>Currency</a></li>
+                                    <li class="<?php echo $action8 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/MasterShippingTypes/admin"><i class="fa fa-circle-o"></i>Shipping Types</a></li>
+                                    <li class="<?php echo $action9 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/shippingCharges/admin"><i class="fa fa-circle-o"></i>Shipping Charges</a></li>
+                                    <li class="<?php echo $action10 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/WeightClass/admin"><i class="fa fa-circle-o"></i> Weight Class</a></li>
+                                    <li class="<?php echo $action11 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/users/UserAddress/admin"><i class="fa fa-circle-o"></i> User Address</a></li>
+                                    <li class="<?php echo $action12 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/Countries/admin"><i class="fa fa-circle-o"></i> Countries</a></li>
+                                    <li class="<?php echo $action13 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/Districts/admin"><i class="fa fa-circle-o"></i> Districts</a></li>
+                                    <li class="<?php echo $action14 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/States/admin"><i class="fa fa-circle-o"></i> States</a></li>
+                                </ul>
+                            </li>                         
+
+                        <?php } ?>
+
                     </ul><!-- /.sidebar-menu -->
                 </section>
                 <!-- /.sidebar -->
