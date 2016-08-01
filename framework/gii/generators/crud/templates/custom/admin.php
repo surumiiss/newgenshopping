@@ -21,7 +21,7 @@
 
 <!-- Main content -->
 <section class="content">
-    <a href="<?php echo "<?php echo Yii::app()->request->baseurl.'/" . $_REQUEST['CrudCode']['controller'] . "/create'; ?>"; ?>" class='btn  btn-laksyah'>Add New Product</a>
+    <a href="<?php echo "<?php echo Yii::app()->request->baseurl.'/" . $_REQUEST['CrudCode']['controller'] . "/create'; ?>"; ?>" class='btn  btn-laksyah'>Add New <?php echo $this->modelClass; ?></a>
     <div class="col-xs-12 form-page" style="margin-top: .5em;">
         <div class="box">
 
