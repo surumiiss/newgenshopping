@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.css">
 
         <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/font-awesome.min.css">
-        <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/mystyle.css">
+        <!--<link rel="stylesheet" href="<?php // echo Yii::app()->request->baseUrl; ?>/css/mystyle.css">-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
         <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap.js"></script>

@@ -11,7 +11,7 @@ return array(
     'runtimePath' => $user . '/runtime',
     'controllerPath' => $user . '/controllers',
     'viewPath' => $user . '/views',
-    'name' => 'Laksya',
+    'name' => 'NewGen Shop',
     // preloading 'log' component
     'preload' => array('log'),
     // autoloading model and component classes
@@ -22,9 +22,10 @@ return array(
         'user.controllers.*',
         'user.views.*',
     ),
+    'modulePath' => $user . '/modules/',
     'modules' => array(
         // uncomment the following to enable the Gii tool
-
+        'registration',
         'gii' => array(
             'class' => 'system.gii.GiiModule',
             'password' => 'gii',
@@ -35,6 +36,7 @@ return array(
     // application components
     'components' => array(
         'Upload' => array('class' => 'UploadFile'),
+        'category' => array('class' => 'selectCategory'),
         'user' => array(
             // enable cookie-based authentication
             'allowAutoLogin' => true,
@@ -68,10 +70,10 @@ return array(
                     'class' => 'CFileLogRoute',
                     'levels' => 'error, warning',
                 ),
-            // uncomment the following to show log messages on web pages
-            array(
-              'class' => 'CWebLogRoute',
-              ), 
+                // uncomment the following to show log messages on web pages
+                array(
+                    'class' => 'CWebLogRoute',
+                ),
             ),
         ),
     ),

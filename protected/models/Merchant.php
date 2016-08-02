@@ -54,19 +54,25 @@ class Merchant extends CActiveRecord {
         // will receive user inputs.
         return array(
 //            array('fullname, email, phone_number, password, email_verification, product_categories, merchant_type, product_count, shop_name, address, pincode, city, locality, district, state, country, status, CB, DOC, is_payment_done', 'required'),
-            array('merchant_type, product_count, pincode, state, country, bad_attempts, CB, UB, is_payment_done, field1, field2, field3', 'numerical', 'integerOnly' => true),
+            array('fullname, email, phone_number, password,  confirm, product_categories, merchant_type', 'required', 'on' => 'insert'),
+            // required fields on create
+            array('fullname, email, phone_number, password, confirm, product_categories, merchant_type, address, pincode, city,  locality, district, state, country, status', 'required', 'on' => 'create'),
+            array('merchant_type, product_count, pincode, state, country, bad_attempts, CB, UB, is_payment_done', 'numerical', 'integerOnly' => true),
             array('fullname, email, phone_number, password, city, locality, vat_tin, status', 'length', 'max' => 100),
             array('verification_code', 'length', 'max' => 50),
-            array('email_verification', 'length', 'max' => 11),
             array('product_categories, shop_name, shop_logo, shop_banner', 'length', 'max' => 250),
             array('district', 'length', 'max' => 200),
             array('DOU', 'safe'),
-            array('email', 'unique'),
+            // email and phone number is unique
+            array('email, phone_number', 'unique'),
+            // check for email format
             array('email', 'email'),
+            // password validation
+            array('password, confirm', 'length', 'min' => 6, 'max' => 40),
+            array('password, confirm', 'compare', 'compareAttribute' => 'confirm', 'message' => 'Password and Confirm Password should match.'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('id, fullname, email, phone_number, password, verification_code, email_verification, product_categories, merchant_type, product_count, shop_name, shop_logo, shop_banner, address, pincode, city, locality, district, state, country, vat_tin, status, last_login, bad_attempts, CB, UB, DOC, DOU, is_payment_done, field1, field2, field3', 'safe', 'on' => 'search'),
-            array('fullname, email, phone_number, password, confirm, product_categories, merchant_type, address, pincode, city,  locality, district, state, country, status', 'required', 'on' => 'create'),
+            array('id, fullname, email, phone_number, password, verification_code, email_verification, product_categories, merchant_type, product_count, shop_name, shop_logo, shop_banner, address, pincode, city, locality, district, state, country, vat_tin, status, last_login, bad_attempts, CB, UB, DOC, DOU, is_payment_done', 'safe', 'on' => 'search'),
         );
     }
 
@@ -86,10 +92,11 @@ class Merchant extends CActiveRecord {
     public function attributeLabels() {
         return array(
             'id' => 'ID',
-            'fullname' => 'Fullname',
+            'fullname' => 'FullName',
             'email' => 'Email',
             'phone_number' => 'Phone Number',
             'password' => 'Password',
+            'confirm' => 'Confirm Password',
             'verification_code' => 'Verification Code',
             'email_verification' => 'Email Verification',
             'product_categories' => 'Product Categories',
@@ -105,7 +112,7 @@ class Merchant extends CActiveRecord {
             'district' => 'District',
             'state' => 'State',
             'country' => 'Country',
-            'vat_tin' => 'Vat Tin',
+            'vat_tin' => 'VAT/TIN',
             'status' => 'Status',
             'last_login' => 'Last Login',
             'bad_attempts' => 'Bad Attempts',
@@ -114,9 +121,9 @@ class Merchant extends CActiveRecord {
             'DOC' => 'Doc',
             'DOU' => 'Dou',
             'is_payment_done' => 'Is Payment Done',
-            'field1' => 'Field1',
-            'field2' => 'Field2',
-            'field3' => 'Field3',
+//            'field1' => 'Field1',
+//            'field2' => 'Field2',
+//            'field3' => 'Field3',
         );
     }
 

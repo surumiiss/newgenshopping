@@ -128,7 +128,7 @@
             <?php echo $form->labelEx($model, 'merchant_type'); ?>
         </div>
         <div class="col-sm-10">
-            <?php echo $form->dropDownList($model, 'merchant_type', array('1' => "Wholesale", '0' => "Retail"), array('empty' => 'Select', 'class' => 'form-control')); ?>
+            <?php echo $form->dropDownList($model, 'merchant_type', array('1' => "Wholesale", '0' => "Retail", '2'=>"Default"), array('empty' => 'Select', 'class' => 'form-control')); ?>
             <?php echo $form->error($model, 'merchant_type'); ?>
         </div>
     </div>
