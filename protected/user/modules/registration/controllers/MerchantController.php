@@ -68,12 +68,13 @@ class MerchantController extends Controller {
             if ($model->validate()) {
                 $ver_id = sha1(mt_rand(10000, 99999) . time());
                 $model->is_payment_done = 0;
-                $model->status = "payment_pending";
+                $model->status = "not_activated";
                 $model->email_verification = $ver_id;
                 $model->DOC = date("Y/m/d");
                 if ($model->save()) {
+                    // uncomment the following for sending activation mail
 //                    $this->sendActivation($model);
-                    $this->render('info_activation',array('model'=>$model));
+                    $this->render('info_activation', array('model' => $model));
                     exit;
                 }
             }
@@ -90,24 +91,23 @@ class MerchantController extends Controller {
         $user_subject = 'Welcome to NewGen Shopping!';
         $user_message = $this->renderPartial('_user_activation_mail', array('model' => $model), true);
 //        $admin = AdminUser::model()->findByPk(4)->email;
-        $user = 'avptest1992@gmail.com';
-        $admin_subject = 'Merchant ' . $model->fullname . ' registered with NewGen Shop';
-        $admin_message = $this->renderPartial('_user_activation_mail', array('model' => $model), true);
+//        $admin = 'avptest1992@gmail.com';
+//        $admin_subject = 'Merchant ' . $model->fullname . ' registered with NewGen Shop';
+//        $admin_message = $this->renderPartial('_user_activation_mail', array('model' => $model), true);
 // Always set content-type when sending HTML email
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-// More headers
         $headers .= 'From: <no-reply@intersmarthosting.in>' . "\r\n";
-//$headers .= 'Cc: reply@foldingbooks.com' . "\r\n";
 
 
         mail($user, $user_subject, $user_message, $headers);
-        mail($admin, $admin_subject, $admin_message, $headers);
     }
 
     public function actionUserActivation($id) {
-        echo $id;
-//        $this->render('user_activation');
+        $model = Merchant::model()->findByAttributes(array('email_verification'=>$id));
+        $model->staus = "payment_pending";
+        $model->save();
+        $this->render('user_activation',array('model'=>$model));
     }
 
     /**
@@ -192,6 +192,12 @@ class MerchantController extends Controller {
             echo CActiveForm::validate($model);
             Yii::app()->end();
         }
+    }
+
+    public static function siteURL() {
+        $protocol = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
+        $domainName = $_SERVER['HTTP_HOST'];
+        return $protocol . $domainName . '/newgenshopping/';
     }
 
 }
