@@ -73,7 +73,7 @@ class MerchantController extends Controller {
                 $model->DOC = date("Y/m/d");
                 if ($model->save()) {
                     // uncomment the following for sending activation mail
-                    $this->sendActivation($model);
+//                    $this->sendActivation($model);
                     $this->render('info_activation', array('model' => $model));
                     exit;
                 }
