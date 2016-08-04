@@ -26,11 +26,11 @@ class MerchantController extends Controller {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view', 'create', 'update', 'admin', 'delete', 'userActivation'),
+                'actions' => array('view', 'create', 'update', 'admin', 'delete', 'userActivation', 'completeRegistration'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update'),
+                'actions' => array('index', 'create', 'update'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -73,7 +73,7 @@ class MerchantController extends Controller {
                 $model->DOC = date("Y/m/d");
                 if ($model->save()) {
                     // uncomment the following for sending activation mail
-//                    $this->sendActivation($model);
+                    $this->sendActivation($model);
                     $this->render('info_activation', array('model' => $model));
                     exit;
                 }
@@ -86,28 +86,39 @@ class MerchantController extends Controller {
     }
 
     public function sendActivation($model) {
-//        $user = $model->email;
-        $user = 'avptest1992@gmail.com';
-        $user_subject = 'Welcome to NewGen Shopping!';
-        $user_message = $this->renderPartial('_user_activation_mail', array('model' => $model), true);
-//        $admin = AdminUser::model()->findByPk(4)->email;
-//        $admin = 'avptest1992@gmail.com';
-//        $admin_subject = 'Merchant ' . $model->fullname . ' registered with NewGen Shop';
-//        $admin_message = $this->renderPartial('_user_activation_mail', array('model' => $model), true);
-// Always set content-type when sending HTML email
-        $headers = "MIME-Version: 1.0" . "\r\n";
-        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        $headers .= 'From: <no-reply@intersmarthosting.in>' . "\r\n";
-
-
-        mail($user, $user_subject, $user_message, $headers);
+        Yii::import('user.extensions.yii-mail.YiiMail');
+        $message = new YiiMailMessage;
+        $message->view = "_user_activation_mail";
+        $params = array('model' => $model);
+        $message->subject = 'Welcome To eCareAgora';
+        $message->setBody($params, 'text/html');
+        $message->addTo('aathira@intersmart.com');
+        $message->from = 'avpin1992@gmail.com';
+        if (Yii::app()->mail->send($message)) {
+            echo 'message send';
+            exit;
+        } else {
+            echo 'message not send';
+            exit;
+        }
     }
 
     public function actionUserActivation($id) {
-        $model = Merchant::model()->findByAttributes(array('email_verification'=>$id));
+        $model = Merchant::model()->findByAttributes(array('email_verification' => $id));
         $model->staus = "payment_pending";
         $model->save();
-        $this->render('user_activation',array('model'=>$model));
+        $this->render('user_activation', array('model' => $model));
+    }
+
+    // action will be called after successful payment
+    public function actionCompleteRegistration($id) {
+        $transaction_id = "12345564";
+        $payment_status = "success";
+        $merchant_id = $id;
+        $model = Merchant::model()->findByPk($merchant_id);
+        $model->status = "active";
+        $model->is_payment_done = 1;
+        $model->save();
     }
 
     /**

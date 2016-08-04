@@ -21,11 +21,12 @@ return array(
         'user.components.*',
         'user.controllers.*',
         'user.views.*',
+        'user.extensions.yii-mail.*',
     ),
     'modulePath' => $user . '/modules/',
     'modules' => array(
         // uncomment the following to enable the Gii tool
-        'registration',
+        'registration', 'merchant', 'buyer',
         'gii' => array(
             'class' => 'system.gii.GiiModule',
             'password' => 'gii',
@@ -40,6 +41,21 @@ return array(
         'user' => array(
             // enable cookie-based authentication
             'allowAutoLogin' => true,
+        ),
+        'mail' => array(
+            'class' => 'user.extensions.yii-mail.YiiMail', 
+            'transportType' => 'smtp',
+            'transportOptions' => array(
+//                'host' => 'mail.ecareagora.com',
+                'host' => 'smptp.gmail.com',
+                // 'encryption'=>'ssl', // use ssl
+                'username' => 'avpin1992@gmail.com',
+                'password' => 'kunjatta1992',
+            'port'=>'587', // ssl port for gmail
+            ),
+            'viewPath' => 'application.user.template',
+            'logging' => true,
+            'dryRun' => false
         ),
         // uncomment the following to enable URLs in path-format
         'urlManager' => array(

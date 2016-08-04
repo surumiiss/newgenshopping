@@ -25,8 +25,33 @@ class SiteController extends Controller {
      * when an action is not explicitly requested by users.
      */
     public function actionIndex() {
-
+        $this->layout = 'test';
         $this->render('index');
+    }
+
+    public function actionLogin() {
+        $model = new LoginForm;
+
+        // uncomment the following code to enable ajax-based validation
+
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+
+        if (isset($_POST['LoginForm'])) {
+            $model->attributes = $_POST['LoginForm'];
+            if ($model->validate()) {
+                // form inputs are valid, do something here
+                $this->redirect(array('index'));
+            }
+        }
+        $this->render('login', array('model' => $model));
+    }
+
+    public function actionLogout() {
+        Yii::app()->user->logout();
+        $this->redirect(Yii::app()->homeUrl);
     }
 
     public function actionRegister() {
@@ -142,6 +167,18 @@ class SiteController extends Controller {
                 }
                 echo '<div class="' . $_REQUEST['type'] . '_tag-sub">' . $tag->category_tag . '</div>';
             }
+        }
+    }
+
+    /**
+     * This is the action to handle external exceptions.
+     */
+    public function actionError() {
+        if ($error = Yii::app()->errorHandler->error) {
+            if (Yii::app()->request->isAjaxRequest)
+                echo $error['message'];
+            else
+                $this->render('error', $error);
         }
     }
 
