@@ -72,11 +72,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- Logo -->
 
                 <a href="#" class="logo">
-                    Newgen Shop
+                    <!--Newgen Shop-->
+                    <img src="<?php echo Yii::app()->baseUrl; ?>/images/admin/logo_inside.png" />
                     <!-- mini logo for sidebar mini 50x50 pixels -->
-    <!--                <span class="logo-mini"><img src="http://www.intersmartsolutions.com/dev2/newgen-html/images/foot.png" height="30px" width="50px" /></span>-->
+                    <span class="logo-mini"><img src="http://www.intersmartsolutions.com/dev2/newgen-html/images/admin/logo_inside.png" /></span>
                     <!--logo for regular state and mobile devices--> 
-                   <!--<span class="logo-lg"><img src="<?php echo Yii::app()->baseUrl; ?>/images/logo_small.png" /></span>-->
+                   <span class="logo-lg"><img src="<?php echo Yii::app()->baseUrl; ?>/images/logo_small.png" /></span>
 
                 </a>
 
