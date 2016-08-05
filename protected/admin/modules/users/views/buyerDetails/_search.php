@@ -17,6 +17,11 @@
 	</div>
 
 	<div class="row">
+		<?php echo $form->label($model,'user_id'); ?>
+		<?php echo $form->textField($model,'user_id',array('class' => 'form-control')); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->label($model,'first_name'); ?>
 		<?php echo $form->textField($model,'first_name',array('size'=>60,'maxlength'=>100,'class' => 'form-control')); ?>
 	</div>
@@ -37,23 +42,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'email'); ?>
-		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>100,'class' => 'form-control')); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'phone_no_1'); ?>
-		<?php echo $form->textField($model,'phone_no_1',array('size'=>60,'maxlength'=>100,'class' => 'form-control')); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'phone_no_2'); ?>
 		<?php echo $form->textField($model,'phone_no_2',array('size'=>60,'maxlength'=>100,'class' => 'form-control')); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'confirm'); ?>
-		<?php echo $form->textField($model,'confirm',array('size'=>60,'maxlength'=>225,'class' => 'form-control')); ?>
 	</div>
 
 	<div class="row">
@@ -64,26 +54,6 @@
 	<div class="row">
 		<?php echo $form->label($model,'wallet_amt'); ?>
 		<?php echo $form->textField($model,'wallet_amt',array('size'=>10,'maxlength'=>10,'class' => 'form-control')); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'verification_code'); ?>
-		<?php echo $form->textField($model,'verification_code',array('size'=>10,'maxlength'=>10,'class' => 'form-control')); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'email_verification'); ?>
-		<?php echo $form->textField($model,'email_verification',array('size'=>50,'maxlength'=>50,'class' => 'form-control')); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'status'); ?>
-		<?php echo $form->textField($model,'status',array('class' => 'form-control')); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'bad_attempts'); ?>
-		<?php echo $form->textField($model,'bad_attempts',array('class' => 'form-control')); ?>
 	</div>
 
 	<div class="row">
@@ -104,16 +74,6 @@
 	<div class="row">
 		<?php echo $form->label($model,'DOU'); ?>
 		<?php echo $form->textField($model,'DOU',array('class' => 'form-control')); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'last_login'); ?>
-		<?php echo $form->textField($model,'last_login',array('class' => 'form-control')); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'field1'); ?>
-		<?php echo $form->textField($model,'field1',array('class' => 'form-control')); ?>
 	</div>
 
 	<div class="row">

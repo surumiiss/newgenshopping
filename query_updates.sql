@@ -81,5 +81,10 @@ ALTER TABLE `user_address` ADD FOREIGN KEY (`userid`) REFERENCES `newgen_shoppin
 
 ALTER TABLE `order` DROP FOREIGN KEY `order_ibfk_1`; ALTER TABLE `order` ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `newgen_shopping`.`user`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
+-- 05/08/2016 
+-- added by Aathira
 
 
+ALTER TABLE `user` CHANGE `user_status` `user_status` INT(11) NOT NULL COMMENT '1 = activation pending, 2 = payment pending, 3 = enabled, 4 = disabled';
+RENAME TABLE `newgen_shopping`.`user` TO `newgen_shopping`.`users`;
+ALTER TABLE `users` CHANGE `user_type` `user_type` INT(11) NOT NULL COMMENT '1= buyer , 2= merchant, 3 = BuyerToMerchant , 4 = MerchantToBuyer';

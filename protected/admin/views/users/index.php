@@ -1,18 +1,18 @@
 <?php
-/* @var $this BuyerDetailsController */
+/* @var $this UsersController */
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Buyer Details',
+	'Users',
 );
 
 $this->menu=array(
-	array('label'=>'Create BuyerDetails', 'url'=>array('create')),
-	array('label'=>'Manage BuyerDetails', 'url'=>array('admin')),
+	array('label'=>'Create Users', 'url'=>array('create')),
+	array('label'=>'Manage Users', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Buyer Details</h1>
+<h1>Users</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

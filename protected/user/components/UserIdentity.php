@@ -16,9 +16,10 @@ class UserIdentity extends CUserIdentity {
      * @return boolean whether authentication succeeds.
      */
     public function authenticate() {
-        
+
         $password = "";
-        
+
+
         // for merchant login
         if (Merchant::model()->findByAttributes(array('email' => $this->username))) {
             $user = Merchant::model()->findByAttributes(array('email' => $this->username));
@@ -30,19 +31,21 @@ class UserIdentity extends CUserIdentity {
             Yii::app()->user->setState('user_type', 'merchant');
             Yii::app()->user->setState('user_name', $merchant_name);
         }
-        
+
+
         // for buyer login
         if (BuyerDetails::model()->findByAttributes(array('email' => $this->username))) {
             $user = BuyerDetails::model()->findByAttributes(array('email' => $this->username));
             $password = $user->password;
             $buyer_id = $user->id;
-            $name = $user->first_name.' '.$user->last_name;
+            $name = $user->first_name . ' ' . $user->last_name;
             Yii::app()->user->setState('user_mail', $this->username);
             Yii::app()->user->setState('user_id', $buyer_id);
             Yii::app()->user->setState('user_type', 'buyer');
             Yii::app()->user->setState('user_name', $name);
         }
-        
+
+
 
         if ($this->username === null)
             $this->errorCode = self::ERROR_USERNAME_INVALID;
@@ -53,5 +56,5 @@ class UserIdentity extends CUserIdentity {
             $this->errorCode = self::ERROR_NONE;
         return !$this->errorCode;
     }
+
 }
-    

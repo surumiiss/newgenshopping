@@ -32,10 +32,20 @@
         <?php echo $form->errorSummary($model); ?>
         <table>
             <tr>
+                <td colspan="3">
+                    <?php
+                    $usertype = array('Buyer' => 'Buyer', 'Merchant' => 'Merchant');
+                    echo $form->radioButtonList($model, 'usertype', $usertype, array('separator' => ' ',
+                        'labelOptions' => array('style' => 'display:inline'), // add this code
+                    ));
+                    ?>
+                </td>
+            </tr>
+            <tr>
                 <td><?php echo $form->labelEx($model, 'email'); ?></td>
                 <td> &nbsp;&nbsp;&nbsp;</td>
                 <td>
-                    <?php echo $form->textField($model, 'email'); ?>
+<?php echo $form->textField($model, 'email'); ?>
                     <?php echo $form->error($model, 'email'); ?>
                 </td>
             </tr>
@@ -43,7 +53,7 @@
                 <td><?php echo $form->labelEx($model, 'password'); ?></td>
                 <td> &nbsp;&nbsp;&nbsp;</td>
                 <td>
-                    <?php echo $form->textField($model, 'password'); ?>
+<?php echo $form->textField($model, 'password'); ?>
                     <?php echo $form->error($model, 'password'); ?>
                 </td>
             </tr>
@@ -51,14 +61,14 @@
                 <td><?php echo $form->labelEx($model, 'rememberMe'); ?></td>
                 <td> &nbsp;&nbsp;&nbsp;</td>
                 <td>
-                    <?php echo $form->checkBox($model, 'rememberMe'); ?>
+<?php echo $form->checkBox($model, 'rememberMe'); ?>
                     <?php echo $form->error($model, 'rememberMe'); ?>
                 </td>
             </tr>
             <tr>
                 <td colspan="3">
                     <div class="row buttons">
-                        <?php echo CHtml::submitButton('Submit'); ?>
+<?php echo CHtml::submitButton('Submit'); ?>
                     </div>
 
                 </td>
@@ -67,7 +77,7 @@
 
 
 
-        <?php $this->endWidget(); ?>
+<?php $this->endWidget(); ?>
 
     </div><!-- form -->
 </center>

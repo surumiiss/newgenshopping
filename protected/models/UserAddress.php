@@ -25,7 +25,10 @@
  * @property string $DOU
  *
  * The followings are the available model relations:
+ * @property Order[] $orders
+ * @property Order[] $orders1
  * @property States $state0
+ * @property User $user
  * @property Districts $district0
  * @property Countries $country0
  */
@@ -47,7 +50,7 @@ class UserAddress extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-//			array('userid, first_name, last_name, company, contact_number, address_1, address_2, city, district, postcode, country, state, default_billing_address, default_shipping_address, CB, UB, DOC', 'required'),
+			array('userid, first_name, last_name, company, contact_number, address_1, address_2, city, district, postcode, country, state, default_billing_address, default_shipping_address, CB, UB, DOC', 'required'),
 			array('userid, district, country, state, CB, UB', 'numerical', 'integerOnly'=>true),
 			array('first_name, last_name, company, contact_number, city', 'length', 'max'=>100),
 			array('postcode, default_billing_address, default_shipping_address', 'length', 'max'=>111),
@@ -66,7 +69,10 @@ class UserAddress extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'orders' => array(self::HAS_MANY, 'Order', 'ship_address_id'),
+			'orders1' => array(self::HAS_MANY, 'Order', 'bill_address_id'),
 			'state0' => array(self::BELONGS_TO, 'States', 'state'),
+			'user' => array(self::BELONGS_TO, 'User', 'userid'),
 			'district0' => array(self::BELONGS_TO, 'Districts', 'district'),
 			'country0' => array(self::BELONGS_TO, 'Countries', 'country'),
 		);
