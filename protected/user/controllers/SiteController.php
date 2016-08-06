@@ -31,6 +31,11 @@ class SiteController extends Controller {
         $this->render('home');
     }
 
+    public function actionHome() {
+        $this->layout = 'main';
+        $this->render('home');
+    }
+
     public function actionLogin() {
         $model = new LoginForm;
 
