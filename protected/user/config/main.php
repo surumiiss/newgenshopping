@@ -38,12 +38,13 @@ return array(
     'components' => array(
         'Upload' => array('class' => 'UploadFile'),
         'category' => array('class' => 'selectCategory'),
+        'Menu' => array('class' => 'MenuCategory'),
         'user' => array(
             // enable cookie-based authentication
             'allowAutoLogin' => true,
         ),
         'mail' => array(
-            'class' => 'user.extensions.yii-mail.YiiMail', 
+            'class' => 'user.extensions.yii-mail.YiiMail',
             'transportType' => 'smtp',
             'transportOptions' => array(
 //                'host' => 'mail.ecareagora.com',
@@ -51,7 +52,7 @@ return array(
                 // 'encryption'=>'ssl', // use ssl
                 'username' => 'avpin1992@gmail.com',
                 'password' => 'kunjatta1992',
-            'port'=>'587', // ssl port for gmail
+                'port' => '587', // ssl port for gmail
             ),
             'viewPath' => 'application.user.template',
             'logging' => true,

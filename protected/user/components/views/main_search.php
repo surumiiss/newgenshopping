@@ -1,8 +1,9 @@
 <!--<input type="text" class="textbox-default-searchbox1" placeholder="Search for Deals/Company Name/Keyword/Category/Brand" id="search_box" name="keyword" autocomplete="off">-->
-<input type="text" class="form-control input-lg" placeholder="search" name="Keyword" id="search_box" autocomplete="off">
+
+<input type="text" class="form-control" placeholder="Search style number or keyword" name="Keyword" id="search_box" autocomplete="off">
 
 <ul class="ul-style" id='result_box' style=""></ul>
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>
 
         $(document).ready(function () {
