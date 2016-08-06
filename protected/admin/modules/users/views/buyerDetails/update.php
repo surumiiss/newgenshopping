@@ -11,7 +11,7 @@
         <li class="active">Update BuyerDetails</li>
     </ol>
 </section>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo Yii::app()->request->baseurl.'/buyerDetails/admin'; ?>" class='btn  btn-laksyah manage'>Manage Buyer</a>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo Yii::app()->request->baseurl.'/admin.php/users/buyerDetails/admin'; ?>" class='btn  btn-laksyah manage'>Manage Buyer</a>
 <section class="content">
     <div class="box box-info">
 

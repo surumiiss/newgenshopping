@@ -12,7 +12,7 @@
         <li class="active">Create</li>
     </ol>
 </section>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo Yii::app()->request->baseurl . '/buyerDetails/admin'; ?>" class='btn  btn-laksyah manage'>Manage BuyerDetails</a>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo Yii::app()->request->baseurl . '/admin.php/users/buyerDetails/admin'; ?>" class='btn  btn-laksyah manage'>Manage BuyerDetails</a>
 <section class="content">
 
     <div class="box box-info">

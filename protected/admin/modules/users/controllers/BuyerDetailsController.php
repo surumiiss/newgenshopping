@@ -109,8 +109,9 @@ class BuyerDetailsController extends Controller {
 // Uncomment the following line if AJAX validation is needed
 // $this->performAjaxValidation($model);
 
-        if (isset($_POST['BuyerDetails'])) {
+        if (isset($_POST['BuyerDetails'], $_POST['Users'])) {
             $model->attributes = $_POST['BuyerDetails'];
+            $user_model->attributes = $_POST['Users'];
             $date1 = $_POST['BuyerDetails']['dob'];
             $newDate = date("Y-m-d", strtotime($date1));
             $model->dob = $newDate;

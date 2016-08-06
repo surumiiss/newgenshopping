@@ -135,7 +135,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             $action3 = "active";
                             $actionn2 = "active";
                             break;
-                        case "merchant":
+                        case "merchantDetails":
                             $action4 = "active";
                             $actionn2 = "active";
                             break;
@@ -227,7 +227,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <a href="#"><i class="fa fa-users"></i> <span>Users</span> <i class="fa fa-angle-left pull-right"></i></a>
                             <ul class="treeview-menu">
                                 <li class="<?php echo $action3 ?>"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/users/BuyerDetails/admin"><i class="fa fa-circle-o"></i> Buyer</a></li>
-                                <li class="<?php echo $action4 ?>"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/users/Merchant/admin"><i class="fa fa-circle-o"></i> Merchant</a></li>
+                                <li class="<?php echo $action4 ?>"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/users/MerchantDetails/admin"><i class="fa fa-circle-o"></i> Merchant</a></li>
                             </ul>
                         </li>
                         <?php if (isset(Yii::app()->session['post']['products']) && Yii::app()->session['post']['products'] == 1) { ?>
