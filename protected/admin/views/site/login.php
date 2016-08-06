@@ -1,3 +1,9 @@
+<style>
+    .errorMessage {
+        color: #b94a48;
+    }
+</style>
+
 <div class="form">
 
     <?php
@@ -13,7 +19,7 @@
 
     <div class="login-box">
         <div class="login-logo">
-            <a href="<?php //echo Yii::app()->baseUrl;         ?>#"><img src="<?php echo Yii::app()->baseUrl; ?>/images/admin/logo_main.png" /></a>
+            <a href="<?php //echo Yii::app()->baseUrl;          ?>#"><img src="<?php echo Yii::app()->baseUrl; ?>/images/admin/logo_main.png" /></a>
         </div><!-- /.login-logo -->
         <div class="login-box-body">
             <p class="login-box-msg">Login to Admin Panel</p>
