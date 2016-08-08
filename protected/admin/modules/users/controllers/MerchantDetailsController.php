@@ -26,7 +26,7 @@ class MerchantDetailsController extends Controller {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view', 'create', 'update', 'admin', 'delete'),
+                'actions' => array('index', 'view', 'create', 'update', 'admin', 'delete', 'LoadStates', 'LoadDistricts'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -61,7 +61,7 @@ class MerchantDetailsController extends Controller {
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
     public function actionCreate() {
-        $model = new MerchantDetails;
+        $model = new MerchantDetails('admin_create');
         $user_model = new Users('admin_create');
 
 // Uncomment the following line if AJAX validation is needed
@@ -73,6 +73,11 @@ class MerchantDetailsController extends Controller {
             $user_model->user_type = 2; // 1 = Buyer , 2 = Merchant, 3 = BuyerToMerchant , 4 = MerchantToBuyer
             $model->CB = $user_model->CB = $model->UB = $user_model->UB = Yii::app()->session['admin']['id'];
             $model->DOC = $user_model->DOC = date('Y-m-d');
+            $logo = CUploadedFile::getInstance($model, 'shop_logo');
+            $banner = CUploadedFile::getInstance($model, 'shop_banner');
+            $model->product_categories = $_POST['MerchantDetails']['product_categories'];
+            $model->shop_logo = $logo->extensionName;
+            $model->shop_banner = $banner->extensionName;
 
             // validate BOTH $model and $user_model
             $valid = $model->validate();
@@ -81,8 +86,26 @@ class MerchantDetailsController extends Controller {
             if ($valid) {
 
                 if ($user_model->save()) {
+
                     $model->user_id = $user_model->id;
                     if ($model->save()) {
+
+                        if ($logo != "") {
+                            $id = $model->id;
+                            $logo->saveAs(Yii::app()->basePath . "/../uploads/users/merchants/shop_logo/" . $model->id . "." . $logo->extensionName);
+//                    $file = Yii::app()->basePath . "/../uploads/users/merchants/shop_logo/" . $model->id . "." . $logo->extensionName;
+//                    $path = Yii::app()->basePath . "/../uploads/users/merchants/shop_logo/";
+//                    $extension = $logo->extensionName;
+//                    $this->Resize($file, 472, 339, $id, $path, $extension);
+                        }
+                        if ($banner != "") {
+                            $id = $model->id;
+                            $banner->saveAs(Yii::app()->basePath . "/../uploads/users/merchants/shop_banner/" . $model->id . "." . $banner->extensionName);
+//                    $file = Yii::app()->basePath . "/../uploads/users/merchants/shop_logo/" . $model->id . "." . $logo->extensionName;
+//                    $path = Yii::app()->basePath . "/../uploads/users/merchants/shop_logo/";
+//                    $extension = $logo->extensionName;
+//                    $this->Resize($file, 472, 339, $id, $path, $extension);
+                        }
                         $this->redirect(array('admin'));
                     }
                 }
@@ -103,6 +126,9 @@ class MerchantDetailsController extends Controller {
         $user_id = $model->user_id;
         $user_model = $this->loadUserModel($user_id);
 
+        $logo1 = $model->shop_logo;
+        $banner1 = $model->shop_banner;
+        $doc = $model->DOC;
 // Uncomment the following line if AJAX validation is needed
 // $this->performAjaxValidation($model);
 
@@ -111,8 +137,39 @@ class MerchantDetailsController extends Controller {
             $user_model->attributes = $_POST['Users'];
             $model->DOU = date('Y-m-d');
             $user_model->DOU = date('Y-m-d');
-            if ($model->save() && $user_model->save())
+            $logo = CUploadedFile::getInstance($model, 'shop_logo');
+            $banner = CUploadedFile::getInstance($model, 'shop_banner');
+
+            $model->product_categories = $_POST['MerchantDetails']['product_categories'];
+            $model->shop_logo = $logo->extensionName;
+            $model->shop_banner = $banner->extensionName;
+
+            $model->CB = Yii::app()->session['admin']['id'];
+            $model->DOC = $doc;
+
+            if ($model->save() && $user_model->save()) {
+                if ($logo != "") {
+                    $id = $model->id;
+                    $logo->saveAs(Yii::app()->basePath . "/../uploads/users/merchants/shop_logo/" . $model->id . "." . $logo->extensionName);
+//                    $file = Yii::app()->basePath . "/../uploads/users/merchants/shop_logo/" . $model->id . "." . $logo->extensionName;
+//                    $path = Yii::app()->basePath . "/../uploads/users/merchants/shop_logo/";
+//                    $extension = $logo->extensionName;
+//                    $this->Resize($file, 472, 339, $id, $path, $extension);
+                } else {
+                    $model->shop_logo = $logo1;
+                }
+                if ($banner != "") {
+                    $id = $model->id;
+                    $banner->saveAs(Yii::app()->basePath . "/../uploads/users/merchants/shop_banner/" . $model->id . "." . $banner->extensionName);
+//                    $file = Yii::app()->basePath . "/../uploads/users/merchants/shop_logo/" . $model->id . "." . $logo->extensionName;
+//                    $path = Yii::app()->basePath . "/../uploads/users/merchants/shop_logo/";
+//                    $extension = $logo->extensionName;
+//                    $this->Resize($file, 472, 339, $id, $path, $extension);
+                } else {
+                    $model->shop_banner = $banner1;
+                }
                 $this->redirect(array('admin'));
+            }
         }
 
         $this->render('update', array(
@@ -192,6 +249,27 @@ class MerchantDetailsController extends Controller {
         if (isset($_POST['ajax']) && $_POST['ajax'] === 'merchant-details-form') {
             echo CActiveForm::validate($model);
             Yii::app()->end();
+        }
+    }
+
+    public function actionLoadStates() {
+
+        $data = States::model()->findAllByAttributes(array(
+            'country_id' => $_POST['MerchantDetails_country']), array("order" => "state_name"));
+        $flag = 0;
+        $data = CHtml::listData($data, 'Id', 'state_name');
+        foreach ($data as $value => $name) {
+            echo CHtml::tag('option', array('value' => $value), CHtml::encode($name), true);
+        }
+    }
+
+    public function actionLoadDistricts() {
+        $data = Districts::model()->findAllByAttributes(array(
+            'state_id' => $_POST['MerchantDetails_state']), array("order" => "district_name"));
+        $flag = 0;
+        $data = CHtml::listData($data, 'Id', 'district_name');
+        foreach ($data as $value => $name) {
+            echo CHtml::tag('option', array('value' => $value), CHtml::encode($name), true);
         }
     }
 

@@ -2,8 +2,9 @@
 
 return array(
     '' => 'site/index',
-    'merchant-registration' => 'registration/merchant/create',
-    'merchant-activation' => 'registration/merchant/UserActivation',
+    'merchant-registration' => 'registration/merchantDetails/create',
+    'merchant-activation' => 'registration/merchantDetails/UserActivation',
+    'user-registration' =>'registration/buyerDetails/create',
     'login' => 'site/login',
     'logout' => 'site/logout',
     '<controller:\w+>/<id:\d+>' => '<controller>/view',

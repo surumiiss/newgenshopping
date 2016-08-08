@@ -60,7 +60,9 @@ class Header extends CWidget {
                     <div class="container bods">
                         <div class="row">
                             <div class="col-md-4 col-xs-6">
+                                <a href="<?php echo Yii::app()->request->baseUrl; ?>">
                                 <img class="zee" src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo.png">
+                                </a>
                             </div>
                             <div class="col-md-4 col-xs-6 hidden-xs">
                                 <div id="custom-search-input">

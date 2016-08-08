@@ -26,11 +26,37 @@
                 'filter' => $model,
                 'columns' => array(
 //            		'id',
-                    'user_id',
+//                    'user_id',
                     'fullname',
-                    'product_categories',
-                    'merchant_type',
-                    'product_count',
+                    array(
+                        'name' => 'product_categories',
+                        'value' => function($data) {
+                            $cats = explode(',', $data->product_categories);
+                            $catt = '';
+                            foreach ($cats as $cat) {
+                                unset($_SESSION['category']);
+                                $category = ProductCategory::model()->findByPk($cat);
+                                $catt .= Yii::app()->category->selectCategories($category) . ', ';
+                            }
+                            return $catt;
+                        },
+                    ),
+                    array(
+                        'name' => 'merchant_type',
+                        'value' => function($data) {
+                            if ($data->merchant_type == 2) {
+                                return "Wholesale";
+                            } elseif ($data->merchant_type == 1) {
+                                return "Retail";
+                            } elseif ($data->merchant_type == 0) {
+                                return "Default";
+                            } else {
+                                return "Invalid";
+                            }
+                        },
+                        'filter' => array('2' => "Wholesale", '1' => "Retail", '0' => "Default")
+                    ),
+//                    'product_count',
                     array(
                         'name' => 'email',
                         'value' => '$data->users->email',
@@ -55,6 +81,21 @@
                             }
                         },
                         'filter' => array('1' => "Activation pending", '2' => "Payment pending", '3' => "Enabled", '4' => "Disabled")
+                    ),
+                    'state',
+                    'country',
+                    array(
+                        'name' => 'is_payment_done',
+                        'value' => function($data) {
+                            if ($data->is_payment_done == 1) {
+                                return "Yes";
+                            } elseif ($data->is_payment_done == 0) {
+                                return "No";
+                            } else {
+                                return "Invalid";
+                            }
+                        },
+                        'filter' => array('1' => "Yes", '0' => "No")
                     ),
                     /*
                       'shop_name',

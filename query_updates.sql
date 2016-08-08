@@ -97,3 +97,11 @@ ALTER TABLE `merchant_details` ADD INDEX(`district`);
 ALTER TABLE `merchant_details` ADD INDEX(`state`);
 ALTER TABLE `merchant_details` ADD INDEX(`country`);
 ALTER TABLE `merchant_details` ADD FOREIGN KEY (`district`) REFERENCES `newgen_shopping`.`districts`(`Id`) ON DELETE RESTRICT ON UPDATE RESTRICT; ALTER TABLE `merchant_details` ADD FOREIGN KEY (`state`) REFERENCES `newgen_shopping`.`states`(`Id`) ON DELETE RESTRICT ON UPDATE RESTRICT; ALTER TABLE `merchant_details` ADD FOREIGN KEY (`country`) REFERENCES `newgen_shopping`.`countries`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+-- 08/08/2016
+-- added by aathira
+
+ALTER TABLE `merchant_details` DROP FOREIGN KEY `merchant_details_ibfk_2`; ALTER TABLE `merchant_details` DROP FOREIGN KEY `merchant_details_ibfk_3`; ALTER TABLE `merchant_details` DROP FOREIGN KEY `merchant_details_ibfk_4`;
+
+ALTER TABLE `users` CHANGE `activation_link` `activation_link` INT(250) NOT NULL COMMENT 'for email verification';
+ALTER TABLE `users` CHANGE `activation_link` `activation_link` VARCHAR(250) NOT NULL COMMENT 'for email verification';

@@ -48,11 +48,13 @@ class Users extends CActiveRecord {
         return array(
 //            array('user_type, email, phone_number, password, activation_link, verification_code, user_status, bad_attempts, last_login, DOC, DOU, CB, UB, field1', 'required'),
             array('user_type, email, phone_number, password, confirm_password, user_status', 'required', 'on' => 'admin_create'),
+            array('user_type, email, phone_number, password, confirm_password', 'required', 'on' => 'user_create'),
             array('confirm_password', 'compare', 'compareAttribute' => 'password', 'message' => 'Password and confirm password does not match', 'on' => 'admin_create'),
             array('email, phone_number', 'unique'),
             array('user_type, phone_number, password, activation_link, verification_code, user_status, bad_attempts, CB, UB, field1', 'numerical', 'integerOnly' => true),
             array('email', 'length', 'max' => 320),
             array('email', 'email'),
+            array('password, confirm_password', 'length', 'min' => 6, 'max' => 40),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array('id, user_type, email, phone_number, password, activation_link, verification_code, user_status, bad_attempts, last_login, DOC, DOU, CB, UB, field1', 'safe', 'on' => 'search'),
@@ -84,7 +86,7 @@ class Users extends CActiveRecord {
             'user_type' => 'User Type',
 //			'user_type' => '1= buyer , 2= merchant',
             'email' => 'Email',
-            'phone_number' => 'Phone Number 1',
+            'phone_number' => 'Phone Number',
             'password' => 'Password',
             'confirm_password' => 'Confirm Password',
 //			'activation_link' => 'for email verification',

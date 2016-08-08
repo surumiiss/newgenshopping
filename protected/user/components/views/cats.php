@@ -1,4 +1,4 @@
-
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <input type="text" id="<?php echo $this->type; ?>_tag_select" class="form-control" autocomplete="off" placeholder = "<?php echo $this->type; ?> Tags">
 
 <div class="col-sm-12 <?php echo $this->type; ?>_tagss" id="<?php echo $this->type; ?>_new_tag">
@@ -94,7 +94,7 @@
                 $('#<?php echo $this->type; ?>_new_tag').on('click', '.<?php echo $this->type; ?>_need_add', function () {
                         var val = $(this).attr('id');
                         $.ajax({
-                                'url': baseurl + '../user.php/site/<?php echo $this->type; ?>TagAdd',
+                                'url': '<?php echo Yii::app()->request->baseurl ?>' + '../user.php/site/<?php echo $this->type; ?>TagAdd',
                                 'async': false,
                                 'type': "POST",
                                 'global': false,
@@ -214,7 +214,7 @@
         function <?php echo $this->type; ?>SelectTag(val) {
                 var cat = $('#<?php echo $this->category_tag_id; ?>').val();
                 $.ajax({
-                        'url': baseurl + '../user.php/site/<?php echo $this->type; ?>Cat',
+                        'url': '<?php echo Yii::app()->request->baseurl ?>' + '../user.php/site/<?php echo $this->type; ?>Cat',
                         'async': false,
                         'type': "POST",
                         'global': false,

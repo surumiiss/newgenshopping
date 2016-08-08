@@ -57,7 +57,8 @@ class MerchantDetails extends CActiveRecord {
         // will receive user inputs.
         return array(
 //			array('user_id, fullname, product_categories, merchant_type, product_count, shop_name, address, pincode, city, locality, district, state, country, CB, UB, DOC, DOU, is_payment_done', 'required'),
-            array('fullname, product_categories, merchant_type, shop_name, address, pincode, city, locality, district, state, country, is_payment_done', 'required'),
+            array('fullname, product_categories, merchant_type, shop_name, address, pincode, city, locality, district, state, country, is_payment_done', 'required','on'=>'admin_create'),
+            array('fullname, product_categories, merchant_type', 'required','on'=>'user_create'),
             array('user_id, merchant_type, product_count, pincode, CB, UB, is_payment_done', 'numerical', 'integerOnly' => true),
             array('fullname, city, locality, vat_tin', 'length', 'max' => 100),
             array('product_categories, shop_name, shop_logo, shop_banner', 'length', 'max' => 250),

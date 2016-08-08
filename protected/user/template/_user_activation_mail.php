@@ -185,7 +185,7 @@
 
               <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top;height: 42" width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tbody><tr style="vertical-align: top"><td style="word-break: break-word;border-collapse: collapse !important;vertical-align: top;border-radius: 5px;                   -webkit-border-radius: 5px;                   -moz-border-radius: 5px;                  color: #ffffff;                  background-color: #C7702E;                  padding-top: 5px;                   padding-right: 20px;                  padding-bottom: 5px;                  padding-left: 20px;                  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;text-align: center" valign="middle"><!--<![endif]-->
-                  <a style="display: inline-block;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;background-color: #C7702E;color: #ffffff" href="<?php echo "http://localhost/newgenshopping/user.php/registration/merchant/UserActivation?id=".$model->email_verification; ?>" target="_blank">
+                            <a style="display: inline-block;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;background-color: #C7702E;color: #ffffff" href="<?php echo MerchantDetailsController::siteURL()."/user.php/registration/merchant/UserActivation?id=".$user_model->activation_link; ?>" target="_blank">
                         <span style="font-size:16px;line-height:32px;">Activate your account</span>
                   </a>
                 <!--[if !mso]><!- - --></td></tr></tbody></table>

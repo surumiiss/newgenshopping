@@ -12,11 +12,56 @@ $this->widget('zii.widgets.CDetailView', array(
         'users.email',
         'users.phone_number',
         'users.password',
-        'product_categories',
-        'merchant_type',
+        array(
+            'name' => 'product_categories',
+            'value' => function($data) {
+                $cats = explode(',', $data->product_categories);
+                $catt = '';
+                foreach ($cats as $cat) {
+                    unset($_SESSION['category']);
+                    $category = ProductCategory::model()->findByPk($cat);
+                    $catt .= Yii::app()->category->selectCategories($category) . ', ';
+                }
+                return $catt;
+            },
+        ),
+        array(
+            'name' => 'merchant_type',
+            'value' => function($data) {
+                if ($data->merchant_type == 2) {
+                    return "Wholesale";
+                } elseif ($data->merchant_type == 1) {
+                    return "Retail";
+                } elseif ($data->merchant_type == 0) {
+                    return "Default";
+                } else {
+                    return "Invalid";
+                }
+            },
+        ),
         'shop_name',
-        'shop_logo',
-        'shop_banner',
+        array(
+            'name' => 'shop_logo',
+            'value' => function($data) {
+                if ($data->shop_logo == "") {
+                    return;
+                } else {
+                    return '<img width="125" style="border: 2px solid #d2d2d2;" src="' . Yii::app()->request->baseUrl . "/uploads/users/merchants/shop_logo/" . $data->id . "." . $data->shop_logo . '" />';
+                }
+            },
+            'type' => 'raw'
+        ),
+        array(
+            'name' => 'shop_banner',
+            'value' => function($data) {
+                if ($data->shop_banner == "") {
+                    return;
+                } else {
+                    return '<img width="125" style="border: 2px solid #d2d2d2;" src="' . Yii::app()->request->baseUrl . "/uploads/users/merchants/shop_banner/" . $data->id . "." . $data->shop_banner . '" />';
+                }
+            },
+            'type' => 'raw'
+        ),
         'address',
         'pincode',
         'city',
@@ -24,7 +69,18 @@ $this->widget('zii.widgets.CDetailView', array(
         'district',
         'state',
         'country',
-        'is_payment_done',
+        array(
+            'name' => 'is_payment_done',
+            'value' => function($data) {
+                if ($data->is_payment_done == 1) {
+                    return "Yes";
+                } elseif ($data->is_payment_done == 0) {
+                    return "No";
+                } else {
+                    return "Invalid";
+                }
+            },
+        ),
         array(
             'name' => 'users.user_status',
             'value' => function($data) {

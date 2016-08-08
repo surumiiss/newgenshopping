@@ -1,6 +1,6 @@
 <?php
-/* @var $this MerchantController */
-/* @var $model Merchant */
+/* @var $this MerchantDetailsController */
+/* @var $model MerchantDetails */
 /* @var $form CActiveForm */
 ?>
 
@@ -8,7 +8,7 @@
 
     <?php
     $form = $this->beginWidget('CActiveForm', array(
-        'id' => 'merchant-form',
+        'id' => 'merchant-details-form',
         'htmlOptions' => array('class' => 'form-horizontal'),
         // Please note: When you enable ajax validation, make sure the corresponding
         // controller action is handling ajax validation correctly.
@@ -22,7 +22,8 @@
 
     <?php echo $form->errorSummary($model); ?>
     <br/>
-    <!--<div class="form-inline">-->
+
+
     <div class="form-group">
         <div class="col-sm-2 control-label"> 
             <?php echo $form->labelEx($model, 'fullname'); ?>
@@ -32,54 +33,43 @@
             <?php echo $form->error($model, 'fullname'); ?>
         </div>
     </div>
-
     <div class="form-group">
-        <div class="col-sm-2 control-label"> 
-            <?php echo $form->labelEx($model, 'email'); ?>
-        </div>
+        <?php echo $form->labelEx($user_model, 'email', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'email', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'email'); ?>
+            <?php echo $form->textField($user_model, 'email', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?>
+            <?php echo $form->error($user_model, 'email'); ?>
         </div>
     </div>
 
     <div class="form-group">
-        <div class="col-sm-2 control-label"> 
-            <?php echo $form->labelEx($model, 'phone_number'); ?>
-        </div>
+        <?php echo $form->labelEx($user_model, 'phone_number', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->textField($model, 'phone_number', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'phone_number'); ?>
+            <?php echo $form->textField($user_model, 'phone_number', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?>
+            <?php echo $form->error($user_model, 'phone_number'); ?>
         </div>
     </div>
 
     <div class="form-group">
-        <div class="col-sm-2 control-label"> 
-            <?php echo $form->labelEx($model, 'password'); ?>
-        </div>
+        <?php echo $form->labelEx($user_model, 'password', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->passwordField($model, 'password', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'password'); ?>
+            <?php echo $form->passwordField($user_model, 'password', array('size' => 60, 'maxlength' => 225, 'class' => 'form-control')); ?>
+            <?php echo $form->error($user_model, 'password'); ?>
         </div>
     </div>
 
     <div class="form-group">
-        <div class="col-sm-2 control-label"> 
-            <?php echo $form->labelEx($model, 'confirm'); ?>
-        </div>
+        <?php echo $form->labelEx($user_model, 'confirm_password', array('class' => 'col-sm-2 control-label')); ?>
         <div class="col-sm-10">
-            <?php echo $form->passwordField($model, 'confirm', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'confirm'); ?>
+            <?php echo $form->passwordField($user_model, 'confirm_password', array('size' => 60, 'maxlength' => 225, 'class' => 'form-control')); ?>
+            <?php echo $form->error($user_model, 'confirm_password'); ?>
         </div>
     </div>
-
-
     <div class="form-group">
         <div class="col-sm-2 control-label"> 
             <?php echo $form->labelEx($model, 'product_categories'); ?>
         </div>
         <div class="col-sm-10">
-             <?php
+            <?php
             if (!$model->isNewRecord) {
                 if (!empty($model->product_categories)) {
                     $ids = explode(',', $model->product_categories);
@@ -96,8 +86,8 @@
             $this->widget('application.user.components.CatSelect', array(
                 'type' => 'category',
                 'field_val' => $model->product_categories,
-                'category_tag_id' => 'Merchant_product_categories', /* id of hidden field */
-                'form_id' => 'merchant-form',
+                'category_tag_id' => 'MerchantDetails_product_categories', /* id of hidden field */
+                'form_id' => 'merchant-details-form',
             ));
             ?>
             <?php echo $form->error($model, 'product_categories'); ?>
@@ -109,22 +99,10 @@
             <?php echo $form->labelEx($model, 'merchant_type'); ?>
         </div>
         <div class="col-sm-10">
-              <?php echo $form->dropDownList($model, 'merchant_type', array('1' => "Wholesale", '0' => "Retail", '2'=>"Default"), array('empty' => 'Select', 'class' => 'form-control')); ?>
+            <?php echo $form->dropDownList($model, 'merchant_type', array('2' => "Wholesale", '1' => "Retail", '0' => "Default"), array('empty' => 'Select', 'class' => 'form-control')); ?>
             <?php echo $form->error($model, 'merchant_type'); ?>
         </div>
     </div>
-
-
-<!--    <div class="form-group">
-        <div class="col-sm-2 control-label"> 
-            <?php echo $form->labelEx($model, 'is_payment_done'); ?>
-        </div>
-        <div class="col-sm-10">
-            <?php echo $form->textField($model, 'is_payment_done', array('class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'is_payment_done'); ?>
-        </div>
-    </div>-->
-
 
     <div class="box-footer">
         <label>&nbsp;</label><br/>
