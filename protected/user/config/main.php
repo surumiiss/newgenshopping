@@ -37,6 +37,7 @@ return array(
     // application components
     'components' => array(
         'Upload' => array('class' => 'UploadFile'),
+        'Currency' => array('class' => 'Converter'),
         'category' => array('class' => 'selectCategory'),
         'Menu' => array('class' => 'MenuCategory'),
         'user' => array(

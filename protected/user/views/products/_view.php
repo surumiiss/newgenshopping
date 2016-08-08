@@ -20,7 +20,7 @@
 
 
         <h4><?php echo $data->product_name; ?></h4>
-        <h4><?php echo $data->price . '/-'; ?></h4>
+        <p><?php echo Yii::app()->Currency->convert($data->price); ?></p>
 
 
         <a  href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/Products/Detail/name/<?php echo $data->canonical_name; ?>" style="text-align: right !important;">More >></a>
