@@ -19,32 +19,15 @@ class UserIdentity extends CUserIdentity {
 
         $password = "";
 
-
-        // for merchant login
-        if (Merchant::model()->findByAttributes(array('email' => $this->username))) {
-            $user = Merchant::model()->findByAttributes(array('email' => $this->username));
+        if (Users::model()->findByAttributes(array('email' => $this->username))) {
+            $user = Users::model()->findByAttributes(array('email' => $this->username));
             $password = $user->password;
-            $merchant_id = $user->id;
-            $merchant_name = $user->fullname;
+            $user_id = $user->id;
+            $user_type = $user->user_type;
             Yii::app()->user->setState('user_mail', $this->username);
-            Yii::app()->user->setState('user_id', $merchant_id);
-            Yii::app()->user->setState('user_type', 'merchant');
-            Yii::app()->user->setState('user_name', $merchant_name);
+            Yii::app()->user->setState('user_id', $user_id);
+            Yii::app()->user->setState('user_type', $user_type);
         }
-
-
-        // for buyer login
-        if (BuyerDetails::model()->findByAttributes(array('email' => $this->username))) {
-            $user = BuyerDetails::model()->findByAttributes(array('email' => $this->username));
-            $password = $user->password;
-            $buyer_id = $user->id;
-            $name = $user->first_name . ' ' . $user->last_name;
-            Yii::app()->user->setState('user_mail', $this->username);
-            Yii::app()->user->setState('user_id', $buyer_id);
-            Yii::app()->user->setState('user_type', 'buyer');
-            Yii::app()->user->setState('user_name', $name);
-        }
-
 
 
         if ($this->username === null)

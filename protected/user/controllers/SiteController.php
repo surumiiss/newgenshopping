@@ -50,7 +50,8 @@ class SiteController extends Controller {
                         $model->attributes = $_POST['LoginForm'];
                         if ($model->validate()) {
                                 // form inputs are valid, do something here
-                                $this->redirect(array('index'));
+//                                $this->redirect(array('index'));
+                            echo 'inside';
                         }
                 }
                 $this->render('login', array('model' => $model));
