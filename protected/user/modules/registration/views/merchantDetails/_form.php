@@ -80,7 +80,7 @@ $form = $this->beginWidget('CActiveForm', array(
 </div>
 
 <?php echo CHtml::submitButton($model->isNewRecord ? 'Submit' : 'Save', array('class' => "btn btn-default btn-sm bt_up2 ")); ?>
-<button type="submit" class="btn btn-default btn-sm bt_up ">Cancel</button>
+<a href="<?php echo Yii::app()->request->baseUrl?>" class="btn btn-default btn-sm bt_up "> Cancel </a>
 
 
 <?php $this->endWidget(); ?>

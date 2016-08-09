@@ -95,22 +95,24 @@ $form = $this->beginWidget('CActiveForm', array(
     <?php echo $form->error($user_model, 'confirm_password', array('class' => 'red')); ?>
 
 </div>
-<div class="form-group">
 
-    <?php echo $form->dropDownList($model, 'newsletter', array('1' => "Enabled", '0' => "Disabled"), array('empty' => 'Subscribe Newsletter', 'class' => 'form-new')); ?>
+
+<div class="checkbox checkbox2">
+    <label> 
+        <?php echo $form->checkBox($model, 'newsletter'); ?>
+        Subscribe Newsletter</label>
     <?php echo $form->error($model, 'newsletter', array('class' => 'red')); ?>
-
 </div>
 
 <div class="checkbox checkbox2">
-    <label><input type="checkbox" value="">I agree to the <span>Privacy Policy</span> and <span>T&C</span></label>
+    <label> 
+        <?php echo $form->checkBox($model, 'terms'); ?>
+        I agree to the <span>Privacy Policy</span> and <span>T&C</span></label>
+    <?php echo $form->error($model, 'terms', array('class' => 'red')); ?>
 </div>
 
-<button type="submit" class="btn btn-default btn-sm bt_up2 ">Submit</button>
 
-<button type="submit" class="btn btn-default btn-sm bt_up ">Cancel</button>
-
-<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class' => 'btn btn-laksyah pos', 'style' => 'border-radius:0px;padding: 10px 50px;')); ?>
-
+<?php echo CHtml::submitButton($model->isNewRecord ? 'Submit' : 'Save', array('class' => 'btn btn-default btn-sm bt_up2')); ?>
+<a href="<?php echo Yii::app()->request->baseUrl?>" class="btn btn-default btn-sm bt_up "> Cancel </a>
 
 <?php $this->endWidget(); ?>

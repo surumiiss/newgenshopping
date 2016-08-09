@@ -7,41 +7,21 @@
     </div>
 </section>
 
-
-
 <div class="clearfix"></div>
-
-
-
-
-
-
 
 <section class="beautifull-spa-and-faeture">
     <h2 class="hidden">Feature</h2>
     <div class="container">
         <div class="row">
 
-
-
         </div> <!-- end of row -->
     </div> <!-- end of container -->
 </section>
 
-
-
-
 <section class="facial services">
     <div class="container">
         <div class="row">
-
-
-
-
-            <div class="col-md-12 pdg">
-
-
-
+          <div class="col-md-12 pdg">
                 <div class="row">
                     <div class="col-md-2 space list-1">
                         <ul class="list-unstyled">
@@ -62,8 +42,6 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
 
         </div>

@@ -29,6 +29,7 @@ class BuyerDetails extends CActiveRecord {
     public $last_login;
     public $phone_number;
     public $user_status;
+    public $terms;
 
     /**
      * @return string the associated database table name
@@ -45,7 +46,8 @@ class BuyerDetails extends CActiveRecord {
         // will receive user inputs.
         return array(
 //			array('user_id, first_name, last_name, dob, gender, phone_no_2, newsletter, wallet_amt, CB, UB, DOC, DOU', 'required'),
-			array('first_name, last_name, dob, gender, newsletter', 'required','on' => 'user_create'),
+            array('first_name, last_name, dob, gender, newsletter,terms', 'required', 'on' => 'user_create'),
+            array('terms', 'compare', 'compareValue' => 1, 'message' => 'Please accept terms and conditions to use our service'),
             array('first_name, last_name, dob, gender', 'required', 'on' => 'admin_create'),
             array('user_id, newsletter, CB, UB, field2, field3', 'numerical', 'integerOnly' => true),
             array('first_name, last_name, phone_no_2', 'length', 'max' => 100),
@@ -147,7 +149,7 @@ class BuyerDetails extends CActiveRecord {
             'criteria' => $criteria,
         ));
     }
-    
+
     function getEmail() {
         return $this->users->email;
     }

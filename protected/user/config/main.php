@@ -6,6 +6,7 @@
 // CWebApplication properties can be configured here.
 $user = dirname(dirname(__FILE__));
 Yii::setPathOfAlias('user', $user);
+Yii::setPathOfAlias('booster', dirname(__FILE__) . '/../extensions/yiibooster');
 return array(
     'basePath' => dirname($user),
     'runtimePath' => $user . '/runtime',
@@ -13,7 +14,7 @@ return array(
     'viewPath' => $user . '/views',
     'name' => 'NewGen Shop',
     // preloading 'log' component
-    'preload' => array('log'),
+    'preload' => array('log', 'booster'),
     // autoloading model and component classes
     'import' => array(
         'application.models.*',
@@ -37,6 +38,9 @@ return array(
     // application components
     'components' => array(
         'Upload' => array('class' => 'UploadFile'),
+         'booster' => array(
+            'class' => 'booster.components.Booster',
+        ),
         'Currency' => array('class' => 'Converter'),
         'category' => array('class' => 'selectCategory'),
         'Menu' => array('class' => 'MenuCategory'),
