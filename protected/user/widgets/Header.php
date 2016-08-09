@@ -89,7 +89,7 @@ class Header extends CWidget {
                             <div class="col-md-4">
                                 <ul class="list-inline list-unstyled">
                                     <li><a class="mycart" href="#">Mycart<img class="shop" src="<?php echo Yii::app()->request->baseUrl; ?>/images/shop.png"></a></li>
-                                    <li><a href="#">Signin</a></li>
+                                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/user.php/login">Signin</a></li>
                                     <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/user.php/user-registration">Register</a></li>
                                     <div class="dropdown">
                                         <button class="btn btn-primary cat dropdown-toggle" type="button" data-toggle="dropdown">
