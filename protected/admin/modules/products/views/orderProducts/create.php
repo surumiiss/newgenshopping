@@ -12,7 +12,7 @@
 </section>
 
 
-<a href="<?php echo Yii::app()->request->baseUrl.'/admin.php/products/orderProducts/admin'; ?>" class='btn  btn-success manage'>Manage OrderProducts</a>
+<a href="<?php echo Yii::app()->request->baseUrl.'/admin.php/products/orderProducts/admin'; ?>" class='btn  btn-laksyah'>Manage OrderProducts</a>
 <section class="content">
         <div class="box box-info">
 

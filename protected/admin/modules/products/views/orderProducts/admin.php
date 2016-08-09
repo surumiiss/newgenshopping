@@ -7,7 +7,7 @@
         <li class="active">Manage</li>
     </ol>
 </section>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo Yii::app()->request->baseUrl . '/admin.php/products/orderProducts/create'; ?>" class='btn  btn-success manage'>Add OrderProducts</a>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo Yii::app()->request->baseUrl . '/admin.php/products/orderProducts/create'; ?>" class='btn  btn-laksyah'>Add OrderProducts</a>
 <div class="col-xs-12 form-page"  style="margin-top: .5em;">
     <div class="box">
         <div class="box-body table-responsive no-padding">

@@ -105,3 +105,26 @@ ALTER TABLE `merchant_details` DROP FOREIGN KEY `merchant_details_ibfk_2`; ALTER
 
 ALTER TABLE `users` CHANGE `activation_link` `activation_link` INT(250) NOT NULL COMMENT 'for email verification';
 ALTER TABLE `users` CHANGE `activation_link` `activation_link` VARCHAR(250) NOT NULL COMMENT 'for email verification';
+
+-- 09/08/2016
+-- added by Aathira
+
+ALTER TABLE `products` ADD `discount_from` DATE NOT NULL AFTER `discount_rate`, ADD `discount_to` DATE NOT NULL AFTER `discount_from`;
+ALTER TABLE `products` ADD `special_price` FLOAT NOT NULL COMMENT 'offer price' AFTER `special_price_from`;
+
+CREATE TABLE IF NOT EXISTS `master_brands` (
+`id` int(11) NOT NULL,
+  `brand_name` varchar(200) NOT NULL,
+  `category_id` varchar(200) NOT NULL,
+  `CB` int(11) NOT NULL,
+  `UB` int(11) NOT NULL,
+  `DOC` date NOT NULL,
+  `DOU` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+ALTER TABLE `master_brands`
+ ADD PRIMARY KEY (`id`), ADD KEY `category_id` (`category_id`);
+
+ALTER TABLE `master_brands`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+

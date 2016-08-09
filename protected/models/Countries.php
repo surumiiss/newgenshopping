@@ -6,7 +6,10 @@
  * The followings are the available columns in table 'countries':
  * @property integer $id
  * @property string $country_name
- * @property integer $zone
+ *
+ * The followings are the available model relations:
+ * @property States[] $states
+ * @property UserAddress[] $userAddresses
  */
 class Countries extends CActiveRecord
 {
@@ -26,12 +29,11 @@ class Countries extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('country_name, zone', 'required'),
-			array('zone', 'numerical', 'integerOnly'=>true),
+			array('country_name', 'required'),
 			array('country_name', 'length', 'max'=>100),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, country_name, zone', 'safe', 'on'=>'search'),
+			array('id, country_name', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -43,6 +45,8 @@ class Countries extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'states' => array(self::HAS_MANY, 'States', 'country_id'),
+			'userAddresses' => array(self::HAS_MANY, 'UserAddress', 'country'),
 		);
 	}
 
@@ -54,7 +58,6 @@ class Countries extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'country_name' => 'Country Name',
-			'zone' => 'Zone',
 		);
 	}
 
@@ -78,7 +81,6 @@ class Countries extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('country_name',$this->country_name,true);
-		$criteria->compare('zone',$this->zone);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
