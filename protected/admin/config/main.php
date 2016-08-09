@@ -28,6 +28,8 @@ return array(
         'admin.views.*',
         'admin.modules.*',
         'admin.extensions.easyimage.EasyImage',
+//        'admin.extensions.NavaJcrop.ImageJcrop',
+//        'admin.extensions.jcrop.EJcrop',
     ),
     'modulePath' => $admin . '/modules/',
     'modules' => array(
