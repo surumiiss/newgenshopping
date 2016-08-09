@@ -82,14 +82,7 @@ class MerchantDetailsController extends Controller {
                         exit;
                     }
                 }
-            } else {
-                echo '<br><br>';
-                print_r($model->attributes);
-                echo '<br><br>';
-                print_r($user_model->attributes);
-                echo 'not valid';
-                exit;
-            }
+            } 
         }
 
         $this->render('create', array(

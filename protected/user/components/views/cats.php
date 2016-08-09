@@ -1,5 +1,5 @@
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<input type="text" id="<?php echo $this->type; ?>_tag_select" class="form-control" autocomplete="off" placeholder = "<?php echo $this->type; ?> Tags">
+<input type="text" id="<?php echo $this->type; ?>_tag_select" class="form-control" autocomplete="off" placeholder = "Product Categories">
 
 <div class="col-sm-12 <?php echo $this->type; ?>_tagss" id="<?php echo $this->type; ?>_new_tag">
 

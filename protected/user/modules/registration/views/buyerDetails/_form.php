@@ -1,145 +1,116 @@
+
 <?php
-/* @var $this BuyerDetailsController */
-/* @var $model BuyerDetails */
-/* @var $form CActiveForm */
+$form = $this->beginWidget('CActiveForm', array(
+    'id' => 'buyer-details-form',
+//        'htmlOptions' => array('class' => 'form-horizontal'),
+    // Please note: When you enable ajax validation, make sure the corresponding
+    // controller action is handling ajax validation correctly.
+    // There is a call to performAjaxValidation() commented in generated controller code.
+    // See class documentation of CActiveForm for details on this.
+    'enableAjaxValidation' => false,
+        ));
 ?>
 
-<div class="form">
+<?php // echo $form->errorSummary(array($model, $user_model)); ?>
+
+
+<div class="form-group">
+
+    <?php echo $form->textField($model, 'first_name', array('placeholder' => 'First Name', 'class' => 'form-new')); ?>
+    <?php echo $form->error($model, 'first_name', array('class' => 'red')); ?>
+
+</div>
+
+<div class="form-group">
+
+    <?php echo $form->textField($model, 'last_name', array('placeholder' => 'Last Name', 'class' => 'form-new')); ?>
+    <?php echo $form->error($model, 'last_name', array('class' => 'red')); ?>
+
+</div>
+
+<div class="form-group">
 
     <?php
-    $form = $this->beginWidget('CActiveForm', array(
-        'id' => 'buyer-details-form',
-        'htmlOptions' => array('class' => 'form-horizontal'),
-        // Please note: When you enable ajax validation, make sure the corresponding
-        // controller action is handling ajax validation correctly.
-        // There is a call to performAjaxValidation() commented in generated controller code.
-        // See class documentation of CActiveForm for details on this.
-        'enableAjaxValidation' => false,
+    $from = date('Y') - 80;
+    $to = date('Y') - 16;
+    $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+        'model' => $model,
+        'attribute' => 'dob',
+        'value' => 'dob',
+        'options' => array(
+            'dateFormat' => 'dd-mm-yy',
+            'changeYear' => true, // can change year
+            'changeMonth' => true, // can change month
+            'yearRange' => $from . ':' . $to, // range of year
+            'showButtonPanel' => true, // show button panel
+        ),
+        'htmlOptions' => array(
+            'size' => '10', // textField size
+            'maxlength' => '10', // textField maxlength
+            'class' => 'form-new',
+            'placeholder' => 'Date Of Birth',
+        ),
     ));
     ?>
+    <?php echo $form->error($model, 'dob', array('class' => 'red')); ?>
 
-    <p class="note">Fields with <span class="required">*</span> are required.</p>
+</div>
 
-    <?php echo $form->errorSummary(array($model, $user_model)); ?>
+<div class="form-group">
 
+    <?php echo $form->dropDownList($model, 'gender', array('Male' => "Male", 'Female' => "Female"), array('empty' => 'Gender', 'class' => 'form-new')); ?>
+    <?php echo $form->error($model, 'gender', array('class' => 'red')); ?>
 
-    <div class="form-group">
-        <div class="col-sm-2 control-label"> 
-            <?php echo $form->labelEx($model, 'first_name'); ?>
-        </div>
-        <div class="col-sm-10">
-            <?php echo $form->textField($model, 'first_name', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'first_name'); ?>
-        </div>
-    </div>
+</div>
+<div class="form-group">
 
-    <div class="form-group">
-        <div class="col-sm-2 control-label"> 
-            <?php echo $form->labelEx($model, 'last_name'); ?>
-        </div>
-        <div class="col-sm-10">
-            <?php echo $form->textField($model, 'last_name', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'last_name'); ?>
-        </div>
-    </div>
+    <?php echo $form->textField($user_model, 'email', array('placeholder' => 'Email', 'class' => 'form-new')); ?>
+    <?php echo $form->error($user_model, 'email', array('class' => 'red')); ?>
 
-    <div class="form-group">
-        <div class="col-sm-2 control-label"> 
-            <?php echo $form->labelEx($model, 'dob'); ?>
-        </div>
-        <div class="col-sm-10">
-            <?php
-            $from = date('Y') - 80;
-            $to = date('Y') - 16;
-            $this->widget('zii.widgets.jui.CJuiDatePicker', array(
-                'model' => $model,
-                'attribute' => 'dob',
-                'value' => 'dob',
-                'options' => array(
-                    'dateFormat' => 'dd-mm-yy',
-                    'changeYear' => true, // can change year
-                    'changeMonth' => true, // can change month
-                    'yearRange' => $from . ':' . $to, // range of year
-                    'showButtonPanel' => true, // show button panel
-                ),
-                'htmlOptions' => array(
-                    'size' => '10', // textField size
-                    'maxlength' => '10', // textField maxlength
-                    'class' => 'form-control',
-                    'placeholder' => 'Date Of Birth',
-                ),
-            ));
-            ?>
-            <?php echo $form->error($model, 'dob'); ?>
-        </div>
-    </div>
+</div>
 
-    <div class="form-group">
-        <div class="col-sm-2 control-label"> 
-            <?php echo $form->labelEx($model, 'gender'); ?>
-        </div>
-        <div class="col-sm-10">
-            <?php echo $form->dropDownList($model, 'gender', array('male' => "male", 'female' => "fe-male"), array('empty' => 'Select Gender', 'class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'gender'); ?>
-        </div>
-    </div>
-    <div class="form-group">
-        <?php echo $form->labelEx($user_model, 'email', array('class' => 'col-sm-2 control-label')); ?>
-        <div class="col-sm-10">
-            <?php echo $form->textField($user_model, 'email', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?>
-            <?php echo $form->error($user_model, 'email'); ?>
-        </div>
-    </div>
+<div class="form-group">
 
-    <div class="form-group">
-        <?php echo $form->labelEx($user_model, 'phone_number', array('class' => 'col-sm-2 control-label')); ?>
-        <div class="col-sm-10">
-            <?php echo $form->textField($user_model, 'phone_number', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?>
-            <?php echo $form->error($user_model, 'phone_number'); ?>
-        </div>
-    </div>
+    <?php echo $form->textField($user_model, 'phone_number', array('placeholder' => 'Phone Number 1', 'class' => 'form-new')); ?>
+    <?php echo $form->error($user_model, 'phone_number', array('class' => 'red')); ?>
 
-    <div class="form-group">
-        <div class="col-sm-2 control-label"> 
-            <?php echo $form->labelEx($model, 'phone_no_2'); ?>
-        </div>
-        <div class="col-sm-10">
-            <?php echo $form->textField($model, 'phone_no_2', array('size' => 60, 'maxlength' => 100, 'class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'phone_no_2'); ?>
-        </div>
-    </div>
-    <div class="form-group">
-        <?php echo $form->labelEx($user_model, 'password', array('class' => 'col-sm-2 control-label')); ?>
-        <div class="col-sm-10">
-            <?php echo $form->passwordField($user_model, 'password', array('size' => 60, 'maxlength' => 225, 'class' => 'form-control')); ?>
-            <?php echo $form->error($user_model, 'password'); ?>
-        </div>
-    </div>
+</div>
 
-    <div class="form-group">
-        <?php echo $form->labelEx($user_model, 'confirm_password', array('class' => 'col-sm-2 control-label')); ?>
-        <div class="col-sm-10">
-            <?php echo $form->passwordField($user_model, 'confirm_password', array('size' => 60, 'maxlength' => 225, 'class' => 'form-control')); ?>
-            <?php echo $form->error($user_model, 'confirm_password'); ?>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-2 control-label"> 
-            <?php echo $form->labelEx($model, 'newsletter'); ?>
-        </div>
-        <div class="col-sm-10">
-            <?php echo $form->dropDownList($model, 'newsletter', array('1' => "Enabled", '0' => "Disabled"), array('class' => 'form-control')); ?>
-            <?php echo $form->error($model, 'newsletter'); ?>
-        </div>
-    </div>
+<div class="form-group">
+
+    <?php echo $form->textField($model, 'phone_no_2', array('placeholder' => 'Phone Number 2', 'class' => 'form-new')); ?>
+    <?php echo $form->error($model, 'phone_no_2', array('class' => 'red')); ?>
+
+</div>
+<div class="form-group">
+
+    <?php echo $form->passwordField($user_model, 'password', array('placeholder' => 'Password', 'class' => 'form-new')); ?>
+    <?php echo $form->error($user_model, 'password', array('class' => 'red')); ?>
+
+</div>
+
+<div class="form-group">
+
+    <?php echo $form->passwordField($user_model, 'confirm_password', array('placeholder' => 'Confirm Password', 'class' => 'form-new')); ?>
+    <?php echo $form->error($user_model, 'confirm_password', array('class' => 'red')); ?>
+
+</div>
+<div class="form-group">
+
+    <?php echo $form->dropDownList($model, 'newsletter', array('1' => "Enabled", '0' => "Disabled"), array('empty' => 'Subscribe Newsletter', 'class' => 'form-new')); ?>
+    <?php echo $form->error($model, 'newsletter', array('class' => 'red')); ?>
+
+</div>
+
+<div class="checkbox checkbox2">
+    <label><input type="checkbox" value="">I agree to the <span>Privacy Policy</span> and <span>T&C</span></label>
+</div>
+
+<button type="submit" class="btn btn-default btn-sm bt_up2 ">Submit</button>
+
+<button type="submit" class="btn btn-default btn-sm bt_up ">Cancel</button>
+
+<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class' => 'btn btn-laksyah pos', 'style' => 'border-radius:0px;padding: 10px 50px;')); ?>
 
 
-
-    <div class="box-footer">
-        <label>&nbsp;</label><br/>
-        <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class' => 'btn btn-laksyah pos', 'style' => 'border-radius:0px;padding: 10px 50px;')); ?>
-    </div>
-
-    <?php $this->endWidget(); ?>
-
-</div><!-- form -->
+<?php $this->endWidget(); ?>
