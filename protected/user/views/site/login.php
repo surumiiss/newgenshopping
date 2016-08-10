@@ -67,7 +67,7 @@
 
                         <div class="col-md-5 col-sm-5 col-xs-7 padd">
 
-                            <a class="new" href="#"> Sign Up Free</a>
+                            <a class="new" href="<?php echo Yii::app()->request->baseUrl; ?>/user.php/user-registration"> Sign Up Here</a>
 
                         </div>
 

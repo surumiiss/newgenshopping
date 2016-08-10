@@ -128,3 +128,7 @@ ALTER TABLE `master_brands`
 ALTER TABLE `master_brands`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
+-- 10/08/2016
+-- added by Aathira
+
+ALTER TABLE `users` CHANGE `password` `password` VARCHAR(25) NOT NULL;

@@ -49,52 +49,45 @@ class SiteController extends Controller {
         if (isset($_POST['LoginForm'])) {
             $model->attributes = $_POST['LoginForm'];
             if ($model->validate()) {
+
                 $user_model = Users::model()->findByAttributes(array('email' => $model->email));
                 date_default_timezone_set('Asia/Calcutta');
                 $user_model->last_login = date('Y-m-d H:i:s');
                 $user_model->update();
-                // form inputs are valid, do something here
-//                                $this->redirect(array('index'));
-                echo 'inside';
+
+                if ($user_model->user_type == 1) {
+
+                    // login buyer
+                    $buyer = BuyerDetails::model()->findByAttributes(array('user_id' => $user_model->id));
+                    $buyer_id = $buyer->id;
+                    Yii::app()->user->setState('buyer_id', $buyer_id);
+                    $this->redirect(array('buyer/default/index'));
+                } else if ($user_model->user_type == 2) {
+
+                    // login merchant
+                    $merchant = MerchantDetails::model()->findByAttributes(array('user_id' => $user_model->id));
+                    $merchant_id = $merchant->id;
+                    Yii::app()->user->setState('merchant_id', $merchant_id);
+                    $this->redirect(array('merchant/default/index'));
+                } else {
+                    // login invalid
+                    echo 'invalid login';
+                }
             }
         }
         $this->render('login', array('model' => $model));
     }
 
     public function actionLogout() {
+        
         Yii::app()->user->logout();
+        Yii::app()->user->setState('user_mail', null);
+        Yii::app()->user->setState('user_id', null);
+        Yii::app()->user->setState('user_type', null);
+        Yii::app()->user->setState('buyer_id', null);
+        Yii::app()->user->setState('merchant_id', null);
         $this->redirect(Yii::app()->homeUrl);
-    }
-
-    public function actionRegister() {
-        $model = new BuyerDetails('create');
-        if (isset($_POST['BuyerDetails'])) {
-            $model->attributes = $_POST['BuyerDetails'];
-            $date1 = $_POST['BuyerDetails']['dob'];
-            $newDate = date("Y-m-d", strtotime($date1));
-            $model->dob = $newDate;
-            $model->gender = $_POST['BuyerDetails']['gender'];
-            $model->phone_no_1 = $_POST['BuyerDetails']['phone_no_1'];
-            $model->phone_no_2 = $_POST['BuyerDetails']['phone_no_2'];
-            if ($model->validate()) {
-                $model->status = 1;
-                $model->CB = 1;
-                $model->UB = 1;
-                $model->DOC = date('Y-m-d');
-            }
-            if ($model->password == $model->confirm) {
-                if ($model->save()) {
-//Yii::app()->user->setFlash('success', "Dear, $model->first_name, your message has been sent successfully");
-                    Yii::app()->session['user'] = $model;
-                    $this->redirect('index');
-                } else {
-// Yii::app()->user->setFlash('error', "Sorry! Message seniding Failed..");
-                }
-            } else {
-                $model->addError(confirm, 'password mismatch');
-            }
-        }
-        $this->render('register', array('model' => $model));
+        
     }
 
     public function actionCategoryCat() {

@@ -35,6 +35,7 @@ class Header extends CWidget {
                 <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/slick.css" rel="stylesheet">
                 <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/slick-theme.css" rel="stylesheet">
                 <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/contact.css" rel="stylesheet">
+                <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/custom_style.css" rel="stylesheet">
                 <style>
 
                     .red {
@@ -88,8 +89,16 @@ class Header extends CWidget {
                             </div>
                             <div class="col-md-4">
                                 <ul class="list-inline list-unstyled">
-                                    <li><a class="mycart" href="#">Mycart<img class="shop" src="<?php echo Yii::app()->request->baseUrl; ?>/images/shop.png"></a></li>
-                                    <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/user.php/login">Signin</a></li>
+                                    <li><a class="mycart" href="#">Mycart<img class="shop" src="<?php echo Yii::app()->request->baseUrl; ?>/images/shop.png"></a></li>        
+                                    <?php
+                                    $text = 'Sign In';
+                                    $state = 'login';
+                                    if (Yii::app()->user->hasState('user_id')) {
+                                        $text = 'Sign Out';
+                                        $state = 'logout';
+                                    }
+                                    ?>
+                                    <li><a href="<?php echo Yii::app()->request->baseUrl . '/user.php/' . $state; ?>"><?php echo $text; ?></a></li>
                                     <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/user.php/user-registration">Register</a></li>
                                     <div class="dropdown">
                                         <button class="btn btn-primary cat dropdown-toggle" type="button" data-toggle="dropdown">

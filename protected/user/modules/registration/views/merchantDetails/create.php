@@ -2,7 +2,7 @@
 
     <div id="large-header" class="large-header " style="height: 124px; background: url(<?php echo Yii::app()->request->baseurl; ?>/images/img_inn.jpg)">
         <div class="banner_txt">
-            <h1 class="animated fadeInLeft m2">Regi<span class="redish">ster </span></h1>
+            <h1 class="animated fadeInLeft m2">Merchant<span class="redish">Register </span></h1>
         </div>
     </div>
 </section>
@@ -21,7 +21,7 @@
 <section class="facial services">
     <div class="container">
         <div class="row">
-          <div class="col-md-12 pdg">
+            <div class="col-md-12 pdg">
                 <div class="row">
                     <div class="col-md-2 space list-1">
                         <ul class="list-unstyled">
@@ -35,7 +35,13 @@
 
 
                             <div class="rgr_form">
-                                <?php $this->renderPartial('_form', array('model' => $model, 'user_model' => $user_model)); ?>     
+                                <?php
+//                                if (isset($_POST['MerchantDetails'])) {
+//                                    header('Location:' . Yii::app()->request->baseurl . '/user.php/merchant-registration');
+//                                }
+//                                else
+                                $this->renderPartial('_form', array('model' => $model, 'user_model' => $user_model));
+                                ?>     
 
                             </div>
 

@@ -2,7 +2,7 @@
 
     <div id="large-header" class="large-header " style="height: 124px; background: url(<?php echo Yii::app()->request->baseurl; ?>/images/img_inn.jpg)">
         <div class="banner_txt">
-            <h1 class="animated fadeInLeft m2">Regi<span class="redish">ster </span></h1>
+            <h1 class="animated fadeInLeft m2">Buyer<span class="redish">Register </span></h1>
         </div>
     </div>
 </section>
