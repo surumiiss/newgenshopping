@@ -26,7 +26,7 @@ class BuyerDetailsController extends Controller {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('create'),
+                'actions' => array('create','userActivation'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -63,7 +63,9 @@ class BuyerDetailsController extends Controller {
             $model->dob = $newDate;
             $model->CB = $user_model->CB = $model->UB = $user_model->UB = 0;
             $model->DOC = $user_model->DOC = date('Y-m-d');
-
+            $ver_id = mt_rand(10000, 99999) . time();
+            $user_model->activation_link = $ver_id;
+            $user_model->user_status = 1;
             // validate BOTH $model and $user_model
             $valid = $model->validate();
             $valid = $user_model->validate() && $valid;
@@ -84,6 +86,32 @@ class BuyerDetailsController extends Controller {
         $this->render('create', array(
             'model' => $model, 'user_model' => $user_model
         ));
+    }
+    
+        public function sendActivation($user_model) {
+        Yii::import('user.extensions.yii-mail.YiiMail');
+        $message = new YiiMailMessage;
+        $message->view = "_user_activation_mail";
+        $params = array('user_model' => $user_model);
+        $message->subject = 'Welcome To eCareAgora';
+        $message->setBody($params, 'text/html');
+        $message->addTo('aathira@intersmart.com');
+        $message->from = 'avpin1992@gmail.com';
+        if (Yii::app()->mail->send($message)) {
+//            echo 'message send';
+//            exit;
+        } else {
+            echo 'message not send';
+            exit;
+        }
+    }
+    
+       public function actionUserActivation($id) {
+        $user_model = Users::model()->findByAttributes(array('activation_link' => $id));
+        $user_model->user_status = 3;
+        $user_model->update();
+        $model = BuyerDetails::model()->findByAttributes(array('user_id' => $user_model->id));
+        $this->render('user_activation', array('model' => $model));
     }
 
     /**

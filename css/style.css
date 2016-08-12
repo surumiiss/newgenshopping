@@ -1072,7 +1072,7 @@ form input[type="number"] {
 }
 
 /*date-picker*/
-.ui-datepicker {
+/*.ui-datepicker {
     width: 14em;
 }
 
@@ -1080,7 +1080,7 @@ form input[type="number"] {
     border: 0;
 }
 
-/*back to top*/
+back to top
 a.back-to-top {
     display: none;
     width: 50px;
@@ -1102,7 +1102,7 @@ a.back-to-top i {
     top: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-}
+}*/
 
 
 /*pre loder*/
@@ -3947,7 +3947,7 @@ footer .copyright .nav a:hover {
 }
 
 .pswp--open {
-    background: rgba(0,0,0,0.9); !important;
+    background: rgba(0,0,0,0.9) !important;
 }
 
 

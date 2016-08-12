@@ -132,3 +132,8 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- added by Aathira
 
 ALTER TABLE `users` CHANGE `password` `password` VARCHAR(25) NOT NULL;
+
+-- 11/08/2016
+-- added by Aathira
+
+ALTER TABLE `master_brands` ADD `logo` VARCHAR(50) NOT NULL AFTER `category_id`;

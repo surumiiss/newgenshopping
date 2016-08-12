@@ -40,7 +40,8 @@
                                 } else {
                                     return $data->description;
                                 }
-                            }
+                            },
+                            'type' => 'html'
                         ),
                         array(
                             'name' => 'image',
@@ -65,7 +66,8 @@
                                 } else {
                                     return $data->meta_description;
                                 }
-                            }
+                            },
+                            'type' => 'html'
                         ),
                         'meta_keywords',
                         array(

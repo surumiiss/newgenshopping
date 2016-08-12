@@ -49,7 +49,7 @@
                         <div class="form-group">
 
                             <!--<input type="password" class="form-new" id="pwd" placeholder="Password :">-->
-                            <?php echo $form->textField($model, 'password', array('class' => "form-new", 'placeholder' => 'Password')); ?>
+                            <?php echo $form->passwordField($model, 'password', array('class' => "form-new", 'placeholder' => 'Password')); ?>
                             <?php echo $form->error($model, 'password', array('class' => ' red')); ?>
                         </div>
 
@@ -90,4 +90,9 @@
 
 
 <!-- end of container -->
+
+<?php 
+Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/jquery-1.11.3.min.js');
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/bootstrap.min.js');
+?>
 

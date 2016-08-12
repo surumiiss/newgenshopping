@@ -43,6 +43,7 @@ $form = $this->beginWidget('CActiveForm', array(
             'changeMonth' => true, // can change month
             'yearRange' => $from . ':' . $to, // range of year
             'showButtonPanel' => true, // show button panel
+//            'maxDate' => 'today',
         ),
         'htmlOptions' => array(
             'size' => '10', // textField size

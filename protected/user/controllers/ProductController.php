@@ -1,6 +1,6 @@
 <?php
 
-class ProductsController extends Controller {
+class ProductController extends Controller {
 
         public function actionCategory($name) {
                 $parent = ProductCategory::model()->findByAttributes(array('canonical_name' => $name));

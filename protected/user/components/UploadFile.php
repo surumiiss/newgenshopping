@@ -52,6 +52,44 @@ class UploadFile extends CApplicationComponent {
                 }
 
         }
+        
+         public function uploadHoverImage($uploadfile, $id, $foldername = false, $dimensions = array()) {
+
+                if ($foldername) {
+                        $folder = $this->folderName(0, 1000, $id) . '/';
+                } else {
+                        $folder = "";
+                }
+
+                if (isset($uploadfile)) {
+                        if (Yii::app()->basePath . '/../uploads/products') {
+                                chmod(Yii::app()->basePath . '/../uploads/products', 0777);
+                                if ($foldername) {
+                                        if (!is_dir(Yii::app()->basePath . '/../uploads/products/' . $folder))
+                                                mkdir(Yii::app()->basePath . '/../uploads/products/' . $folder);
+                                        chmod(Yii::app()->basePath . '/../uploads/products/' . $folder . '/', 0777);
+
+                                        if (!is_dir(Yii::app()->basePath . '/../uploads/products/' . $folder . '/' . $id))
+                                                mkdir(Yii::app()->basePath . '/../uploads/products/' . $folder . '/' . $id);
+                                        chmod(Yii::app()->basePath . '/../uploads/products/' . $folder . '/' . $id . '/', 0777);
+
+                                        if (!is_dir(Yii::app()->basePath . '/../uploads/products/' . $folder . '/' . $id . '/hover'))
+                                                mkdir(Yii::app()->basePath . '/../uploads/products/' . $folder . '/' . $id . '/hover');
+                                        chmod(Yii::app()->basePath . '/../uploads/products/' . $folder . '/' . $id . '/' . 'hover/', 0777);
+                                }
+                                if ($uploadfile->saveAs(Yii::app()->basePath . '/../uploads/products/' . $folder . '/' . $id . '/hover/hover.' . $uploadfile->extensionName)) {
+                                        chmod(Yii::app()->basePath . '/../uploads/products/' . $folder . '/' . $id . '/hover/hover.' . $uploadfile->extensionName, 0777);
+                                        // $this->WaterMark(Yii::app()->basePath . '/../uploads/products/' . $folder . '/' . $id . '/hover/hover.' . $uploadfile->extensionName, '/../images/watermark.png');
+                                        $file = Yii::app()->basePath . '/../uploads/products/' . $folder . '/' . $id . '/hover/hover.' . $uploadfile->extensionName;
+                                        $path = Yii::app()->basePath . '/../uploads/products/' . $folder . '/' . $id . '/hover';
+//                                        if (!empty($dimensions)) {
+//
+//                                                $this->Resize($file, $dimensions['width'], $dimensions['height'], 'hover', $path, $uploadfile->extensionName);
+//                                        }
+                                }
+                        }
+                }
+        }
 
         public function uploadMultipleImage($uploadfile, $id, $foldername = false) {
                 if ($foldername) {

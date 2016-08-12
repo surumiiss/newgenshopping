@@ -25,7 +25,7 @@ class Header extends CWidget {
                 <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.min.css" rel="stylesheet">
                 <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/owl.carousel.css" rel="stylesheet">
                 <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/owl.theme.css" rel="stylesheet">
-                <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/jquery-ui.css" rel="stylesheet">
+        <!--                <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/jquery-ui.css" rel="stylesheet">-->
                 <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/animate.min.css" rel="stylesheet">
                 <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/css3-animation.css" rel="stylesheet">
                 <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/new.css" rel="stylesheet">
@@ -36,6 +36,7 @@ class Header extends CWidget {
                 <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/slick-theme.css" rel="stylesheet">
                 <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/contact.css" rel="stylesheet">
                 <link href="<?php echo Yii::app()->request->baseUrl; ?>/css/custom_style.css" rel="stylesheet">
+
                 <style>
 
                     .red {
@@ -45,7 +46,10 @@ class Header extends CWidget {
 
                 </style>
 
-
+                <script>
+                    var baseurl = "<?php print Yii::app()->request->baseUrl . "/index.php/"; ?>";
+                    var basepath = "<?php print Yii::app()->basePath; ?>";
+                </script>
             </head>
 
             <body id="home-1">

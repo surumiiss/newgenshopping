@@ -18,7 +18,7 @@
         <li class="active">Update <?php echo $this->modelClass; ?></li>
     </ol>
 </section>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo "<?php echo Yii::app()->request->baseurl.'/" . $_REQUEST['CrudCode']['controller'] . "/admin'; ?>"; ?>" class='btn  btn-laksyah manage'>Manage Buyer</a>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo "<?php echo Yii::app()->request->baseurl.'/" . $_REQUEST['CrudCode']['controller'] . "/admin'; ?>"; ?>" class='btn  btn-laksyah manage'>Manage <?php echo $this->modelClass; ?></a>
 <section class="content">
     <div class="box box-info">
 

@@ -18,7 +18,7 @@
                 <br>Please check your Spam/Junk/Promotions folder as well if you don't receive the mail in your Inbox.
                 <br> 
                 Note : temporary link
-                <a href="<?php echo BuyerDetailsController::siteURL() . "user.php/merchant-activation?id=" . $user_model->activation_link; ?>"> Click here to activate </a>
+                <a href="<?php echo BuyerDetailsController::siteURL() . "user.php/buyer-activation?id=" . $user_model->activation_link; ?>"> Click here to activate </a>
                 <br><br><br>
 
 
@@ -27,3 +27,7 @@
     </div>
 </section> <!-- end of facial -->
 
+<?php 
+Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/jquery-1.11.3.min.js');
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/bootstrap.min.js');
+?>

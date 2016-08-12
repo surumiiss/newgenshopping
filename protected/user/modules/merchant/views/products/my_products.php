@@ -6,7 +6,7 @@
 
 
         <div class="banner_txt">
-            <h1 class="animated fadeInLeft m2">Check <span class="redish"> Out </span></h1>
+            <h1 class="animated fadeInLeft m2">My <span class="redish"> Products </span></h1>
 
         </div>
 
@@ -37,6 +37,16 @@
             <div class="col-md-9">
 
                 <div class="left-my_acnt">
+                    
+                    
+                    
+                    <?php 
+                    foreach ($data as $product)
+                    {
+                        echo '<br>'.$product->product_name;
+                    }
+                    
+                    ?>
 
 
                     <div class="panel-body sis">
@@ -85,10 +95,6 @@
                                 </tbody>
 
 
-
-
-
-
                             </table>
                         </div>
 
@@ -99,13 +105,6 @@
 
                     <div class="clearfix"></div>
                 </div>
-
-
-
-
-
-
-
 
             </div>
 
@@ -127,16 +126,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
     </div>
 </div>
 </section> <!-- end of facial -->
@@ -149,3 +138,7 @@
 
 
 
+<?php 
+Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/jquery-1.11.3.min.js');
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/bootstrap.min.js');
+?>

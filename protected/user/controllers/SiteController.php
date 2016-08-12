@@ -61,14 +61,20 @@ class SiteController extends Controller {
                     $buyer = BuyerDetails::model()->findByAttributes(array('user_id' => $user_model->id));
                     $buyer_id = $buyer->id;
                     Yii::app()->user->setState('buyer_id', $buyer_id);
+                    Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/jquery-1.11.3.min.js');
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/bootstrap.min.js');
                     $this->redirect(array('buyer/default/index'));
                 } else if ($user_model->user_type == 2) {
 
                     // login merchant
                     $merchant = MerchantDetails::model()->findByAttributes(array('user_id' => $user_model->id));
                     $merchant_id = $merchant->id;
+                    $merchant_name = $merchant->fullname;
+                    $merchant_type = $merchant->merchant_type;
+                    Yii::app()->user->setState('merchant_name', $merchant_name);
                     Yii::app()->user->setState('merchant_id', $merchant_id);
-                    $this->redirect(array('merchant/default/index'));
+                    Yii::app()->user->setState('merchant_type', $merchant_type);
+                    $this->redirect(array('merchant/merchantDetails/home'));
                 } else {
                     // login invalid
                     echo 'invalid login';
@@ -79,7 +85,7 @@ class SiteController extends Controller {
     }
 
     public function actionLogout() {
-        
+
         Yii::app()->user->logout();
         Yii::app()->user->setState('user_mail', null);
         Yii::app()->user->setState('user_id', null);
@@ -87,7 +93,6 @@ class SiteController extends Controller {
         Yii::app()->user->setState('buyer_id', null);
         Yii::app()->user->setState('merchant_id', null);
         $this->redirect(Yii::app()->homeUrl);
-        
     }
 
     public function actionCategoryCat() {
@@ -190,6 +195,8 @@ class SiteController extends Controller {
      * This is the action to handle external exceptions.
      */
     public function actionError() {
+        Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/jquery-1.11.3.min.js');
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/bootstrap.min.js');
         if ($error = Yii::app()->errorHandler->error) {
             if (Yii::app()->request->isAjaxRequest)
                 echo $error['message'];

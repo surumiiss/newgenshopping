@@ -10,7 +10,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title><?php echo Yii::app()->name; ?></title>                                                                                                                                                                                                                                                                                                             
         <!-- Tell the browser to be responsive to screen width -->
-        <!--<link rel="stylesheet" href="<?php // echo Yii::app()->baseUrl;        ?>/css/admin.css">-->
+        <!--<link rel="stylesheet" href="<?php // echo Yii::app()->baseUrl;         ?>/css/admin.css">-->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.5 -->
 
@@ -77,7 +77,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- mini logo for sidebar mini 50x50 pixels -->
                     <span class="logo-mini"><img src="http://www.intersmartsolutions.com/dev2/newgen-html/images/admin/logo_inside.png" /></span>
                     <!--logo for regular state and mobile devices--> 
-                   <span class="logo-lg"><img src="<?php echo Yii::app()->baseUrl; ?>/images/logo_small.png" /></span>
+                    <span class="logo-lg"><img src="<?php echo Yii::app()->baseUrl; ?>/images/logo_small.png" /></span>
 
                 </a>
 
@@ -195,6 +195,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             $action18 = "active";
                             $actionn5 = "active";
                             break;
+                        case "masterBrands":
+                            $action19 = "active";
+                            $actionn4 = "active";
+                            break;
 
                         case "site":
                             if (Yii::app()->controller->action->id == "home") {
@@ -240,18 +244,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </li>
                         <?php } ?>
                         <?php if (isset(Yii::app()->session['post']['products']) && Yii::app()->session['post']['products'] == 1) { ?>
-                                                        <li class="<?php echo $actionn5 ?> treeview">
-                                                                <a href="#"><i class="fa fa-bars"></i> <span>Orders</span> <i class="fa fa-angle-left pull-right"></i></a>
-                                                                <ul class="treeview-menu">
-                                                                        <li class="<?php echo $action15 ?>"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/products/Order/admin"><i class="fa fa-circle-o"></i>Order</a></li>
-                                                                        <li class="<?php echo $action16 ?>"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/products/OrderStatus/admin"><i class="fa fa-circle-o"></i> Order status</a></li>
-                                                                        <li class="<?php echo $action17 ?>"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/products/OrderProducts/admin"><i class="fa fa-circle-o"></i> Order Products</a></li>
-                                                                        <li class="<?php echo $action18 ?>"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/products/OrderHistory/admin"><i class="fa fa-circle-o"></i> Order History</a></li>
+                            <li class="<?php echo $actionn5 ?> treeview">
+                                <a href="#"><i class="fa fa-bars"></i> <span>Orders</span> <i class="fa fa-angle-left pull-right"></i></a>
+                                <ul class="treeview-menu">
+                                    <li class="<?php echo $action15 ?>"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/products/Order/admin"><i class="fa fa-circle-o"></i>Order</a></li>
+                                    <li class="<?php echo $action16 ?>"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/products/OrderStatus/admin"><i class="fa fa-circle-o"></i> Order status</a></li>
+                                    <li class="<?php echo $action17 ?>"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/products/OrderProducts/admin"><i class="fa fa-circle-o"></i> Order Products</a></li>
+                                    <li class="<?php echo $action18 ?>"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/products/OrderHistory/admin"><i class="fa fa-circle-o"></i> Order History</a></li>
 
 
-                                                                </ul>
-                                                        </li>
-                                                <?php } ?>
+                                </ul>
+                            </li>
+                        <?php } ?>
                         <?php if (isset(Yii::app()->session['post']['masters']) && Yii::app()->session['post']['masters'] == 1) { ?>
                             <li class="<?php echo $actionn4 ?> treeview">
                                 <a href="#"><i class="fa fa-database"></i> <span>Masters</span> <i class="fa fa-angle-left pull-right"></i></a>
@@ -264,6 +268,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <li class="<?php echo $action12 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/Countries/admin"><i class="fa fa-circle-o"></i> Countries</a></li>
                                     <li class="<?php echo $action13 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/Districts/admin"><i class="fa fa-circle-o"></i> Districts</a></li>
                                     <li class="<?php echo $action14 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/masters/States/admin"><i class="fa fa-circle-o"></i> States</a></li>
+                                    <li class="<?php echo $action19 ?> treeview"><a href="<?php echo Yii::app()->baseUrl ?>/admin.php/brands-admin"><i class="fa fa-circle-o"></i> Brands</a></li>
                                 </ul>
                             </li>                         
 

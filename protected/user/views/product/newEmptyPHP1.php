@@ -23,7 +23,7 @@
         <p><?php echo Yii::app()->Currency->convert($data->price); ?></p>
 
 
-        <a  href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/Products/Detail/name/<?php echo $data->canonical_name; ?>" style="text-align: right !important;">More >></a>
+        <a  href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/Product/Detail/name/<?php echo $data->canonical_name; ?>" style="text-align: right !important;">More >></a>
 
     </div>
 

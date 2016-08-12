@@ -58,7 +58,7 @@ class ProductsController extends Controller {
      * If creation is successful, the browser will be redirected to the 'view' page.
      */
     public function actionCreate() {
-        $model = new Products;
+        $model = new Products('admin_create');
 
 // Uncomment the following line if AJAX validation is needed
 // $this->performAjaxValidation($model);
@@ -125,6 +125,16 @@ class ProductsController extends Controller {
             else
                 $model->special_price_to = 0;
 
+            if ($_POST['Products']['discount_from'] != "")
+                $model->discount_from = date("Y-m-d", strtotime($_POST['Products']['discount_from']));
+            else
+                $model->discount_from = 0;
+
+            if ($_POST['Products']['discount_to'] != "")
+                $model->discount_to = date("Y-m-d", strtotime($_POST['Products']['discount_to']));
+            else
+                $model->discount_to = 0;
+
             $model->CB = Yii::app()->session['admin']['id'];
             $model->UB = Yii::app()->session['admin']['id'];
             $model->DOC = date('Y-m-d');
@@ -157,16 +167,7 @@ class ProductsController extends Controller {
                         $dimension[3] = array('width' => '3016', 'height' => '4030', 'name' => 'zoom');
                         Yii::app()->Upload->uploadMultipleImage($images, $id, true, $dimension);
                     }
-//                    if ($video != "") {
-//
-//                        $id = $model->id;
-//                        $dimensions[0] = array('name' => 'video');
-//
-//                        // var_dump($video);
-//                        // exit;
-//
-//                        Yii::app()->Upload->uploadVideo($video, $id, true, $dimensions);
-//                    }
+
                     $this->redirect(array('admin', 'id' => $model->id));
                 }
             }
@@ -260,6 +261,15 @@ class ProductsController extends Controller {
                 $model->special_price_to = date("Y-m-d", strtotime($_POST['Products']['special_price_to']));
             else
                 $model->special_price_to = 0;
+            if ($_POST['Products']['discount_from'] != "")
+                $model->discount_from = date("Y-m-d", strtotime($_POST['Products']['discount_from']));
+            else
+                $model->discount_from = 0;
+
+            if ($_POST['Products']['discount_to'] != "")
+                $model->discount_to = date("Y-m-d", strtotime($_POST['Products']['discount_to']));
+            else
+                $model->discount_to = 0;
 
 //            $model->CB = Yii::app()->session['admin']['id'];
             $model->UB = Yii::app()->session['admin']['id'];
@@ -298,16 +308,6 @@ class ProductsController extends Controller {
             if ($model->validate()) {
                 if ($model->save(false)) {
 
-//                    if ($video != "") {
-//
-//                        $id = $model->id;
-//                        $dimensions[0] = array('name' => 'video');
-//
-//                        // var_dump($video);
-//                        // exit;
-//
-//                        Yii::app()->Upload->uploadVideo($video, $id, true, $dimensions);
-//                    }
                     $this->redirect(array('admin', 'id' => $model->id));
                 }
             }
