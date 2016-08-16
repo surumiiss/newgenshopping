@@ -16,9 +16,9 @@ $id = $data->id;
     <td><?php echo $data->product_name; ?></td>
     <td>₹ <?php echo $data->price; ?></td>
     <td><?php echo $data->description; ?></td>
-    <td><?php echo CHtml::link('Edit',array("products/Edit",'product'=>$id)); ?></td>
-    <td><?php echo CHtml::link('Delete',array("products/Delete",'product'=>$id)); ?></td>
-    <td><?php echo CHtml::link('View',array('products/View','product'=>$id)); ?></td>
+    <td><?php echo CHtml::link('Edit',array("products/Edit",'product'=>$id),array('style'=>'color:#346cce')); ?></td>
+    <td><?php echo CHtml::link('Delete',array("products/Delete",'product'=>$id),array('style'=>'color:#346cce')); ?></td>
+    <td><?php echo CHtml::link('View',array('products/View','product'=>$id),array('style'=>'color:#346cce')); ?></td>
     
     
 
