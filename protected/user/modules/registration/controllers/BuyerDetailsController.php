@@ -93,10 +93,10 @@ class BuyerDetailsController extends Controller {
         $message = new YiiMailMessage;
         $message->view = "_user_activation_mail";
         $params = array('user_model' => $user_model);
-        $message->subject = 'Welcome To eCareAgora';
+        $message->subject = 'Welcome To NewGenShop';
         $message->setBody($params, 'text/html');
-        $message->addTo('aathira@intersmart.com');
-        $message->from = 'avpin1992@gmail.com';
+        $message->addTo($user_model->email);
+        $message->from = 'aathira@intersmart.com';
         if (Yii::app()->mail->send($message)) {
 //            echo 'message send';
 //            exit;

@@ -31,7 +31,7 @@ class MerchantDetailsController extends Controller {
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
 //                'actions' => array('create', 'update'),
-                'actions' => array('profile', 'editProfile', 'ChangePassword','home'),
+                'actions' => array('profile', 'editProfile', 'ChangePassword', 'home', 'featuredAds', 'mySales', 'paymentRequest'),
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -43,9 +43,8 @@ class MerchantDetailsController extends Controller {
             ),
         );
     }
-    
-    public function actionHome()
-    {
+
+    public function actionHome() {
         $this->render('home');
     }
 
@@ -139,12 +138,43 @@ class MerchantDetailsController extends Controller {
         ));
     }
 
-    public function actionChangePassword()
-    {
-        $this->render('change_password');
+    public function actionChangePassword() {
+        $model = new ResetPassword;
+        if (isset($_POST['ResetPassword'])) {
+            $model->attributes = $_POST['ResetPassword'];
+            if ($model->validate()) {
+                $user_id = Yii::app()->user->getState('user_id');
+                $user = Users::model()->findByPk($user_id);
+                $user->password = $model->newPassword;
+                if ($user->update()) {
+                    Yii::app()->user->setFlash('passwordReset', "Password Changed!");
+//                    $this->passwordChanged($user);
+                    $model = new ResetPassword;
+                }
+            }
+        }
+        $this->render('reset_password', array('model' => $model));
     }
 
-        /**
+    public function passwordChanged($user_model) {
+        Yii::import('user.extensions.yii-mail.YiiMail');
+        $message = new YiiMailMessage;
+        $message->view = "_info_password_changed";
+        $params = array('user_model' => $user_model);
+        $message->subject = 'Welcome To eCareAgora';
+        $message->setBody($params, 'text/html');
+        $message->addTo($user_model->email);
+        $message->from = 'aathira@intersmart.com';
+        if (Yii::app()->mail->send($message)) {
+//            echo 'message send';
+//            exit;
+        } else {
+            echo 'message not send';
+            exit;
+        }
+    }
+
+    /**
      * Returns the data model based on the primary key given in the GET variable.
      * If the data model is not found, an HTTP exception will be raised.
      * @param integer $id the ID of the model to be loaded
@@ -185,5 +215,22 @@ class MerchantDetailsController extends Controller {
             echo CHtml::tag('option', array('value' => $value), CHtml::encode($name), true);
         }
     }
+    
+    public function actionFeaturedAds()
+    {
+        $this->render('featured_ads');
+    }
+    
+    public function actionMySales()
+    {
+        $this->render('sales');
+    }
+    
+    public function actionPaymentRequest()
+    {
+        $this->render('payment');
+    }
+    
+    
 
 }
