@@ -55,7 +55,7 @@ return array(
             'transportType' => 'smtp',
             'transportOptions' => array(
 //                'host' => 'mail.ecareagora.com',
-                'host' => 'smptp.gmail.com',
+                'host' => 'smptp.intersmarthosting.in',
                 // 'encryption'=>'ssl', // use ssl
                 'username' => '	develop@intersmarthosting.in',
                 'password' => '	develop@123',

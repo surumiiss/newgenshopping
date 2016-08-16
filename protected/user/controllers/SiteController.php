@@ -63,7 +63,8 @@ class SiteController extends Controller {
                     Yii::app()->user->setState('buyer_id', $buyer_id);
                     Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/jquery-1.11.3.min.js');
 //Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/bootstrap.min.js');
-                    $this->redirect(array('buyer/default/index'));
+//                    $this->redirect(array('buyer/default/index'));
+                    $this->redirect(array('product/category/name/gifts'));
                 } else if ($user_model->user_type == 2) {
 
                     // login merchant
@@ -106,8 +107,8 @@ class SiteController extends Controller {
                     $user->password = Utilities::genPassword();
                     $user->update();
                     $model = new ForgotPassword;
+                    $this->resetPasswordMail($user);
                     $this->redirect(array('ResetPassword'));
-//                    $this->resetPasswordMail($user);
                 }
             }
         }
@@ -125,7 +126,8 @@ class SiteController extends Controller {
         $params = array('user' => $user);
         $message->subject = 'NewGenShop : Recover Password';
         $message->setBody($params, 'text/html');
-        $message->addTo($user->email);
+        $message->addTo('aathira@intersmart.com');
+//        $message->addTo($user->email);
         $message->from = 'aathira@intersmart.com';
         if (Yii::app()->mail->send($message)) {
 //            echo 'message send';

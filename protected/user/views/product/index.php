@@ -7,7 +7,7 @@ if ($category_name != "") {
 
 <section class="banner">
 
-    <div id="large-header" class="large-header " style="height: 124px; background: url(<?= Yii::app()->baseUrl; ?>/images/img_inn.jpg">
+    <div id="large-header" class="large-header " style="height: 124px; background: url(<?= Yii::app()->baseUrl; ?>/images/img_inn.jpg)">
 
 
         <div class="banner_txt">
