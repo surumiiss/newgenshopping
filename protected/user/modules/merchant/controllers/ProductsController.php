@@ -25,15 +25,18 @@ class ProductsController extends Controller {
      */
     public function accessRules() {
         return array(
-            array('allow', // allow all users to perform 'index' and 'view' actions
-//                'actions' => array('index', 'view', 'create', 'update', 'admin', 'delete'),
-                'users' => array('*'),
-            ),
-            array('allow', // allow authenticated user to perform 'create' and 'update' actions
-//                'actions' => array('create', 'update'),
-                'actions' => array('addProduct', 'myProducts', 'edit', 'delete','view'),
+//            array('allow', // allow all users to perform 'index' and 'view' actions
+////                'actions' => array('addProduct', 'myProducts', 'edit', 'deleteproduct','view'),
+//                'users' => array('*'),
+//            ),
+            array('allow', // allow authenticated users to access all actions
                 'users' => array('@'),
             ),
+//            array('allow', // allow authenticated user to perform 'create' and 'update' actions
+////                'actions' => array('create', 'update'),
+//                'actions' => array('addProduct', 'myProducts', 'edit', 'deleteproduct','view'),
+//                'users' => array('@'),
+//            ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
 //                'actions' => array('admin', 'delete'),
                 'users' => array('admin'),
@@ -161,7 +164,7 @@ class ProductsController extends Controller {
     }
 
     public function actionEdit($product) {
-       $id = $product;
+        $id = $product;
         $model = $this->loadModel($id);
         $model->setScenario('update');
 
@@ -287,7 +290,7 @@ class ProductsController extends Controller {
             if ($model->validate()) {
                 if ($model->save()) {
 
-                    $this->redirect(array('ProductDetail',array('pid'=>$model->id)));
+                    $this->redirect(array('ProductDetail', array('pid' => $model->id)));
                 }
             }
         }
@@ -295,15 +298,16 @@ class ProductsController extends Controller {
             'model' => $model,
         ));
     }
-    
-    public function actionDelete($product) {
+
+    public function actionDeleteProduct($product) {
+//        echo 'hi';exit;
         $id = $product;
         $this->loadModel($id)->delete();
-         $this->redirect(array('../my-products'));
+        $this->redirect(array('../my-products'));
     }
-    
-      public function actionView($product) {
-           $id = $product;
+
+    public function actionView($product) {
+        $id = $product;
         $this->render('view_product', array(
             'model' => $this->loadModel($id),
         ));

@@ -142,9 +142,16 @@ class Header extends CWidget {
                                         <button class="btn btn-primary cat dropdown-toggle" type="button" data-toggle="dropdown"><img class="bars" src="<?php echo Yii::app()->request->baseUrl; ?>/images/bars.png">Categories
                                         </button>
                                         <ul class="dropdown-menu categories">
-                                            <li><a href="#">menu 1</a></li>
-                                            <li><a href="#">menu 2</a></li>
-                                            <li><a href="#">menu 3</a></li>
+                                                    <?php
+                                                    $menus = ProductCategory::model()->findAllByAttributes(array(), array('condition' => 'header_visibility = 1 and id=parent order by sort_order'));
+                                                    foreach ($menus as $menu) {
+                                                            ?>
+
+                                                            <li><a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/product/category/name/<?php echo $menu->canonical_name; ?>"><?php echo $menu->category_name; ?></a></li>
+                                                            <?php
+                                                    }
+                                                    ?>
+
                                         </ul>
                                     </div>
                                 </div>

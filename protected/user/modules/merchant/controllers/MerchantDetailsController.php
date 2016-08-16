@@ -25,13 +25,17 @@ class MerchantDetailsController extends Controller {
      */
     public function accessRules() {
         return array(
-            array('allow', // allow all users to perform 'index' and 'view' actions
-//                'actions' => array('index', 'view', 'create', 'update', 'admin', 'delete'),
-                'users' => array('*'),
-            ),
-            array('allow', // allow authenticated user to perform 'create' and 'update' actions
-//                'actions' => array('create', 'update'),
-                'actions' => array('profile', 'editProfile', 'ChangePassword', 'home', 'featuredAds', 'mySales', 'paymentRequest'),
+//            array('allow', // allow all users to perform 'index' and 'view' actions
+////                'actions' => array('index', 'view', 'create', 'update', 'admin', 'delete'),
+//                'users' => array('*'),
+//            ),
+//            array('allow', // allow authenticated user to perform 'create' and 'update' actions
+////                'actions' => array('create', 'update'),
+//                'actions' => array('profile', 'editProfile', 'ChangePassword', 'home', 'featuredAds', 'mySales', 'paymentRequest'),
+//                'users' => array('@'),
+//            ),
+
+            array('allow', // allow authenticated users to access all actions
                 'users' => array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -215,22 +219,17 @@ class MerchantDetailsController extends Controller {
             echo CHtml::tag('option', array('value' => $value), CHtml::encode($name), true);
         }
     }
-    
-    public function actionFeaturedAds()
-    {
+
+    public function actionFeaturedAds() {
         $this->render('featured_ads');
     }
-    
-    public function actionMySales()
-    {
+
+    public function actionMySales() {
         $this->render('sales');
     }
-    
-    public function actionPaymentRequest()
-    {
+
+    public function actionPaymentRequest() {
         $this->render('payment');
     }
-    
-    
 
 }

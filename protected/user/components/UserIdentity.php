@@ -6,6 +6,8 @@
  * data can identity the user.
  */
 class UserIdentity extends CUserIdentity {
+    private $_id;
+//    public $username;
 
     /**
      * Authenticates a user.
@@ -35,9 +37,22 @@ class UserIdentity extends CUserIdentity {
 
         elseif ($password !== $this->password)
             $this->errorCode = self::ERROR_PASSWORD_INVALID;
-        else
+        else {
             $this->errorCode = self::ERROR_NONE;
+
+
+            $this->_id = $user->id;
+            $this->username = $user->email;
+            $this->errorCode = self::ERROR_NONE;
+        }
         return !$this->errorCode;
+    }
+
+    /**
+     * @return integer the ID of the user record
+     */
+    public function getId() {
+        return $this->_id;
     }
 
 }

@@ -45,7 +45,10 @@ class LoginForm extends CFormModel {
      */
     public function authenticate($attribute, $params) {
         if (!$this->hasErrors()) {
+
             $this->_identity = new UserIdentity($this->email, $this->password);
+            if ($this->_identity->authenticate())
+                Yii::app()->user->login($this->_identity);
             if (!$this->_identity->authenticate())
                 $this->addError('password', 'Incorrect email or password.');
         }

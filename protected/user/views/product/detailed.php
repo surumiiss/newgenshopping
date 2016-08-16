@@ -1,3 +1,23 @@
+<style>
+    .cart-b{
+        background-color: #c47c65;
+        padding-left: 12px;
+        padding-right: 10px;
+        padding-top: 8px;
+        padding-bottom: 9px;
+        margin-top: 5%;
+        color: #fff;
+        font-weight: 400;
+        border-radius: 0px;
+        display: block;
+        font-size: 13px;
+        max-width: 157px;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        border-radius: 4px;
+    }
+</style>
+
 <?php
 $value = rtrim($product->category_id, ',');
 $ids = explode(',', $value);
@@ -68,8 +88,11 @@ foreach ($ids as $id) {
                             <h3><?= Yii::app()->Currency->convert($product->price); ?></h3>
                             <div class="counter">
                                 <div class="counter-1">
-
-                                    <a class="cart-b" href="#"><i class="fa baskets fa-shopping-basket"></i>Add to baskest</a>
+                                    <form method="post" name="option" action="<?= Yii::app()->request->baseUrl; ?>/index.php/cart/Buynow" id="myform">
+                                        <input type="hidden"   value="<?= $product->id; ?>" id="prod_id" name="prod">
+                                        <input type="submit" value="Add to baskest" class="cart-b" href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/cart/Buynow/<?php echo $prod->id; ?>" />
+<!--                                        <a class="cart-b" href="#"><i class="fa baskets fa-shopping-basket"></i>Add to baskest</a>-->
+                                    </form>
                                 </div>
 
                                 <div class="counter-2">
@@ -220,6 +243,11 @@ foreach ($ids as $id) {
         });
 
 </script>
+
+<?php
+Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/jquery-1.11.3.min.js');
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/bootstrap.min.js');
+?>
 
 
 

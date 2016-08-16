@@ -21,3 +21,8 @@
     <h2><a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php/Product/Detail/name/<?php echo $data->canonical_name; ?>"><?= $data->product_name; ?></a></h2>
     <h3><?php echo Yii::app()->Currency->convert($data->price); ?></h3>
 </div> <!-- end of left -->
+
+<?php
+Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/jquery-1.11.3.min.js');
+//Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/bootstrap.min.js');
+?>

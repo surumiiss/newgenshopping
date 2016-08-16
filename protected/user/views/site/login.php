@@ -62,7 +62,7 @@
                         <button type="submit" class="btn new-btn btn-default">Sign In</button>
 
                         <div class="col-md-7 col-sm-5 col-xs-5 padd">
-                            <a class="forgot" href="#">Forgot Password</a>
+                            <a class="forgot" href="<?php echo Yii::app()->request->baseUrl; ?>/user.php/recover-password">Forgot Password</a>
                         </div>
 
                         <div class="col-md-5 col-sm-5 col-xs-7 padd">

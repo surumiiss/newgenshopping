@@ -85,14 +85,55 @@ class SiteController extends Controller {
     }
 
     public function actionLogout() {
-
-        Yii::app()->user->logout();
         Yii::app()->user->setState('user_mail', null);
         Yii::app()->user->setState('user_id', null);
         Yii::app()->user->setState('user_type', null);
         Yii::app()->user->setState('buyer_id', null);
         Yii::app()->user->setState('merchant_id', null);
+
+        Yii::app()->user->logout();
+
         $this->redirect(Yii::app()->homeUrl);
+    }
+
+    public function actionForgotPassword() {
+        $model = new ForgotPassword;
+        if (isset($_POST['ForgotPassword'])) {
+            $model->attributes = $_POST['ForgotPassword'];
+            if ($model->validate()) {
+                $email = $_POST['ForgotPassword']['email'];
+                if ($user = Users::model()->findByAttributes(array('email' => $email))) {
+                    $user->password = Utilities::genPassword();
+                    $user->update();
+                    $model = new ForgotPassword;
+                    $this->redirect(array('ResetPassword'));
+//                    $this->resetPasswordMail($user);
+                }
+            }
+        }
+        $this->render('forgot_password', array('model' => $model));
+    }
+
+    public function actionResetPassword() {
+        $this->render('password_reset');
+    }
+
+    public function resetPasswordMail() {
+        Yii::import('user.extensions.yii-mail.YiiMail');
+        $message = new YiiMailMessage;
+        $message->view = "_reset_password";
+        $params = array('user' => $user);
+        $message->subject = 'NewGenShop : Recover Password';
+        $message->setBody($params, 'text/html');
+        $message->addTo($user->email);
+        $message->from = 'aathira@intersmart.com';
+        if (Yii::app()->mail->send($message)) {
+//            echo 'message send';
+//            exit;
+        } else {
+            echo 'message not send';
+            exit;
+        }
     }
 
     public function actionCategoryCat() {

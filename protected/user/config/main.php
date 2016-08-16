@@ -57,9 +57,9 @@ return array(
 //                'host' => 'mail.ecareagora.com',
                 'host' => 'smptp.gmail.com',
                 // 'encryption'=>'ssl', // use ssl
-                'username' => 'avpin1992@gmail.com',
-                'password' => 'kunjatta1992',
-                'port' => '587', // ssl port for gmail
+                'username' => '	develop@intersmarthosting.in',
+                'password' => '	develop@123',
+                'port' => '465', // ssl port for gmail
             ),
             'viewPath' => 'application.user.template',
             'logging' => true,
